@@ -25,11 +25,14 @@ export const fetchEndpoint = async <T>(endpoint: string, params: Record<string, 
     .map(([key, value]) => `${key}=${value}`)
     .join('&');
 
-  const response = await fetch(`${API_CORS_PROXY}${API_URL}${endpoint}.php?${paramString}`);
+  const url = `${API_URL}${endpoint}.php?${paramString}`;
+
+  const response = await fetch(`${API_CORS_PROXY}${url}`);
 
   const { data, error }: JsonResponse<T> = await response.json();
 
   if (error) {
+    console.error(`${url}: ${error.Message}`);
     throw new Error(error.Message);
   }
 

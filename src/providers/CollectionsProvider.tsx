@@ -81,7 +81,7 @@ export const CollectionsProvider = ({ children }: Props) => {
      * log to easily access items within categories without array lookups.
      */
     () => {
-      if (collectedItems.length) {
+      if (collectedItems.length > 0) {
         const itemCategories: Partial<Record<SubCategories, Record<string, ItemDetail>>> = {};
 
         for (const collectedItem of collectedItems) {
@@ -102,6 +102,26 @@ export const CollectionsProvider = ({ children }: Props) => {
     [collectedItems]
   );
 
+  const collectedItemsRecord = useMemo(
+    /**
+     * Creates a record containing item collections indexed by item id.
+     */
+    () => {
+      if (collectedItems.length > 0) {
+        const record: Record<string, ItemDetail> = {};
+
+        for (const collectedItem of collectedItems) {
+          record[collectedItem.item] = collectedItem;
+        }
+
+        return record;
+      }
+
+      return {};
+    },
+    [collectedItems]
+  );
+
   // Effect to fetch data based on the group id
   useEffect(() => {
     if (groupId) {
@@ -110,7 +130,9 @@ export const CollectionsProvider = ({ children }: Props) => {
   }, [groupId, fetchData]);
 
   return (
-    <CollectionsContext.Provider value={{ collectedItems, collectedItemsByCategory, playersWithCollections, data, error, isLoading }}>
+    <CollectionsContext.Provider
+      value={{ collectedItems, collectedItemsByCategory, collectedItemsRecord, playersWithCollections, data, error, isLoading }}
+    >
       {children}
     </CollectionsContext.Provider>
   );

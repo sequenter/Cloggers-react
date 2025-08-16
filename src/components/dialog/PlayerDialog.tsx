@@ -33,7 +33,8 @@ export const PlayerDialog = () => {
 
   /**
    * On player uniques button press, update states to show items.
-   * @param {string} player Player name
+   * @param {string} playerName Player name
+   * * @param {Array<ItemDetail>} uniques Player's unique collections
    */
   const onShowUniques = (playerName: string, uniques: Array<ItemDetail>) => {
     setTitle(`${playerName}'s Unique Collections`);

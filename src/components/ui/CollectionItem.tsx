@@ -5,6 +5,7 @@ import { ItemDialog } from '@components/dialog/ItemDialog';
 import { useDialog } from '@hooks/useDialog';
 
 interface Props {
+  disableCount?: boolean;
   item: string;
   name: string;
   playersCollected: Array<string>;
@@ -13,7 +14,15 @@ interface Props {
   size?: string;
 }
 
-const CollectionItem = ({ item, name, playersCollected, playersNotCollected, scale = 'scale-200', size = 'w-18 h-18' }: Props) => {
+const CollectionItem = ({
+  disableCount = false,
+  item,
+  name,
+  playersCollected,
+  playersNotCollected,
+  scale = 'scale-200',
+  size = 'w-18 h-18'
+}: Props) => {
   const { open } = useDialog();
 
   return (
@@ -30,7 +39,7 @@ const CollectionItem = ({ item, name, playersCollected, playersNotCollected, sca
         )
       }
     >
-      {playersCollected.length > 0 && (
+      {!disableCount && playersCollected.length > 0 && (
         <span className="absolute text-lg z-10 top-0 left-0 text-shadow-runescape text-yellow">{playersCollected.length}</span>
       )}
 

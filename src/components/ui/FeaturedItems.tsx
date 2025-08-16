@@ -19,7 +19,7 @@ const FeaturedItems = ({ items, title }: Props) => {
           <div className="grid grid-cols-10">
             {items.map((item) => (
               <div
-                key={item.name}
+                key={item.item}
                 className="flex items-center justify-center"
               >
                 <CollectionItem

@@ -1,6 +1,6 @@
 import './App.css';
 
-import { CollectionLog, Featured, Footer, Header, Ranking } from '@components';
+import { CollectionLog, Featured, Footer, Header, Ranking, RecentItems } from '@components';
 
 function App() {
   return (
@@ -12,6 +12,8 @@ function App() {
           <Ranking />
 
           <CollectionLog />
+
+          <RecentItems />
 
           <Featured />
         </main>

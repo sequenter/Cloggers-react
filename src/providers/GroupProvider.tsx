@@ -22,7 +22,7 @@ export const GroupProvider = ({ children }: Props) => {
      * @returns {Array<PlayerDetail>} Player details
      */
     (): Array<PlayerDetail> => {
-      if (data && collectedItems.length) {
+      if (data && collectedItems.length > 0) {
         // Get collections that have only been collected by a single player
         const collectedUniqueItems = collectedItems.filter(({ playersCollected }) => playersCollected.length === 1);
 

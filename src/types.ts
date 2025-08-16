@@ -26,6 +26,8 @@ export interface PlayerDetail {
   uniques: Array<ItemDetail>;
 }
 
+export type RecentItemDetail = ItemDetail & Omit<FetchRecentItem, 'id'>;
+
 /* Group Collections */
 
 interface CollectionMember {
@@ -53,7 +55,6 @@ export interface FetchGroupCollections {
 
 /* Group Stats */
 
-// There's more data available from the API, but we only want 'game_mode' for now
 interface StatsMember {
   game_mode: number;
   player: string;
@@ -62,4 +63,14 @@ interface StatsMember {
 
 export interface FetchGroupMemberStats {
   memberlist: Record<string, StatsMember>;
+}
+
+/* Recent Items */
+
+export interface FetchRecentItem {
+  id: string;
+  date_unix: number;
+  notable_item: boolean;
+  player: string;
+  player_name_with_capitalization: string;
 }
