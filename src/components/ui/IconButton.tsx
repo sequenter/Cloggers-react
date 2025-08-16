@@ -25,6 +25,7 @@ const IconButton = ({ disabled = false, image = false, path, title, onClick }: P
         <img
           className="w-4 h-4"
           alt={title}
+          draggable={false}
           src={path}
         />
       ) : (

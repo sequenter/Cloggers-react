@@ -1,3 +1,5 @@
+export { default as CollectionItem } from './ui/CollectionItem';
+export { default as CollectionLog } from './ui/CollectionLog';
 export { default as Footer } from './ui/Footer';
 export { default as Header } from './ui/Header';
 export { default as Icon } from './ui/Icon';

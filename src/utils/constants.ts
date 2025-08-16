@@ -1,4 +1,10 @@
-export const MAIN_CATEGORIES = {
+import type { MainCategories, SubCategories } from "@types";
+
+export const MAIN_CATEGORIES_ARRAY = [ 'bosses', 'raids', 'clues', 'minigames', 'other' ] as const;
+
+export const SUB_CATEGORIES_ARRAY = ["abyssal_sire","alchemical_hydra","amoxliatl","araxxor","barrows_chests","bryophyta","callisto_and_artio","cerberus","chaos_elemental","chaos_fanatic","commander_zilyana","corporeal_beast","crazy_archaeologist","dagannoth_kings","duke_sucellus","deranged_archaeologist","doom_of_mokhaiotl","fortis_colosseum","general_graardor","giant_mole","grotesque_guardians","hespori","hueycoatl","kalphite_queen","king_black_dragon","kraken","kree_arra","the_leviathan","moons_of_peril","kril_tsutsaroth","nex","obor","phantom_muspah","royal_titans","sarachnis","scorpia","scurrius","skotizo","tempoross","the_fight_caves","the_gauntlet","the_inferno","the_nightmare","thermonuclear_smoke_devil","vardorvis","venenatis_and_spindel","vetion_and_calvarion","vorkath","the_whisperer","wintertodt","yama","zalcano","zulrah","beginner_treasure_trails","easy_treasure_trails","elite_treasure_trails","third_age","hard_treasure_trails","gilded","master_treasure_trails","mimic","medium_treasure_trails","shared_treasure_trail_rewards","scroll_cases","barbarian_assault","brimhaven_agility_arena","castle_wars","fishing_trawler","giants_foundry","gnome_restaurant","guardians_of_the_rift","hallowed_sepulchre","last_man_standing","magic_training_arena","mahogany_homes","mastering_mixology","pest_control","rogues_den","shades_of_mortton","soul_wars","temple_trekking","tithe_farm","trouble_brewing","vale_totems","volcanic_mine","aerial_fishing","all_pets","camdozaal","champions_challenge","chaos_druids","chompy_bird_hunting","colossal_wyrm_agility","creature_creation","cyclopes","forestry","fossil_island_notes","gloughs_experiments","hunter_guild","monkey_backpacks","motherlode_mine","my_notes","random_events","revenants","rooftop_agility","shayzien_armour","shooting_stars","skilling_pets","slayer","tormented_demons","tzhaar","miscellaneous","chambers_of_xeric","theatre_of_blood","tombs_of_amascut"] as const;
+
+export const MAIN_CATEGORIES: Record<MainCategories, Array<SubCategories>> = {
     "bosses": ["abyssal_sire", "alchemical_hydra", "araxxor", "amoxliatl", "barrows_chests", "bryophyta", "callisto_and_artio", "cerberus", "chaos_elemental", "chaos_fanatic", "commander_zilyana", "corporeal_beast", "crazy_archaeologist", "dagannoth_kings", "deranged_archaeologist", "doom_of_mokhaiotl", "duke_sucellus", "fortis_colosseum", "general_graardor", "giant_mole", "grotesque_guardians", "hespori", "hueycoatl", "kalphite_queen", "king_black_dragon", "kraken", "kree_arra", "the_leviathan", "moons_of_peril", "kril_tsutsaroth", "nex", "obor", "phantom_muspah", "royal_titans", "sarachnis", "scorpia", "scurrius", "skotizo", "tempoross", "the_fight_caves", "the_gauntlet", "the_inferno", "the_nightmare", "thermonuclear_smoke_devil", "vardorvis", "venenatis_and_spindel", "vetion_and_calvarion", "vorkath", "the_whisperer", "wintertodt", "yama", "zalcano", "zulrah"],
     "raids": ["chambers_of_xeric", "theatre_of_blood", "tombs_of_amascut"],
     "clues": ["beginner_treasure_trails", "easy_treasure_trails", "elite_treasure_trails", "third_age", "hard_treasure_trails", "gilded", "master_treasure_trails", "mimic", "medium_treasure_trails", "shared_treasure_trail_rewards", "scroll_cases"],
@@ -6,7 +12,7 @@ export const MAIN_CATEGORIES = {
     "other": ["aerial_fishing", "all_pets", "camdozaal", "champions_challenge", "chaos_druids", "chompy_bird_hunting", "colossal_wyrm_agility", "creature_creation", "cyclopes", "forestry", "fossil_island_notes", "gloughs_experiments", "hunter_guild", "monkey_backpacks", "motherlode_mine", "my_notes", "random_events", "revenants", "rooftop_agility", "shayzien_armour", "shooting_stars", "skilling_pets", "slayer", "tormented_demons", "tzhaar", "miscellaneous"],
 };
 
-export const CATEGORIES = {
+export const SUB_CATEGORIES: Record<SubCategories, { boss_name?: string | Array<string>, items: Array<string> }> = {
     abyssal_sire: {
         boss_name: 'Abyssal Sire',
         items: ['13262', '25624', '7979', '13274', '13275', '13276', '13277', '13265', '4151']
@@ -423,1613 +429,6444 @@ export const CATEGORIES = {
     }
 };
 
-export const ITEMS: Record<string, string> = {
-    '1249': 'Dragon spear',
-    '2366': 'Shield left half',
-    '2577': 'Ranger boots',
-    '2579': 'Wizard boots',
-    '2581': 'Robin hood hat',
-    '2583': 'Black platebody (t)',
-    '2585': 'Black platelegs (t)',
-    '2587': 'Black full helm (t)',
-    '2589': 'Black kiteshield (t)',
-    '2591': 'Black platebody (g)',
-    '2593': 'Black platelegs (g)',
-    '2595': 'Black full helm (g)',
-    '2597': 'Black kiteshield (g)',
-    '2599': 'Adamant platebody (t)',
-    '2601': 'Adamant platelegs (t)',
-    '2603': 'Adamant kiteshield (t)',
-    '2605': 'Adamant full helm (t)',
-    '2607': 'Adamant platebody (g)',
-    '2609': 'Adamant platelegs (g)',
-    '2611': 'Adamant kiteshield (g)',
-    '2613': 'Adamant full helm (g)',
-    '2615': 'Rune platebody (g)',
-    '2617': 'Rune platelegs (g)',
-    '2619': 'Rune full helm (g)',
-    '2621': 'Rune kiteshield (g)',
-    '2623': 'Rune platebody (t)',
-    '2625': 'Rune platelegs (t)',
-    '2627': 'Rune full helm (t)',
-    '2629': 'Rune kiteshield (t)',
-    '2631': 'Highwayman mask',
-    '2633': 'Blue beret',
-    '2635': 'Black beret',
-    '2637': 'White beret',
-    '2639': 'Tan cavalier',
-    '2641': 'Dark cavalier',
-    '2643': 'Black cavalier',
-    '2645': 'Red headband',
-    '2647': 'Black headband',
-    '2649': 'Brown headband',
-    '2651': "Pirate's hat",
-    '2653': 'Zamorak platebody',
-    '2655': 'Zamorak platelegs',
-    '2657': 'Zamorak full helm',
-    '2659': 'Zamorak kiteshield',
-    '2661': 'Saradomin platebody',
-    '2663': 'Saradomin platelegs',
-    '2665': 'Saradomin full helm',
-    '2667': 'Saradomin kiteshield',
-    '2669': 'Guthix platebody',
-    '2671': 'Guthix platelegs',
-    '2673': 'Guthix full helm',
-    '2675': 'Guthix kiteshield',
-    '2978': 'Chompy bird hat',
-    '2979': 'Chompy bird hat',
-    '2980': 'Chompy bird hat',
-    '2981': 'Chompy bird hat',
-    '2982': 'Chompy bird hat',
-    '2983': 'Chompy bird hat',
-    '2984': 'Chompy bird hat',
-    '2985': 'Chompy bird hat',
-    '2986': 'Chompy bird hat',
-    '2987': 'Chompy bird hat',
-    '2988': 'Chompy bird hat',
-    '2989': 'Chompy bird hat',
-    '2990': 'Chompy bird hat',
-    '2991': 'Chompy bird hat',
-    '2992': 'Chompy bird hat',
-    '2993': 'Chompy bird hat',
-    '2994': 'Chompy bird hat',
-    '2995': 'Chompy bird hat',
-    '2996': 'Agility arena ticket',
-    '2997': "Pirate's hook",
-    '3057': 'Mime mask',
-    '3058': 'Mime top',
-    '3059': 'Mime legs',
-    '3060': 'Mime gloves',
-    '3061': 'Mime boots',
-    '3140': 'Dragon chainbody',
-    '3470': 'Fine cloth',
-    '3472': 'Black plateskirt (t)',
-    '3473': 'Black plateskirt (g)',
-    '3474': 'Adamant plateskirt (t)',
-    '3475': 'Adamant plateskirt (g)',
-    '3476': 'Rune plateskirt (g)',
-    '3477': 'Rune plateskirt (t)',
-    '3478': 'Zamorak plateskirt',
-    '3479': 'Saradomin plateskirt',
-    '3480': 'Guthix plateskirt',
-    '3481': 'Gilded platebody',
-    '3483': 'Gilded platelegs',
-    '3485': 'Gilded plateskirt',
-    '3486': 'Gilded full helm',
-    '3488': 'Gilded kiteshield',
-    '3827': 'Saradomin page 1',
-    '3828': 'Saradomin page 2',
-    '3829': 'Saradomin page 3',
-    '3830': 'Saradomin page 4',
-    '3831': 'Zamorak page 1',
-    '3832': 'Zamorak page 2',
-    '3833': 'Zamorak page 3',
-    '3834': 'Zamorak page 4',
-    '3835': 'Guthix page 1',
-    '3836': 'Guthix page 2',
-    '3837': 'Guthix page 3',
-    '3838': 'Guthix page 4',
-    '4068': 'Decorative sword',
-    '4069': 'Decorative armour',
-    '4070': 'Decorative armour',
-    '4071': 'Decorative helm',
-    '4072': 'Decorative shield',
-    '4099': 'Mystic hat (dark)',
-    '4101': 'Mystic robe top (dark)',
-    '4103': 'Mystic robe bottom (dark)',
-    '4105': 'Mystic gloves (dark)',
-    '4107': 'Mystic boots (dark)',
-    '4109': 'Mystic hat (light)',
-    '4111': 'Mystic robe top (light)',
-    '4113': 'Mystic robe bottom (light)',
-    '4115': 'Mystic gloves (light)',
-    '4117': 'Mystic boots (light)',
-    '4119': 'Bronze boots',
-    '4121': 'Iron boots',
-    '4123': 'Steel boots',
-    '4125': 'Black boots',
-    '4127': 'Mithril boots',
-    '4129': 'Adamant boots',
-    '4131': 'Rune boots',
-    '4151': 'Abyssal whip',
-    '4153': 'Granite maul',
-    '4207': 'Crystal weapon seed',
-    '4503': 'Decorative sword',
-    '4504': 'Decorative armour',
-    '4505': 'Decorative armour',
-    '4506': 'Decorative helm',
-    '4507': 'Decorative shield',
-    '4508': 'Decorative sword',
-    '4509': 'Decorative armour',
-    '4510': 'Decorative armour',
-    '4511': 'Decorative helm',
-    '4512': 'Decorative shield',
-    '4513': 'Castlewars hood',
-    '4514': 'Castlewars cloak',
-    '4515': 'Castlewars hood',
-    '4516': 'Castlewars cloak',
-    '4708': "Ahrim's hood",
-    '4710': "Ahrim's staff",
-    '4712': "Ahrim's robetop",
-    '4714': "Ahrim's robeskirt",
-    '4716': "Dharok's helm",
-    '4718': "Dharok's greataxe",
-    '4720': "Dharok's platebody",
-    '4722': "Dharok's platelegs",
-    '4724': "Guthan's helm",
-    '4726': "Guthan's warspear",
-    '4728': "Guthan's platebody",
-    '4730': "Guthan's chainskirt",
-    '4732': "Karil's coif",
-    '4734': "Karil's crossbow",
-    '4736': "Karil's leathertop",
-    '4738': "Karil's leatherskirt",
-    '4740': 'Bolt rack',
-    '4745': "Torag's helm",
-    '4747': "Torag's hammers",
-    '4749': "Torag's platebody",
-    '4751': "Torag's platelegs",
-    '4753': "Verac's helm",
-    '4755': "Verac's flail",
-    '4757': "Verac's brassard",
-    '4759': "Verac's plateskirt",
-    '5553': 'Rogue top',
-    '5554': 'Rogue mask',
-    '5555': 'Rogue trousers',
-    '5556': 'Rogue gloves',
-    '5557': 'Rogue boots',
-    '6180': 'Lederhosen top',
-    '6181': 'Lederhosen shorts',
-    '6182': 'Lederhosen hat',
-    '6183': 'Frog token',
-    '6522': 'Toktz-xil-ul',
-    '6523': 'Toktz-xil-ak',
-    '6524': 'Toktz-ket-xil',
-    '6525': 'Toktz-xil-ek',
-    '6526': 'Toktz-mej-tal',
-    '6528': 'Tzhaar-ket-om',
-    '6562': 'Mud battlestaff',
-    '6568': 'Obsidian cape',
-    '6570': 'Fire cape',
-    '6571': 'Uncut onyx',
-    '6573': 'Onyx',
-    '6654': 'Camo top',
-    '6655': 'Camo bottoms',
-    '6656': 'Camo helmet',
-    '6665': 'Mudskipper hat',
-    '6666': 'Flippers',
-    '6724': 'Seercull',
-    '6731': 'Seers ring',
-    '6733': 'Archers ring',
-    '6735': 'Warrior ring',
-    '6737': 'Berserker ring',
-    '6739': 'Dragon axe',
-    '6798': 'Earth warrior champion scroll',
-    '6799': 'Ghoul champion scroll',
-    '6800': 'Giant champion scroll',
-    '6801': 'Goblin champion scroll',
-    '6802': 'Hobgoblin champion scroll',
-    '6803': 'Imp champion scroll',
-    '6804': 'Jogre champion scroll',
-    '6805': 'Lesser demon champion scroll',
-    '6806': 'Skeleton champion scroll',
-    '6807': 'Zombie champion scroll',
-    '6809': 'Granite legs',
-    '6889': "Mage's book",
-    '6908': 'Beginner wand',
-    '6910': 'Apprentice wand',
-    '6912': 'Teacher wand',
-    '6914': 'Master wand',
-    '6916': 'Infinity top',
-    '6918': 'Infinity hat',
-    '6920': 'Infinity boots',
-    '6922': 'Infinity gloves',
-    '6924': 'Infinity bottoms',
-    '6926': 'Bones to peaches',
-    '7158': 'Dragon 2h sword',
-    '7319': 'Red boater',
-    '7321': 'Orange boater',
-    '7323': 'Green boater',
-    '7325': 'Blue boater',
-    '7327': 'Black boater',
-    '7329': 'Red firelighter',
-    '7330': 'Green firelighter',
-    '7331': 'Blue firelighter',
-    '7332': 'Black shield (h1)',
-    '7334': 'Adamant shield (h1)',
-    '7336': 'Rune shield (h1)',
-    '7338': 'Black shield (h2)',
-    '7340': 'Adamant shield (h2)',
-    '7342': 'Rune shield (h2)',
-    '7344': 'Black shield (h3)',
-    '7346': 'Adamant shield (h3)',
-    '7348': 'Rune shield (h3)',
-    '7350': 'Black shield (h4)',
-    '7352': 'Adamant shield (h4)',
-    '7354': 'Rune shield (h4)',
-    '7356': 'Black shield (h5)',
-    '7358': 'Adamant shield (h5)',
-    '7360': 'Rune shield (h5)',
-    '7362': 'Studded body (g)',
-    '7364': 'Studded body (t)',
-    '7366': 'Studded chaps (g)',
-    '7368': 'Studded chaps (t)',
-    '7370': "Green d'hide body (g)",
-    '7372': "Green d'hide body (t)",
-    '7374': "Blue d'hide body (g)",
-    '7376': "Blue d'hide body (t)",
-    '7378': "Green d'hide chaps (g)",
-    '7380': "Green d'hide chaps (t)",
-    '7382': "Blue d'hide chaps (g)",
-    '7384': "Blue d'hide chaps (t)",
-    '7386': 'Blue skirt (g)',
-    '7388': 'Blue skirt (t)',
-    '7390': 'Blue wizard robe (g)',
-    '7392': 'Blue wizard robe (t)',
-    '7394': 'Blue wizard hat (g)',
-    '7396': 'Blue wizard hat (t)',
-    '7398': 'Enchanted robe',
-    '7399': 'Enchanted top',
-    '7400': 'Enchanted hat',
-    '7416': 'Mole claw',
-    '7418': 'Mole skin',
-    '7536': 'Fresh crab claw',
-    '7538': 'Fresh crab shell',
-    '7592': 'Zombie shirt',
-    '7593': 'Zombie trousers',
-    '7594': 'Zombie mask',
-    '7595': 'Zombie gloves',
-    '7596': 'Zombie boots',
-    '7975': 'Crawling hand',
-    '7976': 'Cockatrice head',
-    '7977': 'Basilisk head',
-    '7978': 'Kurask head',
-    '7979': 'Abyssal head',
-    '7980': 'Kbd heads',
-    '7981': 'Kq head',
-    '7989': 'Big bass',
-    '7991': 'Big swordfish',
-    '7993': 'Big shark',
-    '8839': 'Void knight top',
-    '8840': 'Void knight robe',
-    '8841': 'Void knight mace',
-    '8842': 'Void knight gloves',
-    '8844': 'Bronze defender',
-    '8845': 'Iron defender',
-    '8846': 'Steel defender',
-    '8847': 'Black defender',
-    '8848': 'Mithril defender',
-    '8849': 'Adamant defender',
-    '8850': 'Rune defender',
-    '8901': 'Black mask (10)',
-    '8940': 'Rum',
-    '8941': 'Rum',
-    '8952': 'Blue naval shirt',
-    '8953': 'Green naval shirt',
-    '8954': 'Red naval shirt',
-    '8955': 'Brown naval shirt',
-    '8956': 'Black naval shirt',
-    '8957': 'Purple naval shirt',
-    '8958': 'Grey naval shirt',
-    '8959': 'Blue tricorn hat',
-    '8960': 'Green tricorn hat',
-    '8961': 'Red tricorn hat',
-    '8962': 'Brown tricorn hat',
-    '8963': 'Black tricorn hat',
-    '8964': 'Purple tricorn hat',
-    '8965': 'Grey tricorn hat',
-    '8966': 'Cutthroat flag',
-    '8967': 'Gilded smile flag',
-    '8968': 'Bronze fist flag',
-    '8969': 'Lucky shot flag',
-    '8970': 'Treasure flag',
-    '8971': 'Phasmatys flag',
-    '8988': 'The stuff',
-    '8991': 'Blue navy slacks',
-    '8992': 'Green navy slacks',
-    '8993': 'Red navy slacks',
-    '8994': 'Brown navy slacks',
-    '8995': 'Black navy slacks',
-    '8996': 'Purple navy slacks',
-    '8997': 'Grey navy slacks',
-    '9007': 'Right skull half',
-    '9008': 'Left skull half',
-    '9010': 'Top of sceptre',
-    '9011': 'Bottom of sceptre',
-    '9469': 'Grand seed pod',
-    '9470': 'Gnome scarf',
-    '9472': 'Gnome goggles',
-    '9475': 'Mint cake',
-    '10280': 'Willow comp bow',
-    '10282': 'Yew comp bow',
-    '10284': 'Magic comp bow',
-    '10286': 'Rune helm (h1)',
-    '10288': 'Rune helm (h2)',
-    '10290': 'Rune helm (h3)',
-    '10292': 'Rune helm (h4)',
-    '10294': 'Rune helm (h5)',
-    '10296': 'Adamant helm (h1)',
-    '10298': 'Adamant helm (h2)',
-    '10300': 'Adamant helm (h3)',
-    '10302': 'Adamant helm (h4)',
-    '10304': 'Adamant helm (h5)',
-    '10306': 'Black helm (h1)',
-    '10308': 'Black helm (h2)',
-    '10310': 'Black helm (h3)',
-    '10312': 'Black helm (h4)',
-    '10314': 'Black helm (h5)',
-    '10316': "Bob's red shirt",
-    '10318': "Bob's blue shirt",
-    '10320': "Bob's green shirt",
-    '10322': "Bob's black shirt",
-    '10324': "Bob's purple shirt",
-    '10326': 'Purple firelighter',
-    '10327': 'White firelighter',
-    '10330': '3rd age range top',
-    '10332': '3rd age range legs',
-    '10334': '3rd age range coif',
-    '10336': '3rd age vambraces',
-    '10338': '3rd age robe top',
-    '10340': '3rd age robe',
-    '10342': '3rd age mage hat',
-    '10344': '3rd age amulet',
-    '10346': '3rd age platelegs',
-    '10348': '3rd age platebody',
-    '10350': '3rd age full helmet',
-    '10352': '3rd age kiteshield',
-    '10354': 'Amulet of glory (t4)',
-    '10364': 'Strength amulet (t)',
-    '10366': 'Amulet of magic (t)',
-    '10368': 'Zamorak bracers',
-    '10370': "Zamorak d'hide body",
-    '10372': 'Zamorak chaps',
-    '10374': 'Zamorak coif',
-    '10376': 'Guthix bracers',
-    '10378': "Guthix d'hide body",
-    '10380': 'Guthix chaps',
-    '10382': 'Guthix coif',
-    '10384': 'Saradomin bracers',
-    '10386': "Saradomin d'hide body",
-    '10388': 'Saradomin chaps',
-    '10390': 'Saradomin coif',
-    '10392': 'A powdered wig',
-    '10394': 'Flared trousers',
-    '10396': 'Pantaloons',
-    '10398': 'Sleeping cap',
-    '10400': 'Black elegant shirt',
-    '10402': 'Black elegant legs',
-    '10404': 'Red elegant shirt',
-    '10406': 'Red elegant legs',
-    '10408': 'Blue elegant shirt',
-    '10410': 'Blue elegant legs',
-    '10412': 'Green elegant shirt',
-    '10414': 'Green elegant legs',
-    '10416': 'Purple elegant shirt',
-    '10418': 'Purple elegant legs',
-    '10420': 'White elegant blouse',
-    '10422': 'White elegant skirt',
-    '10424': 'Red elegant blouse',
-    '10426': 'Red elegant skirt',
-    '10428': 'Blue elegant blouse',
-    '10430': 'Blue elegant skirt',
-    '10432': 'Green elegant blouse',
-    '10434': 'Green elegant skirt',
-    '10436': 'Purple elegant blouse',
-    '10438': 'Purple elegant skirt',
-    '10440': 'Saradomin crozier',
-    '10442': 'Guthix crozier',
-    '10444': 'Zamorak crozier',
-    '10446': 'Saradomin cloak',
-    '10448': 'Guthix cloak',
-    '10450': 'Zamorak cloak',
-    '10452': 'Saradomin mitre',
-    '10454': 'Guthix mitre',
-    '10456': 'Zamorak mitre',
-    '10458': 'Saradomin robe top',
-    '10460': 'Zamorak robe top',
-    '10462': 'Guthix robe top',
-    '10464': 'Saradomin robe legs',
-    '10466': 'Guthix robe legs',
-    '10468': 'Zamorak robe legs',
-    '10470': 'Saradomin stole',
-    '10472': 'Guthix stole',
-    '10474': 'Zamorak stole',
-    '10476': 'Purple sweets',
-    '10547': 'Healer hat',
-    '10548': 'Fighter hat',
-    '10549': 'Runner hat',
-    '10550': 'Ranger hat',
-    '10551': 'Fighter torso',
-    '10552': 'Runner boots',
-    '10553': 'Penance gloves',
-    '10555': 'Penance skirt',
-    '10564': 'Granite body',
-    '10589': 'Granite helm',
-    '10933': 'Lumberjack boots',
-    '10939': 'Lumberjack top',
-    '10940': 'Lumberjack legs',
-    '10941': 'Lumberjack hat',
-    '10976': 'Long bone',
-    '10977': 'Curved bone',
-    '11037': 'Brine sabre',
-    '11235': 'Dark bow',
-    '11286': 'Draconic visage',
-    '11335': 'Dragon full helm',
-    '11338': 'Chewed bones',
-    '11341': 'Ancient page',
-    '11342': 'Ancient page',
-    '11343': 'Ancient page',
-    '11344': 'Ancient page',
-    '11345': 'Ancient page',
-    '11346': 'Ancient page',
-    '11347': 'Ancient page',
-    '11348': 'Ancient page',
-    '11349': 'Ancient page',
-    '11350': 'Ancient page',
-    '11351': 'Ancient page',
-    '11352': 'Ancient page',
-    '11353': 'Ancient page',
-    '11354': 'Ancient page',
-    '11355': 'Ancient page',
-    '11356': 'Ancient page',
-    '11357': 'Ancient page',
-    '11358': 'Ancient page',
-    '11359': 'Ancient page',
-    '11360': 'Ancient page',
-    '11361': 'Ancient page',
-    '11362': 'Ancient page',
-    '11363': 'Ancient page',
-    '11364': 'Ancient page',
-    '11365': 'Ancient page',
-    '11366': 'Ancient page',
-    '11663': 'Void mage helm',
-    '11664': 'Void ranger helm',
-    '11665': 'Void melee helm',
-    '11666': 'Void seal(8)',
-    '11785': 'Armadyl crossbow',
-    '11787': 'Steam battlestaff',
-    '11791': 'Staff of the dead',
-    '11810': 'Armadyl hilt',
-    '11812': 'Bandos hilt',
-    '11814': 'Saradomin hilt',
-    '11816': 'Zamorak hilt',
-    '11818': 'Godsword shard 1',
-    '11820': 'Godsword shard 2',
-    '11822': 'Godsword shard 3',
-    '11824': 'Zamorakian spear',
-    '11826': 'Armadyl helmet',
-    '11828': 'Armadyl chestplate',
-    '11830': 'Armadyl chainskirt',
-    '11832': 'Bandos chestplate',
-    '11834': 'Bandos tassets',
-    '11836': 'Bandos boots',
-    '11838': 'Saradomin sword',
-    '11840': 'Dragon boots',
-    '11849': 'Mark of grace',
-    '11850': 'Graceful hood',
-    '11852': 'Graceful cape',
-    '11854': 'Graceful top',
-    '11856': 'Graceful legs',
-    '11858': 'Graceful gloves',
-    '11860': 'Graceful boots',
-    '11891': 'Saradomin banner',
-    '11892': 'Zamorak banner',
-    '11893': 'Decorative armour',
-    '11894': 'Decorative armour',
-    '11895': 'Decorative armour',
-    '11896': 'Decorative armour',
-    '11897': 'Decorative armour',
-    '11898': 'Decorative armour',
-    '11899': 'Decorative armour',
-    '11900': 'Decorative armour',
-    '11901': 'Decorative armour',
-    '11902': 'Leaf-bladed sword',
-    '11905': 'Trident of the seas (full)',
-    '11908': 'Uncharged trident',
-    '11920': 'Dragon pickaxe',
-    '11928': 'Odium shard 1',
-    '11929': 'Odium shard 2',
-    '11930': 'Odium shard 3',
-    '11931': 'Malediction shard 1',
-    '11932': 'Malediction shard 2',
-    '11933': 'Malediction shard 3',
-    '11942': 'Ecumenical key',
-    '11990': 'Fedora',
-    '11995': 'Pet chaos elemental',
-    '11998': 'Smoke battlestaff',
-    '12002': 'Occult necklace',
-    '12004': 'Kraken tentacle',
-    '12007': 'Jar of dirt',
-    '12013': 'Prospector helmet',
-    '12014': 'Prospector jacket',
-    '12015': 'Prospector legs',
-    '12016': 'Prospector boots',
-    '12193': 'Ancient robe top',
-    '12195': 'Ancient robe legs',
-    '12197': 'Ancient cloak',
-    '12199': 'Ancient crozier',
-    '12201': 'Ancient stole',
-    '12203': 'Ancient mitre',
-    '12205': 'Bronze platebody (g)',
-    '12207': 'Bronze platelegs (g)',
-    '12209': 'Bronze plateskirt (g)',
-    '12211': 'Bronze full helm (g)',
-    '12213': 'Bronze kiteshield (g)',
-    '12215': 'Bronze platebody (t)',
-    '12217': 'Bronze platelegs (t)',
-    '12219': 'Bronze plateskirt (t)',
-    '12221': 'Bronze full helm (t)',
-    '12223': 'Bronze kiteshield (t)',
-    '12225': 'Iron platebody (t)',
-    '12227': 'Iron platelegs (t)',
-    '12229': 'Iron plateskirt (t)',
-    '12231': 'Iron full helm (t)',
-    '12233': 'Iron kiteshield (t)',
-    '12235': 'Iron platebody (g)',
-    '12237': 'Iron platelegs (g)',
-    '12239': 'Iron plateskirt (g)',
-    '12241': 'Iron full helm (g)',
-    '12243': 'Iron kiteshield (g)',
-    '12245': 'Beanie',
-    '12247': 'Red beret',
-    '12249': 'Imp mask',
-    '12251': 'Goblin mask',
-    '12253': 'Armadyl robe top',
-    '12255': 'Armadyl robe legs',
-    '12257': 'Armadyl stole',
-    '12259': 'Armadyl mitre',
-    '12261': 'Armadyl cloak',
-    '12263': 'Armadyl crozier',
-    '12265': 'Bandos robe top',
-    '12267': 'Bandos robe legs',
-    '12269': 'Bandos stole',
-    '12271': 'Bandos mitre',
-    '12273': 'Bandos cloak',
-    '12275': 'Bandos crozier',
-    '12277': 'Mithril platebody (g)',
-    '12279': 'Mithril platelegs (g)',
-    '12281': 'Mithril kiteshield (g)',
-    '12283': 'Mithril full helm (g)',
-    '12285': 'Mithril plateskirt (g)',
-    '12287': 'Mithril platebody (t)',
-    '12289': 'Mithril platelegs (t)',
-    '12291': 'Mithril kiteshield (t)',
-    '12293': 'Mithril full helm (t)',
-    '12295': 'Mithril plateskirt (t)',
-    '12297': 'Black pickaxe',
-    '12299': 'White headband',
-    '12301': 'Blue headband',
-    '12303': 'Gold headband',
-    '12305': 'Pink headband',
-    '12307': 'Green headband',
-    '12309': 'Pink boater',
-    '12311': 'Purple boater',
-    '12313': 'White boater',
-    '12315': 'Pink elegant shirt',
-    '12317': 'Pink elegant legs',
-    '12319': 'Crier hat',
-    '12321': 'White cavalier',
-    '12323': 'Red cavalier',
-    '12325': 'Navy cavalier',
-    '12327': "Red d'hide body (g)",
-    '12329': "Red d'hide chaps (g)",
-    '12331': "Red d'hide body (t)",
-    '12333': "Red d'hide chaps (t)",
-    '12335': 'Briefcase',
-    '12337': 'Sagacious spectacles',
-    '12339': 'Pink elegant blouse',
-    '12341': 'Pink elegant skirt',
-    '12343': 'Gold elegant blouse',
-    '12345': 'Gold elegant skirt',
-    '12347': 'Gold elegant shirt',
-    '12349': 'Gold elegant legs',
-    '12351': 'Musketeer hat',
-    '12353': 'Monocle',
-    '12355': 'Big pirate hat',
-    '12357': 'Katana',
-    '12359': 'Leprechaun hat',
-    '12361': 'Cat mask',
-    '12363': 'Bronze dragon mask',
-    '12365': 'Iron dragon mask',
-    '12367': 'Steel dragon mask',
-    '12369': 'Mithril dragon mask',
-    '12371': 'Lava dragon mask',
-    '12373': 'Dragon cane',
-    '12375': 'Black cane',
-    '12377': 'Adamant cane',
-    '12379': 'Rune cane',
-    '12381': "Black d'hide body (g)",
-    '12383': "Black d'hide chaps (g)",
-    '12385': "Black d'hide body (t)",
-    '12387': "Black d'hide chaps (t)",
-    '12389': 'Gilded scimitar',
-    '12391': 'Gilded boots',
-    '12393': 'Royal gown top',
-    '12395': 'Royal gown bottom',
-    '12397': 'Royal crown',
-    '12402': 'Nardah teleport',
-    '12403': 'Digsite teleport',
-    '12404': 'Feldip hills teleport',
-    '12405': 'Lunar isle teleport',
-    '12406': "Mort'ton teleport",
-    '12407': 'Pest control teleport',
-    '12408': 'Piscatoris teleport',
-    '12409': 'Tai bwo wannai teleport',
-    '12410': 'Iorwerth camp teleport',
-    '12411': "Mos le'harmless teleport",
-    '12422': '3rd age wand',
-    '12424': '3rd age bow',
-    '12426': '3rd age longsword',
-    '12428': 'Penguin mask',
-    '12430': 'Afro',
-    '12432': 'Top hat',
-    '12437': '3rd age cloak',
-    '12439': 'Royal sceptre',
-    '12441': 'Musketeer tabard',
-    '12443': 'Musketeer pants',
-    '12445': 'Black skirt (g)',
-    '12447': 'Black skirt (t)',
-    '12449': 'Black wizard robe (g)',
-    '12451': 'Black wizard robe (t)',
-    '12453': 'Black wizard hat (g)',
-    '12455': 'Black wizard hat (t)',
-    '12460': 'Ancient platebody',
-    '12462': 'Ancient platelegs',
-    '12464': 'Ancient plateskirt',
-    '12466': 'Ancient full helm',
-    '12468': 'Ancient kiteshield',
-    '12470': 'Armadyl platebody',
-    '12472': 'Armadyl platelegs',
-    '12474': 'Armadyl plateskirt',
-    '12476': 'Armadyl full helm',
-    '12478': 'Armadyl kiteshield',
-    '12480': 'Bandos platebody',
-    '12482': 'Bandos platelegs',
-    '12484': 'Bandos plateskirt',
-    '12486': 'Bandos full helm',
-    '12488': 'Bandos kiteshield',
-    '12490': 'Ancient bracers',
-    '12492': "Ancient d'hide body",
-    '12494': 'Ancient chaps',
-    '12496': 'Ancient coif',
-    '12498': 'Bandos bracers',
-    '12500': "Bandos d'hide body",
-    '12502': 'Bandos chaps',
-    '12504': 'Bandos coif',
-    '12506': 'Armadyl bracers',
-    '12508': "Armadyl d'hide body",
-    '12510': 'Armadyl chaps',
-    '12512': 'Armadyl coif',
-    '12514': 'Explorer backpack',
-    '12516': 'Pith helmet',
-    '12518': 'Green dragon mask',
-    '12520': 'Blue dragon mask',
-    '12522': 'Red dragon mask',
-    '12524': 'Black dragon mask',
-    '12526': 'Fury ornament kit',
-    '12528': 'Dark infinity colour kit',
-    '12530': 'Light infinity colour kit',
-    '12532': 'Dragon sq shield ornament kit',
-    '12534': 'Dragon chainbody ornament kit',
-    '12536': 'Dragon legs/skirt ornament kit',
-    '12538': 'Dragon full helm ornament kit',
-    '12540': 'Deerstalker',
-    '12596': "Rangers' tunic",
-    '12598': 'Holy sandals',
-    '12601': 'Ring of the gods',
-    '12603': 'Tyrannical ring',
-    '12605': 'Treasonous ring',
-    '12613': 'Bandos page 1',
-    '12614': 'Bandos page 2',
-    '12615': 'Bandos page 3',
-    '12616': 'Bandos page 4',
-    '12617': 'Armadyl page 1',
-    '12618': 'Armadyl page 2',
-    '12619': 'Armadyl page 3',
-    '12620': 'Armadyl page 4',
-    '12621': 'Ancient page 1',
-    '12622': 'Ancient page 2',
-    '12623': 'Ancient page 3',
-    '12624': 'Ancient page 4',
-    '12637': 'Saradomin halo',
-    '12638': 'Zamorak halo',
-    '12639': 'Guthix halo',
-    '12642': 'Lumberyard teleport',
-    '12643': 'Pet dagannoth supreme',
-    '12644': 'Pet dagannoth prime',
-    '12645': 'Pet dagannoth rex',
-    '12646': 'Baby mole',
-    '12647': 'Kalphite princess',
-    '12648': 'Pet smoke devil',
-    '12649': "Pet kree'arra",
-    '12650': 'Pet general graardor',
-    '12651': 'Pet zilyana',
-    '12652': "Pet k'ril tsutsaroth",
-    '12653': 'Prince black dragon',
-    '12655': 'Pet kraken',
-    '12703': 'Pet penance queen',
-    '12757': 'Blue dark bow paint',
-    '12759': 'Green dark bow paint',
-    '12761': 'Yellow dark bow paint',
-    '12763': 'White dark bow paint',
-    '12769': 'Frozen whip mix',
-    '12771': 'Volcanic whip mix',
-    '12798': 'Steam staff upgrade kit',
-    '12800': 'Dragon pickaxe upgrade kit',
-    '12802': 'Ward upgrade kit',
-    '12816': 'Pet dark core',
-    '12819': 'Elysian sigil',
-    '12823': 'Spectral sigil',
-    '12827': 'Arcane sigil',
-    '12829': 'Spirit shield',
-    '12833': 'Holy elixir',
-    '12849': 'Granite clamp',
-    '12851': 'Amulet of the damned (full)',
-    '12885': 'Jar of sand',
-    '12921': 'Pet snakeling',
-    '12922': 'Tanzanite fang',
-    '12927': 'Serpentine visage',
-    '12932': 'Magic fang',
-    '12934': "Zulrah's scales",
-    '12936': 'Jar of swamp',
-    '12938': 'Zul-andra teleport',
-    '12954': 'Dragon defender',
-    '13071': 'Chompy chick',
-    '13072': 'Elite void top',
-    '13073': 'Elite void robe',
-    '13177': 'Venenatis spiderling',
-    '13178': 'Callisto cub',
-    '13179': "Vet'ion jr.",
-    '13181': "Scorpia's offspring",
-    '13200': 'Tanzanite mutagen',
-    '13201': 'Magma mutagen',
-    '13225': 'Tzrek-jad',
-    '13226': 'Herb sack',
-    '13227': 'Eternal crystal',
-    '13229': 'Pegasian crystal',
-    '13231': 'Primordial crystal',
-    '13233': 'Smouldering stone',
-    '13245': 'Jar of souls',
-    '13247': 'Hellpuppy',
-    '13249': 'Key master teleport',
-    '13256': "Saradomin's light",
-    '13258': 'Angler hat',
-    '13259': 'Angler top',
-    '13260': 'Angler waders',
-    '13261': 'Angler boots',
-    '13262': 'Abyssal orphan',
-    '13265': 'Abyssal dagger',
-    '13274': 'Bludgeon spine',
-    '13275': 'Bludgeon claw',
-    '13276': 'Bludgeon axon',
-    '13277': 'Jar of miasma',
-    '13320': 'Heron',
-    '13321': 'Rock golem',
-    '13322': 'Beaver',
-    '13324': 'Baby chinchompa',
-    '13353': "Gricoller's can",
-    '13357': 'Shayzien gloves (1)',
-    '13358': 'Shayzien boots (1)',
-    '13359': 'Shayzien helm (1)',
-    '13360': 'Shayzien greaves (1)',
-    '13361': 'Shayzien platebody (1)',
-    '13362': 'Shayzien gloves (2)',
-    '13363': 'Shayzien boots (2)',
-    '13364': 'Shayzien helm (2)',
-    '13365': 'Shayzien greaves (2)',
-    '13366': 'Shayzien platebody (2)',
-    '13367': 'Shayzien gloves (3)',
-    '13368': 'Shayzien boots (3)',
-    '13369': 'Shayzien helm (3)',
-    '13370': 'Shayzien greaves (3)',
-    '13371': 'Shayzien platebody (3)',
-    '13372': 'Shayzien gloves (4)',
-    '13373': 'Shayzien boots (4)',
-    '13374': 'Shayzien helm (4)',
-    '13375': 'Shayzien greaves (4)',
-    '13376': 'Shayzien platebody (4)',
-    '13377': 'Shayzien gloves (5)',
-    '13378': 'Shayzien boots (5)',
-    '13379': 'Shayzien helm (5)',
-    '13380': 'Shayzien greaves (5)',
-    '13381': 'Shayzien body (5)',
-    '13392': "Xeric's talisman (inert)",
-    '13576': 'Dragon warhammer',
-    '13639': 'Seed box',
-    '13640': "Farmer's boro trousers",
-    '13642': "Farmer's jacket",
-    '13644': "Farmer's boots",
-    '13646': "Farmer's strawhat",
-    '13652': 'Dragon claws',
-    '19529': 'Zenyte shard',
-    '19586': 'Light frame',
-    '19589': 'Heavy frame',
-    '19592': 'Ballista limbs',
-    '19601': 'Ballista spring',
-    '19610': 'Monkey tail',
-    '19677': 'Ancient shard',
-    '19679': 'Dark totem base',
-    '19681': 'Dark totem middle',
-    '19683': 'Dark totem top',
-    '19685': 'Dark totem',
-    '19701': 'Jar of darkness',
-    '19707': 'Amulet of eternal glory',
-    '19724': 'Left eye patch',
-    '19730': 'Bloodhound',
-    '19912': 'Zombie head',
-    '19915': 'Cyclops head',
-    '19918': 'Nunchaku',
-    '19921': "Ancient d'hide boots",
-    '19924': "Bandos d'hide boots",
-    '19927': "Guthix d'hide boots",
-    '19930': "Armadyl d'hide boots",
-    '19933': "Saradomin d'hide boots",
-    '19936': "Zamorak d'hide boots",
-    '19943': 'Arceuus scarf',
-    '19946': 'Hosidius scarf',
-    '19949': 'Lovakengj scarf',
-    '19952': 'Piscarilius scarf',
-    '19955': 'Shayzien scarf',
-    '19958': 'Dark tuxedo jacket',
-    '19961': 'Dark tuxedo cuffs',
-    '19964': 'Dark trousers',
-    '19967': 'Dark tuxedo shoes',
-    '19970': 'Dark bow tie',
-    '19973': 'Light tuxedo jacket',
-    '19976': 'Light tuxedo cuffs',
-    '19979': 'Light trousers',
-    '19982': 'Light tuxedo shoes',
-    '19985': 'Light bow tie',
-    '19988': "Blacksmith's helm",
-    '19991': 'Bucket helm',
-    '19994': 'Ranger gloves',
-    '19997': 'Holy wraps',
-    '20002': 'Dragon scimitar ornament kit',
-    '20005': 'Ring of nature',
-    '20008': 'Fancy tiara',
-    '20011': '3rd age axe',
-    '20014': '3rd age pickaxe',
-    '20017': 'Ring of coins',
-    '20020': 'Lesser demon mask',
-    '20023': 'Greater demon mask',
-    '20026': 'Black demon mask',
-    '20029': 'Old demon mask',
-    '20032': 'Jungle demon mask',
-    '20035': 'Samurai kasa',
-    '20038': 'Samurai shirt',
-    '20041': 'Samurai gloves',
-    '20044': 'Samurai greaves',
-    '20047': 'Samurai boots',
-    '20050': 'Obsidian cape (r)',
-    '20053': 'Half moon spectacles',
-    '20056': 'Ale of the gods',
-    '20059': 'Bucket helm (g)',
-    '20062': 'Torture ornament kit',
-    '20065': 'Occult ornament kit',
-    '20068': 'Armadyl godsword ornament kit',
-    '20071': 'Bandos godsword ornament kit',
-    '20074': 'Saradomin godsword ornament kit',
-    '20077': 'Zamorak godsword ornament kit',
-    '20080': "Mummy's head",
-    '20083': "Mummy's body",
-    '20086': "Mummy's hands",
-    '20089': "Mummy's legs",
-    '20092': "Mummy's feet",
-    '20095': 'Ankou mask',
-    '20098': 'Ankou top',
-    '20101': 'Ankou gloves',
-    '20104': "Ankou's leggings",
-    '20107': 'Ankou socks',
-    '20110': 'Bowl wig',
-    '20113': 'Arceuus hood',
-    '20116': 'Hosidius hood',
-    '20119': 'Lovakengj hood',
-    '20122': 'Piscarilius hood',
-    '20125': 'Shayzien hood',
-    '20128': 'Hood of darkness',
-    '20131': 'Robe top of darkness',
-    '20134': 'Gloves of darkness',
-    '20137': 'Robe bottom of darkness',
-    '20140': 'Boots of darkness',
-    '20143': 'Dragon defender ornament kit',
-    '20146': 'Gilded med helm',
-    '20149': 'Gilded chainbody',
-    '20152': 'Gilded sq shield',
-    '20155': 'Gilded 2h sword',
-    '20158': 'Gilded spear',
-    '20161': 'Gilded hasta',
-    '20166': 'Wooden shield (g)',
-    '20169': 'Steel platebody (g)',
-    '20172': 'Steel platelegs (g)',
-    '20175': 'Steel plateskirt (g)',
-    '20178': 'Steel full helm (g)',
-    '20181': 'Steel kiteshield (g)',
-    '20184': 'Steel platebody (t)',
-    '20187': 'Steel platelegs (t)',
-    '20190': 'Steel plateskirt (t)',
-    '20193': 'Steel full helm (t)',
-    '20196': 'Steel kiteshield (t)',
-    '20199': "Monk's robe top (g)",
-    '20202': "Monk's robe (g)",
-    '20205': "Golden chef's hat",
-    '20208': 'Golden apron',
-    '20211': 'Team cape zero',
-    '20214': 'Team cape x',
-    '20217': 'Team cape i',
-    '20220': 'Holy blessing',
-    '20223': 'Unholy blessing',
-    '20226': 'Peaceful blessing',
-    '20229': 'Honourable blessing',
-    '20232': 'War blessing',
-    '20235': 'Ancient blessing',
-    '20238': 'Charge dragonstone jewellery scroll',
-    '20240': 'Crier coat',
-    '20243': 'Crier bell',
-    '20246': 'Black leprechaun hat',
-    '20251': 'Arceuus banner',
-    '20254': 'Hosidius banner',
-    '20257': 'Lovakengj banner',
-    '20260': 'Piscarilius banner',
-    '20263': 'Shayzien banner',
-    '20266': 'Black unicorn mask',
-    '20269': 'White unicorn mask',
-    '20272': 'Cabbage round shield',
-    '20275': 'Gnomish firelighter',
-    '20433': 'Evil chicken feet',
-    '20436': 'Evil chicken wings',
-    '20439': 'Evil chicken head',
-    '20442': 'Evil chicken legs',
-    '20517': 'Elder chaos top',
-    '20520': 'Elder chaos robe',
-    '20590': 'Stale baguette',
-    '20595': 'Elder chaos hood',
-    '20659': 'Giant squirrel',
-    '20661': 'Tangleroot',
-    '20663': 'Rocky',
-    '20665': 'Rift guardian',
-    '20693': 'Phoenix',
-    '20704': 'Pyromancer garb',
-    '20706': 'Pyromancer robe',
-    '20708': 'Pyromancer hood',
-    '20710': 'Pyromancer boots',
-    '20712': 'Warm gloves',
-    '20716': 'Tome of fire (empty)',
-    '20718': 'Burnt page',
-    '20720': 'Bruma torch',
-    '20724': 'Imbued heart',
-    '20727': 'Leaf-bladed battleaxe',
-    '20730': 'Mist battlestaff',
-    '20736': 'Dust battlestaff',
-    '20754': 'Giant key',
-    '20756': 'Hill giant club',
-    '20849': 'Dragon thrownaxe',
-    '20851': 'Olmlet',
-    '20997': 'Twisted bow',
-    '21000': 'Twisted buckler',
-    '21003': 'Elder maul',
-    '21009': 'Dragon sword',
-    '21012': 'Dragon hunter crossbow',
-    '21015': "Dinh's bulwark",
-    '21018': 'Ancestral hat',
-    '21021': 'Ancestral robe top',
-    '21024': 'Ancestral robe bottom',
-    '21027': 'Dark relic',
-    '21028': 'Dragon harpoon',
-    '21034': 'Dexterous prayer scroll',
-    '21043': 'Kodai insignia',
-    '21047': 'Torn prayer scroll',
-    '21061': 'Graceful hood',
-    '21064': 'Graceful cape',
-    '21067': 'Graceful top',
-    '21070': 'Graceful legs',
-    '21073': 'Graceful gloves',
-    '21076': 'Graceful boots',
-    '21079': 'Arcane prayer scroll',
-    '21202': 'Lava staff upgrade kit',
-    '21270': 'Eternal gem',
-    '21273': 'Skotos',
-    '21275': 'Dark claw',
-    '21291': 'Jal-nib-rek',
-    '21295': 'Infernal cape',
-    '21298': 'Obsidian helmet',
-    '21301': 'Obsidian platebody',
-    '21304': 'Obsidian platelegs',
-    '21343': 'Mining gloves',
-    '21345': 'Superior mining gloves',
-    '21387': 'Master scroll book (empty)',
-    '21392': 'Expert mining gloves',
-    '21439': "Champion's cape",
-    '21509': 'Herbi',
-    '21541': 'Volcanic mine teleport',
-    '21637': 'Wyvern visage',
-    '21643': 'Granite boots',
-    '21646': 'Granite longsword',
-    '21649': 'Merfolk trident',
-    '21664': 'Scribbled note',
-    '21666': 'Partial note',
-    '21668': 'Ancient note',
-    '21670': 'Ancient writings',
-    '21672': 'Experimental note',
-    '21674': 'Paragraph of text',
-    '21676': 'Musty smelling note',
-    '21678': 'Hastily scrawled note',
-    '21680': 'Old writing',
-    '21682': 'Short note',
-    '21697': 'Ash covered tome',
-    '21726': 'Granite dust',
-    '21730': 'Black tourmaline core',
-    '21736': 'Granite gloves',
-    '21739': 'Granite ring',
-    '21742': 'Granite hammer',
-    '21745': 'Jar of stone',
-    '21748': 'Noon',
-    '21802': 'Revenant cave teleport',
-    '21804': 'Ancient crystal',
-    '21807': 'Ancient emblem',
-    '21810': 'Ancient totem',
-    '21813': 'Ancient statuette',
-    '21817': 'Bracelet of ethereum (uncharged)',
-    '21820': 'Revenant ether',
-    '21838': 'Shaman mask',
-    '21907': "Vorkath's head",
-    '21918': 'Dragon limbs',
-    '21992': 'Vorki',
-    '22006': 'Skeletal visage',
-    '22100': 'Dragon metal slice',
-    '22103': 'Dragon metal lump',
-    '22106': 'Jar of decay',
-    '22111': 'Dragonbone necklace',
-    '22231': 'Dragon boots ornament kit',
-    '22236': 'Dragon platebody ornament kit',
-    '22239': 'Dragon kiteshield ornament kit',
-    '22246': 'Anguish ornament kit',
-    '22299': 'Ancient medallion',
-    '22302': 'Ancient effigy',
-    '22305': 'Ancient relic',
-    '22324': 'Ghrazi rapier',
-    '22326': 'Justiciar faceguard',
-    '22327': 'Justiciar chestguard',
-    '22328': 'Justiciar legguards',
-    '22372': "Bryophyta's essence",
-    '22374': 'Mossy key',
-    '22386': 'Metamorphic dust',
-    '22388': "Xeric's guard",
-    '22390': "Xeric's warrior",
-    '22392': "Xeric's sentinel",
-    '22394': "Xeric's general",
-    '22396': "Xeric's champion",
-    '22446': 'Vial of blood',
-    '22473': "Lil' zik",
-    '22477': 'Avernic defender hilt',
-    '22481': 'Sanguinesti staff (uncharged)',
-    '22486': 'Scythe of vitur (uncharged)',
-    '22494': 'Sinhaza shroud tier 1',
-    '22496': 'Sinhaza shroud tier 2',
-    '22498': 'Sinhaza shroud tier 3',
-    '22500': 'Sinhaza shroud tier 4',
-    '22502': 'Sinhaza shroud tier 5',
-    '22542': "Viggora's chainmace (u)",
-    '22547': "Craw's bow (u)",
-    '22552': "Thammaron's sceptre (u)",
-    '22557': 'Amulet of avarice',
-    '22746': 'Ikkle hydra',
-    '22804': 'Dragon knife',
-    '22838': 'Fish sack',
-    '22840': 'Golden tench',
-    '22842': 'Pearl barbarian rod',
-    '22844': 'Pearl fly fishing rod',
-    '22846': 'Pearl fishing rod',
-    '22875': 'Hespori seed',
-    '22881': 'Attas seed',
-    '22883': 'Iasor seed',
-    '22885': 'Kronos seed',
-    '22957': "Drake's claw",
-    '22960': "Drake's tooth",
-    '22963': 'Broken dragon hasta',
-    '22966': "Hydra's claw",
-    '22969': "Hydra's heart",
-    '22971': "Hydra's fang",
-    '22973': "Hydra's eye",
-    '22983': 'Hydra leather',
-    '22988': 'Hydra tail',
-    '22994': 'Bottomless compost bucket',
-    '23047': 'Mystic hat (dusk)',
-    '23050': 'Mystic robe top (dusk)',
-    '23053': 'Mystic robe bottom (dusk)',
-    '23056': 'Mystic gloves (dusk)',
-    '23059': 'Mystic boots (dusk)',
-    '23064': 'Jar of chemicals',
-    '23077': 'Alchemical hydra heads',
-    '23185': 'Ring of 3rd age',
-    '23188': "Guthix d'hide shield",
-    '23191': "Saradomin d'hide shield",
-    '23194': "Zamorak d'hide shield",
-    '23197': "Ancient d'hide shield",
-    '23200': "Armadyl d'hide shield",
-    '23203': "Bandos d'hide shield",
-    '23206': 'Dual sai',
-    '23209': 'Rune platebody (h1)',
-    '23212': 'Rune platebody (h2)',
-    '23215': 'Rune platebody (h3)',
-    '23218': 'Rune platebody (h4)',
-    '23221': 'Rune platebody (h5)',
-    '23224': 'Thieving bag',
-    '23227': 'Rune defender ornament kit',
-    '23232': 'Tzhaar-ket-om ornament kit',
-    '23237': 'Berserker necklace ornament kit',
-    '23242': '3rd age plateskirt',
-    '23246': 'Fremennik kilt',
-    '23249': "Rangers' tights",
-    '23252': 'Giant boot',
-    '23255': "Uri's hat",
-    '23258': 'Gilded coif',
-    '23261': "Gilded d'hide vambraces",
-    '23264': "Gilded d'hide body",
-    '23267': "Gilded d'hide chaps",
-    '23270': 'Adamant dragon mask',
-    '23273': 'Rune dragon mask',
-    '23276': 'Gilded pickaxe',
-    '23279': 'Gilded axe',
-    '23282': 'Gilded spade',
-    '23285': 'Mole slippers',
-    '23288': 'Frog slippers',
-    '23291': 'Bear feet',
-    '23294': 'Demon feet',
-    '23297': 'Jester cape',
-    '23300': 'Shoulder parrot',
-    '23303': "Monk's robe top (t)",
-    '23306': "Monk's robe (t)",
-    '23309': 'Amulet of defence (t)',
-    '23312': 'Sandwich lady hat',
-    '23315': 'Sandwich lady top',
-    '23318': 'Sandwich lady bottom',
-    '23321': 'Rune scimitar ornament kit (guthix)',
-    '23324': 'Rune scimitar ornament kit (saradomin)',
-    '23327': 'Rune scimitar ornament kit (zamorak)',
-    '23336': '3rd age druidic robe top',
-    '23339': '3rd age druidic robe bottoms',
-    '23342': '3rd age druidic staff',
-    '23345': '3rd age druidic cloak',
-    '23348': 'Tormented ornament kit',
-    '23351': 'Cape of skulls',
-    '23354': 'Amulet of power (t)',
-    '23357': 'Rain bow',
-    '23360': 'Ham joint',
-    '23363': 'Staff of bob the cat',
-    '23366': 'Black platebody (h1)',
-    '23369': 'Black platebody (h2)',
-    '23372': 'Black platebody (h3)',
-    '23375': 'Black platebody (h4)',
-    '23378': 'Black platebody (h5)',
-    '23381': 'Leather body (g)',
-    '23384': 'Leather chaps (g)',
-    '23389': 'Spiked manacles',
-    '23392': 'Adamant platebody (h1)',
-    '23395': 'Adamant platebody (h2)',
-    '23398': 'Adamant platebody (h3)',
-    '23401': 'Adamant platebody (h4)',
-    '23404': 'Adamant platebody (h5)',
-    '23407': 'Wolf mask',
-    '23410': 'Wolf cloak',
-    '23413': 'Climbing boots (g)',
-    '23495': 'Sraracha',
-    '23517': 'Giant egg sac(full)',
-    '23522': 'Mask of ranul',
-    '23525': 'Jar of eyes',
-    '23528': 'Sarachnis cudgel',
-    '23757': 'Youngllef',
-    '23760': 'Smolcano',
-    '23859': 'Gauntlet cape',
-    '23908': 'Zalcano shard',
-    '23943': 'Elven signet',
-    '23953': 'Crystal tool seed',
-    '23956': 'Crystal armour seed',
-    '23959': 'Enhanced crystal teleport seed',
-    '24000': 'Crystal grail',
-    '24034': 'Dragonstone full helm',
-    '24037': 'Dragonstone platebody',
-    '24040': 'Dragonstone platelegs',
-    '24043': 'Dragonstone boots',
-    '24046': 'Dragonstone gauntlets',
-    '24189': "Deadman's chest",
-    '24190': "Deadman's legs",
-    '24191': "Deadman's cape",
-    '24192': 'Armadyl halo',
-    '24195': 'Bandos halo',
-    '24198': 'Seren halo',
-    '24201': 'Ancient halo',
-    '24204': 'Brassica halo',
-    '24207': "Victor's cape (1)",
-    '24209': "Victor's cape (10)",
-    '24211': "Victor's cape (50)",
-    '24213': "Victor's cape (100)",
-    '24215': "Victor's cape (500)",
-    '24217': 'Guthixian icon',
-    '24219': 'Swift blade',
-    '24229': 'Ornate maul handle',
-    '24268': 'Basilisk jaw',
-    '24288': "Dagon'hai hat",
-    '24291': "Dagon'hai robe top",
-    '24294': "Dagon'hai robe bottom",
-    '24417': "Inquisitor's mace",
-    '24419': "Inquisitor's great helm",
-    '24420': "Inquisitor's hauberk",
-    '24421': "Inquisitor's plateskirt",
-    '24422': 'Nightmare staff',
-    '24491': 'Little nightmare',
-    '24495': 'Jar of dreams',
-    '24511': 'Harmonised orb',
-    '24514': 'Volatile orb',
-    '24517': 'Eldritch orb',
-    '24520': "Victor's cape (1000)",
-    '24670': 'Twisted ancestral colour kit',
-    '24711': 'Hallowed mark',
-    '24719': 'Hallowed token',
-    '24721': 'Hallowed grapple',
-    '24723': 'Hallowed focus',
-    '24725': 'Hallowed symbol',
-    '24727': 'Hallowed hammer',
-    '24729': 'Dark dye',
-    '24731': 'Hallowed ring',
-    '24733': 'Dark acorn',
-    '24740': 'Strange old lockpick (full)',
-    '24763': 'Mysterious page',
-    '24765': 'Mysterious page',
-    '24767': 'Mysterious page',
-    '24769': 'Mysterious page',
-    '24771': 'Mysterious page',
-    '24777': 'Blood shard',
-    '24844': 'Ring of endurance (uncharged)',
-    '24862': 'Karamjan monkey',
-    '24863': 'Zombie monkey',
-    '24864': 'Maniacal monkey',
-    '24865': 'Skeleton monkey',
-    '24866': 'Kruk jr',
-    '24867': 'Princely monkey',
-    '24868': 'Golden armadyl special attack',
-    '24869': 'Golden bandos special attack',
-    '24870': 'Golden saradomin special attack',
-    '24871': 'Golden zamorak special attack',
-    '24872': "Carpenter's helmet",
-    '24874': "Carpenter's shirt",
-    '24876': "Carpenter's trousers",
-    '24878': "Carpenter's boots",
-    '24880': "Amy's saw",
-    '24884': 'Supply crate',
-    '24885': 'Hosidius blueprints',
-    '25129': "Beekeeper's hat",
-    '25131': "Beekeeper's top",
-    '25133': "Beekeeper's legs",
-    '25135': "Beekeeper's gloves",
-    '25137': "Beekeeper's boots",
-    '25163': 'Decorative boots',
-    '25165': 'Decorative full helm',
-    '25167': 'Decorative boots',
-    '25169': 'Decorative full helm',
-    '25171': 'Decorative boots',
-    '25174': 'Decorative full helm',
-    '25340': 'Ectoplasmator',
-    '25346': 'Soul cape',
-    '25348': "Lil' creator",
-    '25434': "Zealot's robe top",
-    '25436': "Zealot's robe bottom",
-    '25438': "Zealot's helm",
-    '25440': "Zealot's boots",
-    '25442': 'Bronze locks',
-    '25445': 'Steel locks',
-    '25448': 'Black locks',
-    '25451': 'Silver locks',
-    '25454': 'Gold locks',
-    '25474': "Tree wizards' journal",
-    '25476': 'Bloody notes',
-    '25521': 'Jar of spirits',
-    '25524': 'Jar of smoke',
-    '25539': 'Celestial ring (uncharged)',
-    '25547': 'Star fragment',
-    '25559': 'Big harpoonfish',
-    '25576': 'Tome of water (empty)',
-    '25578': 'Soaked page',
-    '25580': 'Tackle box',
-    '25582': 'Fish barrel',
-    '25588': 'Spirit flakes',
-    '25592': 'Spirit angler headband',
-    '25594': 'Spirit angler top',
-    '25596': 'Spirit angler waders',
-    '25598': 'Spirit angler boots',
-    '25602': 'Tiny tempor',
-    '25615': 'Large water container',
-    '25617': 'Tea flask',
-    '25618': 'Plain satchel',
-    '25619': 'Green satchel',
-    '25620': 'Red satchel',
-    '25621': 'Black satchel',
-    '25622': 'Gold satchel',
-    '25623': 'Rune satchel',
-    '25624': 'Unsired',
-    '25627': 'Coal bag',
-    '25628': 'Gem bag',
-    '25629': 'Plank sack',
-    '25630': 'Flamtaer bag',
-    '25635': 'Barronite head',
-    '25637': 'Barronite handle',
-    '25639': 'Barronite guard',
-    '25641': 'Barronite mace',
-    '25644': 'Imcando hammer',
-    '25686': 'Ancient globe',
-    '25688': 'Ancient ledger',
-    '25690': 'Ancient astroscope',
-    '25692': 'Ancient treatise',
-    '25694': 'Ancient carcanet',
-    '25742': 'Holy ornament kit',
-    '25744': 'Sanguine ornament kit',
-    '25746': 'Sanguine dust',
-    '25837': 'Slepey tablet',
-    '25838': 'Parasitic egg',
-    '25844': 'Orange egg sac',
-    '25846': 'Blue egg sac',
-    '25859': 'Enhanced crystal weapon seed',
-    '25975': 'Lightbearer',
-    '25985': "Elidinis' ward",
-    '26219': "Osmumten's fang",
-    '26221': 'Ancient ceremonial top',
-    '26223': 'Ancient ceremonial legs',
-    '26225': 'Ancient ceremonial mask',
-    '26227': 'Ancient ceremonial gloves',
-    '26229': 'Ancient ceremonial boots',
-    '26231': 'Nihil shard',
-    '26235': 'Zaryte vambraces',
-    '26241': 'Virtus mask',
-    '26243': 'Virtus robe top',
-    '26245': 'Virtus robe bottom',
-    '26348': 'Nexling',
-    '26370': 'Ancient hilt',
-    '26372': 'Nihil horn',
-    '26376': 'Torva full helm (damaged)',
-    '26378': 'Torva platebody (damaged)',
-    '26380': 'Torva platelegs (damaged)',
-    '26792': 'Abyssal pearls',
-    '26798': 'Catalytic talisman',
-    '26807': 'Abyssal green dye',
-    '26809': 'Abyssal blue dye',
-    '26811': 'Abyssal red dye',
-    '26813': 'Abyssal needle',
-    '26815': 'Ring of the elements',
-    '26820': "Guardian's eye",
-    '26822': 'Abyssal lantern',
-    '26850': 'Hat of the eye',
-    '26852': 'Robe top of the eye',
-    '26854': 'Robe bottoms of the eye',
-    '26856': 'Boots of the eye',
-    '26901': 'Abyssal protector',
-    '26908': 'Intricate pouch',
-    '26910': 'Tarnished locket',
-    '26912': 'Lost bag',
-    '26945': "Pharaoh's sceptre (uncharged)",
-    '27012': 'Double ammo mould',
-    '27014': "Kovac's grog",
-    '27017': 'Smithing catalyst',
-    '27019': 'Ore pack',
-    '27021': 'Colossal blade',
-    '27023': 'Smiths tunic',
-    '27025': 'Smiths trousers',
-    '27027': 'Smiths boots',
-    '27029': 'Smiths gloves',
-    '27226': 'Masori mask',
-    '27229': 'Masori body',
-    '27232': 'Masori chaps',
-    '27248': 'Cursed phalanx',
-    '27255': 'Menaphite ornament kit',
-    '27257': "Icthlarin's shroud (tier 1)",
-    '27259': "Icthlarin's shroud (tier 2)",
-    '27261': "Icthlarin's shroud (tier 3)",
-    '27263': "Icthlarin's shroud (tier 4)",
-    '27265': "Icthlarin's shroud (tier 5)",
-    '27277': "Tumeken's shadow (uncharged)",
-    '27279': 'Thread of elidinis',
-    '27283': 'Breach of the scarab',
-    '27285': 'Eye of the corruptor',
-    '27289': 'Jewel of the sun',
-    '27293': 'Cache of runes',
-    '27352': "Tumeken's guardian",
-    '27372': 'Masori crafting kit',
-    '27377': 'Remnant of akkha',
-    '27378': 'Remnant of ba-ba',
-    '27379': 'Remnant of kephri',
-    '27380': 'Remnant of zebak',
-    '27381': 'Ancient remnant',
-    '27590': 'Muphin',
-    '27614': 'Venator shard',
-    '27616': 'Ancient essence',
-    '27622': 'Frozen cache',
-    '27627': 'Ancient icon',
-    '27643': 'Charged ice',
-    '27667': 'Claws of callisto',
-    '27670': 'Fangs of venenatis',
-    '27673': "Skull of vet'ion",
-    '27681': 'Voidwaker hilt',
-    '27684': 'Voidwaker blade',
-    '27687': 'Voidwaker gem',
-    '27695': 'Dragon pickaxe (broken)',
-    '28138': 'Funky shaped log',
-    '28140': 'Log basket',
-    '28146': 'Log brace',
-    '28166': 'Clothes pouch blueprint',
-    '28169': 'Forestry top',
-    '28171': 'Forestry legs',
-    '28173': 'Forestry hat',
-    '28175': 'Forestry boots',
-    '28177': 'Felling axe handle',
-    '28246': 'Wisp',
-    '28248': 'Butch',
-    '28250': 'Baron',
-    '28252': "Lil'viathan",
-    '28268': 'Blood quartz',
-    '28270': 'Ice quartz',
-    '28272': 'Shadow quartz',
-    '28274': 'Smoke quartz',
-    '28276': 'Chromium ingot',
-    '28279': 'Bellator vestige',
-    '28281': 'Magus vestige',
-    '28283': 'Venator vestige',
-    '28285': 'Ultor vestige',
-    '28319': "Executioner's axe head",
-    '28321': 'Eye of the duke',
-    '28323': "Siren's staff",
-    '28325': "Leviathan's lure",
-    '28330': 'Strangled tablet',
-    '28331': 'Sirenic tablet',
-    '28332': 'Scarred tablet',
-    '28333': 'Frozen tablet',
-    '28334': "Awakener's orb",
-    '28583': 'Warped sceptre (uncharged)',
-    '28613': 'Cape pouch',
-    '28616': 'Pheasant cape',
-    '28618': 'Pheasant boots',
-    '28620': 'Pheasant hat',
-    '28622': 'Pheasant legs',
-    '28626': 'Fox whistle',
-    '28630': "Twitcher's gloves",
-    '28655': 'Petal garland',
-    '28663': 'Golden pheasant egg',
-    '28674': 'Sturdy beehive parts',
-    '28798': "Scurrius' spine",
-    '28801': 'Scurry',
-    '28813': 'Broken zombie axe',
-    '28919': 'Tonalztics of ralos (uncharged)',
-    '28924': 'Sunfire splinters',
-    '28933': 'Sunfire fanatic helm',
-    '28936': 'Sunfire fanatic cuirass',
-    '28939': 'Sunfire fanatic chausses',
-    '28942': 'Echo crystal',
-    '28947': "Dizana's quiver (uncharged)",
-    '28960': 'Smol heredit',
-    '28962': 'Quetzin',
-    '28988': 'Blue moon spear',
-    '28991': 'Atlatl dart',
-    '28997': 'Dual macuahuitl',
-    '29000': 'Eclipse atlatl',
-    '29004': 'Eclipse moon chestplate',
-    '29007': 'Eclipse moon tassets',
-    '29010': 'Eclipse moon helm',
-    '29013': 'Blue moon chestplate',
-    '29016': 'Blue moon tassets',
-    '29019': 'Blue moon helm',
-    '29022': 'Blood moon chestplate',
-    '29025': 'Blood moon tassets',
-    '29028': 'Blood moon helm',
-    '29084': 'Sulphur blades',
-    '29263': 'Guild hunter headwear',
-    '29265': 'Guild hunter top',
-    '29267': 'Guild hunter legs',
-    '29269': 'Guild hunter boots',
-    '29309': "Huntsman's kit",
-    '29455': 'Teleport anchoring scroll',
-    '29482': 'Brimhaven voucher',
-    '29574': 'Burning claw',
-    '29580': 'Tormented synapse',
-    '29684': 'Guthixian temple teleport',
-    '29781': 'Coagulated venom',
-    '29782': 'Spider cave teleport',
-    '29784': 'Araxyte venom sack',
-    '29786': 'Jar of venom',
-    '29788': 'Araxyte head',
-    '29790': 'Noxious point',
-    '29792': 'Noxious blade',
-    '29794': 'Noxious pommel',
-    '29799': 'Araxyte fang',
-    '29806': 'Aranea boots',
-    '29836': 'Nid',
-    '29889': 'Glacial temotli',
-    '29892': 'Pendant of ates (inert)',
-    '29895': 'Frozen tear',
-    '29974': 'Prescription goggles',
-    '29978': 'Alchemist labcoat',
-    '29982': 'Alchemist pants',
-    '29986': 'Alchemist gloves',
-    '29992': "Alchemist's amulet",
-    '29996': 'Reagent pouch',
-    '30002': 'Chugging barrel (disassembled)',
-    '30040': 'Colossal wyrm teleport scroll',
-    '30042': 'Calcified acorn',
-    '30045': 'Graceful hood',
-    '30048': 'Graceful cape',
-    '30051': 'Graceful top',
-    '30054': 'Graceful legs',
-    '30057': 'Graceful gloves',
-    '30060': 'Graceful boots',
-    '30066': 'Tome of earth (empty)',
-    '30068': 'Soiled page',
-    '30070': 'Dragon hunter wand',
-    '30085': 'Hueycoatl hide',
-    '30088': 'Huasca seed',
-    '30152': 'Huberte',
-    '30154': 'Moxi',
-    '30324': 'Broken zombie helmet',
-    '30622': 'Bran',
-    '30626': 'Deadeye prayer scroll',
-    '30627': 'Mystic vigour prayer scroll',
-    '30628': 'Ice element staff crown',
-    '30631': 'Fire element staff crown',
-    '30637': 'Giantsoul amulet',
-    '30640': 'Desiccated page',
-    '30750': 'Oathplate helm',
-    '30753': 'Oathplate chest',
-    '30756': 'Oathplate legs',
-    '30759': 'Soulflame horn',
-    '30763': 'Forgotten lockbox',
-    '30765': 'Oathplate shards',
-    '30775': 'Chasm teleport scroll',
-    '30795': 'Barrel of demonic tallow (full)',
-    '30805': 'Dossier',
-    '30806': 'Rite of vile transference',
-    '30888': 'Yami',
-    '30893': 'Jewel of amascut',
-    '30895': 'Steel ring',
-    '30902': 'Minor beginner scroll case',
-    '30904': 'Major beginner scroll case',
-    '30906': 'Minor easy scroll case',
-    '30908': 'Major easy scroll case',
-    '30910': 'Minor medium scroll case',
-    '30912': 'Major medium scroll case',
-    '30914': 'Minor hard scroll case',
-    '30916': 'Major hard scroll case',
-    '30918': 'Minor elite scroll case',
-    '30920': 'Major elite scroll case',
-    '30922': 'Minor master scroll case',
-    '30924': 'Major master scroll case',
-    '30926': 'Mimic scroll case',
-    '30957': 'Earthbound tecpatl',
-    '31032': 'Ent branch',
-    '31034': 'Greenman mask',
-    '31043': 'Fletching knife',
-    '31052': 'Bow string spool',
-    '31081': 'Antler guard',
-    '31084': "Alchemist's signet",
-    '31086': 'Broken antler',
-    '31088': 'Avernic treads',
-    '31099': 'Mokhaiotl waystone',
-    '31109': 'Mokhaiotl cloth',
-    '31111': 'Demon tear',
-    '31115': 'Eye of ayak (uncharged)',
-    '31130': 'Dom'
+export const ITEMS: Record<string, { name: string, categories: Array<SubCategories>}> = {
+  '1249': {
+    name: 'Dragon spear',
+    categories: ['miscellaneous']
+  },
+  '2366': {
+    name: 'Shield left half',
+    categories: ['miscellaneous']
+  },
+  '2577': {
+    name: 'Ranger boots',
+    categories: ['medium_treasure_trails']
+  },
+  '2579': {
+    name: 'Wizard boots',
+    categories: ['medium_treasure_trails']
+  },
+  '2581': {
+    name: 'Robin hood hat',
+    categories: ['hard_treasure_trails']
+  },
+  '2583': {
+    name: 'Black platebody (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '2585': {
+    name: 'Black platelegs (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '2587': {
+    name: 'Black full helm (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '2589': {
+    name: 'Black kiteshield (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '2591': {
+    name: 'Black platebody (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '2593': {
+    name: 'Black platelegs (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '2595': {
+    name: 'Black full helm (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '2597': {
+    name: 'Black kiteshield (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '2599': {
+    name: 'Adamant platebody (t)',
+    categories: ['medium_treasure_trails']
+  },
+  '2601': {
+    name: 'Adamant platelegs (t)',
+    categories: ['medium_treasure_trails']
+  },
+  '2603': {
+    name: 'Adamant kiteshield (t)',
+    categories: ['medium_treasure_trails']
+  },
+  '2605': {
+    name: 'Adamant full helm (t)',
+    categories: ['medium_treasure_trails']
+  },
+  '2607': {
+    name: 'Adamant platebody (g)',
+    categories: ['medium_treasure_trails']
+  },
+  '2609': {
+    name: 'Adamant platelegs (g)',
+    categories: ['medium_treasure_trails']
+  },
+  '2611': {
+    name: 'Adamant kiteshield (g)',
+    categories: ['medium_treasure_trails']
+  },
+  '2613': {
+    name: 'Adamant full helm (g)',
+    categories: ['medium_treasure_trails']
+  },
+  '2615': {
+    name: 'Rune platebody (g)',
+    categories: ['hard_treasure_trails']
+  },
+  '2617': {
+    name: 'Rune platelegs (g)',
+    categories: ['hard_treasure_trails']
+  },
+  '2619': {
+    name: 'Rune full helm (g)',
+    categories: ['hard_treasure_trails']
+  },
+  '2621': {
+    name: 'Rune kiteshield (g)',
+    categories: ['hard_treasure_trails']
+  },
+  '2623': {
+    name: 'Rune platebody (t)',
+    categories: ['hard_treasure_trails']
+  },
+  '2625': {
+    name: 'Rune platelegs (t)',
+    categories: ['hard_treasure_trails']
+  },
+  '2627': {
+    name: 'Rune full helm (t)',
+    categories: ['hard_treasure_trails']
+  },
+  '2629': {
+    name: 'Rune kiteshield (t)',
+    categories: ['hard_treasure_trails']
+  },
+  '2631': {
+    name: 'Highwayman mask',
+    categories: ['easy_treasure_trails']
+  },
+  '2633': {
+    name: 'Blue beret',
+    categories: ['easy_treasure_trails']
+  },
+  '2635': {
+    name: 'Black beret',
+    categories: ['easy_treasure_trails']
+  },
+  '2637': {
+    name: 'White beret',
+    categories: ['easy_treasure_trails']
+  },
+  '2639': {
+    name: 'Tan cavalier',
+    categories: ['hard_treasure_trails']
+  },
+  '2641': {
+    name: 'Dark cavalier',
+    categories: ['hard_treasure_trails']
+  },
+  '2643': {
+    name: 'Black cavalier',
+    categories: ['hard_treasure_trails']
+  },
+  '2645': {
+    name: 'Red headband',
+    categories: ['medium_treasure_trails']
+  },
+  '2647': {
+    name: 'Black headband',
+    categories: ['medium_treasure_trails']
+  },
+  '2649': {
+    name: 'Brown headband',
+    categories: ['medium_treasure_trails']
+  },
+  '2651': {
+    name: "Pirate's hat",
+    categories: ['hard_treasure_trails']
+  },
+  '2653': {
+    name: 'Zamorak platebody',
+    categories: ['hard_treasure_trails']
+  },
+  '2655': {
+    name: 'Zamorak platelegs',
+    categories: ['hard_treasure_trails']
+  },
+  '2657': {
+    name: 'Zamorak full helm',
+    categories: ['hard_treasure_trails']
+  },
+  '2659': {
+    name: 'Zamorak kiteshield',
+    categories: ['hard_treasure_trails']
+  },
+  '2661': {
+    name: 'Saradomin platebody',
+    categories: ['hard_treasure_trails']
+  },
+  '2663': {
+    name: 'Saradomin platelegs',
+    categories: ['hard_treasure_trails']
+  },
+  '2665': {
+    name: 'Saradomin full helm',
+    categories: ['hard_treasure_trails']
+  },
+  '2667': {
+    name: 'Saradomin kiteshield',
+    categories: ['hard_treasure_trails']
+  },
+  '2669': {
+    name: 'Guthix platebody',
+    categories: ['hard_treasure_trails']
+  },
+  '2671': {
+    name: 'Guthix platelegs',
+    categories: ['hard_treasure_trails']
+  },
+  '2673': {
+    name: 'Guthix full helm',
+    categories: ['hard_treasure_trails']
+  },
+  '2675': {
+    name: 'Guthix kiteshield',
+    categories: ['hard_treasure_trails']
+  },
+  '2978': {
+    name: 'Chompy bird hat',
+    categories: ['chompy_bird_hunting']
+  },
+  '2979': {
+    name: 'Chompy bird hat',
+    categories: ['chompy_bird_hunting']
+  },
+  '2980': {
+    name: 'Chompy bird hat',
+    categories: ['chompy_bird_hunting']
+  },
+  '2981': {
+    name: 'Chompy bird hat',
+    categories: ['chompy_bird_hunting']
+  },
+  '2982': {
+    name: 'Chompy bird hat',
+    categories: ['chompy_bird_hunting']
+  },
+  '2983': {
+    name: 'Chompy bird hat',
+    categories: ['chompy_bird_hunting']
+  },
+  '2984': {
+    name: 'Chompy bird hat',
+    categories: ['chompy_bird_hunting']
+  },
+  '2985': {
+    name: 'Chompy bird hat',
+    categories: ['chompy_bird_hunting']
+  },
+  '2986': {
+    name: 'Chompy bird hat',
+    categories: ['chompy_bird_hunting']
+  },
+  '2987': {
+    name: 'Chompy bird hat',
+    categories: ['chompy_bird_hunting']
+  },
+  '2988': {
+    name: 'Chompy bird hat',
+    categories: ['chompy_bird_hunting']
+  },
+  '2989': {
+    name: 'Chompy bird hat',
+    categories: ['chompy_bird_hunting']
+  },
+  '2990': {
+    name: 'Chompy bird hat',
+    categories: ['chompy_bird_hunting']
+  },
+  '2991': {
+    name: 'Chompy bird hat',
+    categories: ['chompy_bird_hunting']
+  },
+  '2992': {
+    name: 'Chompy bird hat',
+    categories: ['chompy_bird_hunting']
+  },
+  '2993': {
+    name: 'Chompy bird hat',
+    categories: ['chompy_bird_hunting']
+  },
+  '2994': {
+    name: 'Chompy bird hat',
+    categories: ['chompy_bird_hunting']
+  },
+  '2995': {
+    name: 'Chompy bird hat',
+    categories: ['chompy_bird_hunting']
+  },
+  '2996': {
+    name: 'Agility arena ticket',
+    categories: ['brimhaven_agility_arena']
+  },
+  '2997': {
+    name: "Pirate's hook",
+    categories: ['brimhaven_agility_arena']
+  },
+  '3057': {
+    name: 'Mime mask',
+    categories: ['random_events']
+  },
+  '3058': {
+    name: 'Mime top',
+    categories: ['random_events']
+  },
+  '3059': {
+    name: 'Mime legs',
+    categories: ['random_events']
+  },
+  '3060': {
+    name: 'Mime gloves',
+    categories: ['random_events']
+  },
+  '3061': {
+    name: 'Mime boots',
+    categories: ['random_events']
+  },
+  '3140': {
+    name: 'Dragon chainbody',
+    categories: ['kalphite_queen', 'thermonuclear_smoke_devil', 'slayer']
+  },
+  '3470': {
+    name: 'Fine cloth',
+    categories: ['shades_of_mortton']
+  },
+  '3472': {
+    name: 'Black plateskirt (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '3473': {
+    name: 'Black plateskirt (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '3474': {
+    name: 'Adamant plateskirt (t)',
+    categories: ['medium_treasure_trails']
+  },
+  '3475': {
+    name: 'Adamant plateskirt (g)',
+    categories: ['medium_treasure_trails']
+  },
+  '3476': {
+    name: 'Rune plateskirt (g)',
+    categories: ['hard_treasure_trails']
+  },
+  '3477': {
+    name: 'Rune plateskirt (t)',
+    categories: ['hard_treasure_trails']
+  },
+  '3478': {
+    name: 'Zamorak plateskirt',
+    categories: ['hard_treasure_trails']
+  },
+  '3479': {
+    name: 'Saradomin plateskirt',
+    categories: ['hard_treasure_trails']
+  },
+  '3480': {
+    name: 'Guthix plateskirt',
+    categories: ['hard_treasure_trails']
+  },
+  '3481': {
+    name: 'Gilded platebody',
+    categories: ['gilded']
+  },
+  '3483': {
+    name: 'Gilded platelegs',
+    categories: ['gilded']
+  },
+  '3485': {
+    name: 'Gilded plateskirt',
+    categories: ['gilded']
+  },
+  '3486': {
+    name: 'Gilded full helm',
+    categories: ['gilded']
+  },
+  '3488': {
+    name: 'Gilded kiteshield',
+    categories: ['gilded']
+  },
+  '3827': {
+    name: 'Saradomin page 1',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '3828': {
+    name: 'Saradomin page 2',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '3829': {
+    name: 'Saradomin page 3',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '3830': {
+    name: 'Saradomin page 4',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '3831': {
+    name: 'Zamorak page 1',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '3832': {
+    name: 'Zamorak page 2',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '3833': {
+    name: 'Zamorak page 3',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '3834': {
+    name: 'Zamorak page 4',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '3835': {
+    name: 'Guthix page 1',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '3836': {
+    name: 'Guthix page 2',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '3837': {
+    name: 'Guthix page 3',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '3838': {
+    name: 'Guthix page 4',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '4068': {
+    name: 'Decorative sword',
+    categories: ['castle_wars']
+  },
+  '4069': {
+    name: 'Decorative armour',
+    categories: ['castle_wars']
+  },
+  '4070': {
+    name: 'Decorative armour',
+    categories: ['castle_wars']
+  },
+  '4071': {
+    name: 'Decorative helm',
+    categories: ['castle_wars']
+  },
+  '4072': {
+    name: 'Decorative shield',
+    categories: ['castle_wars']
+  },
+  '4099': {
+    name: 'Mystic hat (dark)',
+    categories: ['slayer']
+  },
+  '4101': {
+    name: 'Mystic robe top (dark)',
+    categories: ['slayer']
+  },
+  '4103': {
+    name: 'Mystic robe bottom (dark)',
+    categories: ['slayer']
+  },
+  '4105': {
+    name: 'Mystic gloves (dark)',
+    categories: ['slayer']
+  },
+  '4107': {
+    name: 'Mystic boots (dark)',
+    categories: ['slayer']
+  },
+  '4109': {
+    name: 'Mystic hat (light)',
+    categories: ['slayer']
+  },
+  '4111': {
+    name: 'Mystic robe top (light)',
+    categories: ['slayer']
+  },
+  '4113': {
+    name: 'Mystic robe bottom (light)',
+    categories: ['slayer']
+  },
+  '4115': {
+    name: 'Mystic gloves (light)',
+    categories: ['slayer']
+  },
+  '4117': {
+    name: 'Mystic boots (light)',
+    categories: ['slayer']
+  },
+  '4119': {
+    name: 'Bronze boots',
+    categories: ['slayer']
+  },
+  '4121': {
+    name: 'Iron boots',
+    categories: ['slayer']
+  },
+  '4123': {
+    name: 'Steel boots',
+    categories: ['slayer']
+  },
+  '4125': {
+    name: 'Black boots',
+    categories: ['slayer']
+  },
+  '4127': {
+    name: 'Mithril boots',
+    categories: ['slayer']
+  },
+  '4129': {
+    name: 'Adamant boots',
+    categories: ['slayer']
+  },
+  '4131': {
+    name: 'Rune boots',
+    categories: ['slayer']
+  },
+  '4151': {
+    name: 'Abyssal whip',
+    categories: ['abyssal_sire', 'slayer']
+  },
+  '4153': {
+    name: 'Granite maul',
+    categories: ['slayer']
+  },
+  '4207': {
+    name: 'Crystal weapon seed',
+    categories: ['the_gauntlet']
+  },
+  '4503': {
+    name: 'Decorative sword',
+    categories: ['castle_wars']
+  },
+  '4504': {
+    name: 'Decorative armour',
+    categories: ['castle_wars']
+  },
+  '4505': {
+    name: 'Decorative armour',
+    categories: ['castle_wars']
+  },
+  '4506': {
+    name: 'Decorative helm',
+    categories: ['castle_wars']
+  },
+  '4507': {
+    name: 'Decorative shield',
+    categories: ['castle_wars']
+  },
+  '4508': {
+    name: 'Decorative sword',
+    categories: ['castle_wars']
+  },
+  '4509': {
+    name: 'Decorative armour',
+    categories: ['castle_wars']
+  },
+  '4510': {
+    name: 'Decorative armour',
+    categories: ['castle_wars']
+  },
+  '4511': {
+    name: 'Decorative helm',
+    categories: ['castle_wars']
+  },
+  '4512': {
+    name: 'Decorative shield',
+    categories: ['castle_wars']
+  },
+  '4513': {
+    name: 'Castlewars hood',
+    categories: ['castle_wars']
+  },
+  '4514': {
+    name: 'Castlewars cloak',
+    categories: ['castle_wars']
+  },
+  '4515': {
+    name: 'Castlewars hood',
+    categories: ['castle_wars']
+  },
+  '4516': {
+    name: 'Castlewars cloak',
+    categories: ['castle_wars']
+  },
+  '4708': {
+    name: "Ahrim's hood",
+    categories: ['barrows_chests']
+  },
+  '4710': {
+    name: "Ahrim's staff",
+    categories: ['barrows_chests']
+  },
+  '4712': {
+    name: "Ahrim's robetop",
+    categories: ['barrows_chests']
+  },
+  '4714': {
+    name: "Ahrim's robeskirt",
+    categories: ['barrows_chests']
+  },
+  '4716': {
+    name: "Dharok's helm",
+    categories: ['barrows_chests']
+  },
+  '4718': {
+    name: "Dharok's greataxe",
+    categories: ['barrows_chests']
+  },
+  '4720': {
+    name: "Dharok's platebody",
+    categories: ['barrows_chests']
+  },
+  '4722': {
+    name: "Dharok's platelegs",
+    categories: ['barrows_chests']
+  },
+  '4724': {
+    name: "Guthan's helm",
+    categories: ['barrows_chests']
+  },
+  '4726': {
+    name: "Guthan's warspear",
+    categories: ['barrows_chests']
+  },
+  '4728': {
+    name: "Guthan's platebody",
+    categories: ['barrows_chests']
+  },
+  '4730': {
+    name: "Guthan's chainskirt",
+    categories: ['barrows_chests']
+  },
+  '4732': {
+    name: "Karil's coif",
+    categories: ['barrows_chests']
+  },
+  '4734': {
+    name: "Karil's crossbow",
+    categories: ['barrows_chests']
+  },
+  '4736': {
+    name: "Karil's leathertop",
+    categories: ['barrows_chests']
+  },
+  '4738': {
+    name: "Karil's leatherskirt",
+    categories: ['barrows_chests']
+  },
+  '4740': {
+    name: 'Bolt rack',
+    categories: ['barrows_chests']
+  },
+  '4745': {
+    name: "Torag's helm",
+    categories: ['barrows_chests']
+  },
+  '4747': {
+    name: "Torag's hammers",
+    categories: ['barrows_chests']
+  },
+  '4749': {
+    name: "Torag's platebody",
+    categories: ['barrows_chests']
+  },
+  '4751': {
+    name: "Torag's platelegs",
+    categories: ['barrows_chests']
+  },
+  '4753': {
+    name: "Verac's helm",
+    categories: ['barrows_chests']
+  },
+  '4755': {
+    name: "Verac's flail",
+    categories: ['barrows_chests']
+  },
+  '4757': {
+    name: "Verac's brassard",
+    categories: ['barrows_chests']
+  },
+  '4759': {
+    name: "Verac's plateskirt",
+    categories: ['barrows_chests']
+  },
+  '5553': {
+    name: 'Rogue top',
+    categories: ['rogues_den']
+  },
+  '5554': {
+    name: 'Rogue mask',
+    categories: ['rogues_den']
+  },
+  '5555': {
+    name: 'Rogue trousers',
+    categories: ['rogues_den']
+  },
+  '5556': {
+    name: 'Rogue gloves',
+    categories: ['rogues_den']
+  },
+  '5557': {
+    name: 'Rogue boots',
+    categories: ['rogues_den']
+  },
+  '6180': {
+    name: 'Lederhosen top',
+    categories: ['random_events']
+  },
+  '6181': {
+    name: 'Lederhosen shorts',
+    categories: ['random_events']
+  },
+  '6182': {
+    name: 'Lederhosen hat',
+    categories: ['random_events']
+  },
+  '6183': {
+    name: 'Frog token',
+    categories: ['random_events']
+  },
+  '6522': {
+    name: 'Toktz-xil-ul',
+    categories: ['tzhaar']
+  },
+  '6523': {
+    name: 'Toktz-xil-ak',
+    categories: ['tzhaar']
+  },
+  '6524': {
+    name: 'Toktz-ket-xil',
+    categories: ['tzhaar']
+  },
+  '6525': {
+    name: 'Toktz-xil-ek',
+    categories: ['tzhaar']
+  },
+  '6526': {
+    name: 'Toktz-mej-tal',
+    categories: ['tzhaar']
+  },
+  '6528': {
+    name: 'Tzhaar-ket-om',
+    categories: ['tzhaar']
+  },
+  '6562': {
+    name: 'Mud battlestaff',
+    categories: ['dagannoth_kings']
+  },
+  '6568': {
+    name: 'Obsidian cape',
+    categories: ['tzhaar']
+  },
+  '6570': {
+    name: 'Fire cape',
+    categories: ['the_fight_caves']
+  },
+  '6571': {
+    name: 'Uncut onyx',
+    categories: ['fortis_colosseum', 'skotizo', 'zalcano', 'zulrah', 'miscellaneous']
+  },
+  '6573': {
+    name: 'Onyx',
+    categories: ['chambers_of_xeric']
+  },
+  '6654': {
+    name: 'Camo top',
+    categories: ['random_events']
+  },
+  '6655': {
+    name: 'Camo bottoms',
+    categories: ['random_events']
+  },
+  '6656': {
+    name: 'Camo helmet',
+    categories: ['random_events']
+  },
+  '6665': {
+    name: 'Mudskipper hat',
+    categories: ['slayer']
+  },
+  '6666': {
+    name: 'Flippers',
+    categories: ['slayer']
+  },
+  '6724': {
+    name: 'Seercull',
+    categories: ['dagannoth_kings']
+  },
+  '6731': {
+    name: 'Seers ring',
+    categories: ['dagannoth_kings']
+  },
+  '6733': {
+    name: 'Archers ring',
+    categories: ['dagannoth_kings']
+  },
+  '6735': {
+    name: 'Warrior ring',
+    categories: ['dagannoth_kings']
+  },
+  '6737': {
+    name: 'Berserker ring',
+    categories: ['dagannoth_kings']
+  },
+  '6739': {
+    name: 'Dragon axe',
+    categories: ['dagannoth_kings', 'wintertodt']
+  },
+  '6798': {
+    name: 'Earth warrior champion scroll',
+    categories: ['champions_challenge']
+  },
+  '6799': {
+    name: 'Ghoul champion scroll',
+    categories: ['champions_challenge']
+  },
+  '6800': {
+    name: 'Giant champion scroll',
+    categories: ['champions_challenge']
+  },
+  '6801': {
+    name: 'Goblin champion scroll',
+    categories: ['champions_challenge']
+  },
+  '6802': {
+    name: 'Hobgoblin champion scroll',
+    categories: ['champions_challenge']
+  },
+  '6803': {
+    name: 'Imp champion scroll',
+    categories: ['champions_challenge']
+  },
+  '6804': {
+    name: 'Jogre champion scroll',
+    categories: ['champions_challenge']
+  },
+  '6805': {
+    name: 'Lesser demon champion scroll',
+    categories: ['champions_challenge']
+  },
+  '6806': {
+    name: 'Skeleton champion scroll',
+    categories: ['champions_challenge']
+  },
+  '6807': {
+    name: 'Zombie champion scroll',
+    categories: ['champions_challenge']
+  },
+  '6809': {
+    name: 'Granite legs',
+    categories: ['slayer']
+  },
+  '6889': {
+    name: "Mage's book",
+    categories: ['magic_training_arena']
+  },
+  '6908': {
+    name: 'Beginner wand',
+    categories: ['magic_training_arena']
+  },
+  '6910': {
+    name: 'Apprentice wand',
+    categories: ['magic_training_arena']
+  },
+  '6912': {
+    name: 'Teacher wand',
+    categories: ['magic_training_arena']
+  },
+  '6914': {
+    name: 'Master wand',
+    categories: ['magic_training_arena']
+  },
+  '6916': {
+    name: 'Infinity top',
+    categories: ['magic_training_arena']
+  },
+  '6918': {
+    name: 'Infinity hat',
+    categories: ['magic_training_arena']
+  },
+  '6920': {
+    name: 'Infinity boots',
+    categories: ['magic_training_arena']
+  },
+  '6922': {
+    name: 'Infinity gloves',
+    categories: ['magic_training_arena']
+  },
+  '6924': {
+    name: 'Infinity bottoms',
+    categories: ['magic_training_arena']
+  },
+  '6926': {
+    name: 'Bones to peaches',
+    categories: ['magic_training_arena']
+  },
+  '7158': {
+    name: 'Dragon 2h sword',
+    categories: ['callisto_and_artio', 'chaos_elemental', 'kalphite_queen', 'scorpia', 'venenatis_and_spindel', 'vetion_and_calvarion']
+  },
+  '7319': {
+    name: 'Red boater',
+    categories: ['medium_treasure_trails']
+  },
+  '7321': {
+    name: 'Orange boater',
+    categories: ['medium_treasure_trails']
+  },
+  '7323': {
+    name: 'Green boater',
+    categories: ['medium_treasure_trails']
+  },
+  '7325': {
+    name: 'Blue boater',
+    categories: ['medium_treasure_trails']
+  },
+  '7327': {
+    name: 'Black boater',
+    categories: ['medium_treasure_trails']
+  },
+  '7329': {
+    name: 'Red firelighter',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '7330': {
+    name: 'Green firelighter',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '7331': {
+    name: 'Blue firelighter',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '7332': {
+    name: 'Black shield (h1)',
+    categories: ['easy_treasure_trails']
+  },
+  '7334': {
+    name: 'Adamant shield (h1)',
+    categories: ['medium_treasure_trails']
+  },
+  '7336': {
+    name: 'Rune shield (h1)',
+    categories: ['hard_treasure_trails']
+  },
+  '7338': {
+    name: 'Black shield (h2)',
+    categories: ['easy_treasure_trails']
+  },
+  '7340': {
+    name: 'Adamant shield (h2)',
+    categories: ['medium_treasure_trails']
+  },
+  '7342': {
+    name: 'Rune shield (h2)',
+    categories: ['hard_treasure_trails']
+  },
+  '7344': {
+    name: 'Black shield (h3)',
+    categories: ['easy_treasure_trails']
+  },
+  '7346': {
+    name: 'Adamant shield (h3)',
+    categories: ['medium_treasure_trails']
+  },
+  '7348': {
+    name: 'Rune shield (h3)',
+    categories: ['hard_treasure_trails']
+  },
+  '7350': {
+    name: 'Black shield (h4)',
+    categories: ['easy_treasure_trails']
+  },
+  '7352': {
+    name: 'Adamant shield (h4)',
+    categories: ['medium_treasure_trails']
+  },
+  '7354': {
+    name: 'Rune shield (h4)',
+    categories: ['hard_treasure_trails']
+  },
+  '7356': {
+    name: 'Black shield (h5)',
+    categories: ['easy_treasure_trails']
+  },
+  '7358': {
+    name: 'Adamant shield (h5)',
+    categories: ['medium_treasure_trails']
+  },
+  '7360': {
+    name: 'Rune shield (h5)',
+    categories: ['hard_treasure_trails']
+  },
+  '7362': {
+    name: 'Studded body (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '7364': {
+    name: 'Studded body (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '7366': {
+    name: 'Studded chaps (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '7368': {
+    name: 'Studded chaps (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '7370': {
+    name: "Green d'hide body (g)",
+    categories: ['medium_treasure_trails']
+  },
+  '7372': {
+    name: "Green d'hide body (t)",
+    categories: ['medium_treasure_trails']
+  },
+  '7374': {
+    name: "Blue d'hide body (g)",
+    categories: ['hard_treasure_trails']
+  },
+  '7376': {
+    name: "Blue d'hide body (t)",
+    categories: ['hard_treasure_trails']
+  },
+  '7378': {
+    name: "Green d'hide chaps (g)",
+    categories: ['medium_treasure_trails']
+  },
+  '7380': {
+    name: "Green d'hide chaps (t)",
+    categories: ['medium_treasure_trails']
+  },
+  '7382': {
+    name: "Blue d'hide chaps (g)",
+    categories: ['hard_treasure_trails']
+  },
+  '7384': {
+    name: "Blue d'hide chaps (t)",
+    categories: ['hard_treasure_trails']
+  },
+  '7386': {
+    name: 'Blue skirt (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '7388': {
+    name: 'Blue skirt (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '7390': {
+    name: 'Blue wizard robe (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '7392': {
+    name: 'Blue wizard robe (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '7394': {
+    name: 'Blue wizard hat (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '7396': {
+    name: 'Blue wizard hat (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '7398': {
+    name: 'Enchanted robe',
+    categories: ['hard_treasure_trails']
+  },
+  '7399': {
+    name: 'Enchanted top',
+    categories: ['hard_treasure_trails']
+  },
+  '7400': {
+    name: 'Enchanted hat',
+    categories: ['hard_treasure_trails']
+  },
+  '7416': {
+    name: 'Mole claw',
+    categories: ['giant_mole']
+  },
+  '7418': {
+    name: 'Mole skin',
+    categories: ['giant_mole']
+  },
+  '7536': {
+    name: 'Fresh crab claw',
+    categories: ['miscellaneous']
+  },
+  '7538': {
+    name: 'Fresh crab shell',
+    categories: ['miscellaneous']
+  },
+  '7592': {
+    name: 'Zombie shirt',
+    categories: ['random_events']
+  },
+  '7593': {
+    name: 'Zombie trousers',
+    categories: ['random_events']
+  },
+  '7594': {
+    name: 'Zombie mask',
+    categories: ['random_events']
+  },
+  '7595': {
+    name: 'Zombie gloves',
+    categories: ['random_events']
+  },
+  '7596': {
+    name: 'Zombie boots',
+    categories: ['random_events']
+  },
+  '7975': {
+    name: 'Crawling hand',
+    categories: ['slayer']
+  },
+  '7976': {
+    name: 'Cockatrice head',
+    categories: ['slayer']
+  },
+  '7977': {
+    name: 'Basilisk head',
+    categories: ['slayer']
+  },
+  '7978': {
+    name: 'Kurask head',
+    categories: ['slayer']
+  },
+  '7979': {
+    name: 'Abyssal head',
+    categories: ['abyssal_sire', 'slayer']
+  },
+  '7980': {
+    name: 'Kbd heads',
+    categories: ['king_black_dragon']
+  },
+  '7981': {
+    name: 'Kq head',
+    categories: ['kalphite_queen']
+  },
+  '7989': {
+    name: 'Big bass',
+    categories: ['miscellaneous']
+  },
+  '7991': {
+    name: 'Big swordfish',
+    categories: ['miscellaneous']
+  },
+  '7993': {
+    name: 'Big shark',
+    categories: ['miscellaneous']
+  },
+  '8839': {
+    name: 'Void knight top',
+    categories: ['pest_control']
+  },
+  '8840': {
+    name: 'Void knight robe',
+    categories: ['pest_control']
+  },
+  '8841': {
+    name: 'Void knight mace',
+    categories: ['pest_control']
+  },
+  '8842': {
+    name: 'Void knight gloves',
+    categories: ['pest_control']
+  },
+  '8844': {
+    name: 'Bronze defender',
+    categories: ['cyclopes']
+  },
+  '8845': {
+    name: 'Iron defender',
+    categories: ['cyclopes']
+  },
+  '8846': {
+    name: 'Steel defender',
+    categories: ['cyclopes']
+  },
+  '8847': {
+    name: 'Black defender',
+    categories: ['cyclopes']
+  },
+  '8848': {
+    name: 'Mithril defender',
+    categories: ['cyclopes']
+  },
+  '8849': {
+    name: 'Adamant defender',
+    categories: ['cyclopes']
+  },
+  '8850': {
+    name: 'Rune defender',
+    categories: ['cyclopes']
+  },
+  '8901': {
+    name: 'Black mask (10)',
+    categories: ['slayer']
+  },
+  '8940': {
+    name: 'Rum',
+    categories: ['trouble_brewing']
+  },
+  '8941': {
+    name: 'Rum',
+    categories: ['trouble_brewing']
+  },
+  '8952': {
+    name: 'Blue naval shirt',
+    categories: ['trouble_brewing']
+  },
+  '8953': {
+    name: 'Green naval shirt',
+    categories: ['trouble_brewing']
+  },
+  '8954': {
+    name: 'Red naval shirt',
+    categories: ['trouble_brewing']
+  },
+  '8955': {
+    name: 'Brown naval shirt',
+    categories: ['trouble_brewing']
+  },
+  '8956': {
+    name: 'Black naval shirt',
+    categories: ['trouble_brewing']
+  },
+  '8957': {
+    name: 'Purple naval shirt',
+    categories: ['trouble_brewing']
+  },
+  '8958': {
+    name: 'Grey naval shirt',
+    categories: ['trouble_brewing']
+  },
+  '8959': {
+    name: 'Blue tricorn hat',
+    categories: ['trouble_brewing']
+  },
+  '8960': {
+    name: 'Green tricorn hat',
+    categories: ['trouble_brewing']
+  },
+  '8961': {
+    name: 'Red tricorn hat',
+    categories: ['trouble_brewing']
+  },
+  '8962': {
+    name: 'Brown tricorn hat',
+    categories: ['trouble_brewing']
+  },
+  '8963': {
+    name: 'Black tricorn hat',
+    categories: ['trouble_brewing']
+  },
+  '8964': {
+    name: 'Purple tricorn hat',
+    categories: ['trouble_brewing']
+  },
+  '8965': {
+    name: 'Grey tricorn hat',
+    categories: ['trouble_brewing']
+  },
+  '8966': {
+    name: 'Cutthroat flag',
+    categories: ['trouble_brewing']
+  },
+  '8967': {
+    name: 'Gilded smile flag',
+    categories: ['trouble_brewing']
+  },
+  '8968': {
+    name: 'Bronze fist flag',
+    categories: ['trouble_brewing']
+  },
+  '8969': {
+    name: 'Lucky shot flag',
+    categories: ['trouble_brewing']
+  },
+  '8970': {
+    name: 'Treasure flag',
+    categories: ['trouble_brewing']
+  },
+  '8971': {
+    name: 'Phasmatys flag',
+    categories: ['trouble_brewing']
+  },
+  '8988': {
+    name: 'The stuff',
+    categories: ['trouble_brewing']
+  },
+  '8991': {
+    name: 'Blue navy slacks',
+    categories: ['trouble_brewing']
+  },
+  '8992': {
+    name: 'Green navy slacks',
+    categories: ['trouble_brewing']
+  },
+  '8993': {
+    name: 'Red navy slacks',
+    categories: ['trouble_brewing']
+  },
+  '8994': {
+    name: 'Brown navy slacks',
+    categories: ['trouble_brewing']
+  },
+  '8995': {
+    name: 'Black navy slacks',
+    categories: ['trouble_brewing']
+  },
+  '8996': {
+    name: 'Purple navy slacks',
+    categories: ['trouble_brewing']
+  },
+  '8997': {
+    name: 'Grey navy slacks',
+    categories: ['trouble_brewing']
+  },
+  '9007': {
+    name: 'Right skull half',
+    categories: ['miscellaneous']
+  },
+  '9008': {
+    name: 'Left skull half',
+    categories: ['miscellaneous']
+  },
+  '9010': {
+    name: 'Top of sceptre',
+    categories: ['miscellaneous']
+  },
+  '9011': {
+    name: 'Bottom of sceptre',
+    categories: ['miscellaneous']
+  },
+  '9469': {
+    name: 'Grand seed pod',
+    categories: ['gnome_restaurant']
+  },
+  '9470': {
+    name: 'Gnome scarf',
+    categories: ['gnome_restaurant']
+  },
+  '9472': {
+    name: 'Gnome goggles',
+    categories: ['gnome_restaurant']
+  },
+  '9475': {
+    name: 'Mint cake',
+    categories: ['gnome_restaurant']
+  },
+  '10280': {
+    name: 'Willow comp bow',
+    categories: ['easy_treasure_trails']
+  },
+  '10282': {
+    name: 'Yew comp bow',
+    categories: ['medium_treasure_trails']
+  },
+  '10284': {
+    name: 'Magic comp bow',
+    categories: ['hard_treasure_trails']
+  },
+  '10286': {
+    name: 'Rune helm (h1)',
+    categories: ['hard_treasure_trails']
+  },
+  '10288': {
+    name: 'Rune helm (h2)',
+    categories: ['hard_treasure_trails']
+  },
+  '10290': {
+    name: 'Rune helm (h3)',
+    categories: ['hard_treasure_trails']
+  },
+  '10292': {
+    name: 'Rune helm (h4)',
+    categories: ['hard_treasure_trails']
+  },
+  '10294': {
+    name: 'Rune helm (h5)',
+    categories: ['hard_treasure_trails']
+  },
+  '10296': {
+    name: 'Adamant helm (h1)',
+    categories: ['medium_treasure_trails']
+  },
+  '10298': {
+    name: 'Adamant helm (h2)',
+    categories: ['medium_treasure_trails']
+  },
+  '10300': {
+    name: 'Adamant helm (h3)',
+    categories: ['medium_treasure_trails']
+  },
+  '10302': {
+    name: 'Adamant helm (h4)',
+    categories: ['medium_treasure_trails']
+  },
+  '10304': {
+    name: 'Adamant helm (h5)',
+    categories: ['medium_treasure_trails']
+  },
+  '10306': {
+    name: 'Black helm (h1)',
+    categories: ['easy_treasure_trails']
+  },
+  '10308': {
+    name: 'Black helm (h2)',
+    categories: ['easy_treasure_trails']
+  },
+  '10310': {
+    name: 'Black helm (h3)',
+    categories: ['easy_treasure_trails']
+  },
+  '10312': {
+    name: 'Black helm (h4)',
+    categories: ['easy_treasure_trails']
+  },
+  '10314': {
+    name: 'Black helm (h5)',
+    categories: ['easy_treasure_trails']
+  },
+  '10316': {
+    name: "Bob's red shirt",
+    categories: ['easy_treasure_trails']
+  },
+  '10318': {
+    name: "Bob's blue shirt",
+    categories: ['easy_treasure_trails']
+  },
+  '10320': {
+    name: "Bob's green shirt",
+    categories: ['easy_treasure_trails']
+  },
+  '10322': {
+    name: "Bob's black shirt",
+    categories: ['easy_treasure_trails']
+  },
+  '10324': {
+    name: "Bob's purple shirt",
+    categories: ['easy_treasure_trails']
+  },
+  '10326': {
+    name: 'Purple firelighter',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '10327': {
+    name: 'White firelighter',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '10330': {
+    name: '3rd age range top',
+    categories: ['third_age']
+  },
+  '10332': {
+    name: '3rd age range legs',
+    categories: ['third_age']
+  },
+  '10334': {
+    name: '3rd age range coif',
+    categories: ['third_age']
+  },
+  '10336': {
+    name: '3rd age vambraces',
+    categories: ['third_age']
+  },
+  '10338': {
+    name: '3rd age robe top',
+    categories: ['third_age']
+  },
+  '10340': {
+    name: '3rd age robe',
+    categories: ['third_age']
+  },
+  '10342': {
+    name: '3rd age mage hat',
+    categories: ['third_age']
+  },
+  '10344': {
+    name: '3rd age amulet',
+    categories: ['third_age']
+  },
+  '10346': {
+    name: '3rd age platelegs',
+    categories: ['third_age']
+  },
+  '10348': {
+    name: '3rd age platebody',
+    categories: ['third_age']
+  },
+  '10350': {
+    name: '3rd age full helmet',
+    categories: ['third_age']
+  },
+  '10352': {
+    name: '3rd age kiteshield',
+    categories: ['third_age']
+  },
+  '10354': {
+    name: 'Amulet of glory (t4)',
+    categories: ['hard_treasure_trails']
+  },
+  '10364': {
+    name: 'Strength amulet (t)',
+    categories: ['medium_treasure_trails']
+  },
+  '10366': {
+    name: 'Amulet of magic (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '10368': {
+    name: 'Zamorak bracers',
+    categories: ['hard_treasure_trails']
+  },
+  '10370': {
+    name: "Zamorak d'hide body",
+    categories: ['hard_treasure_trails']
+  },
+  '10372': {
+    name: 'Zamorak chaps',
+    categories: ['hard_treasure_trails']
+  },
+  '10374': {
+    name: 'Zamorak coif',
+    categories: ['hard_treasure_trails']
+  },
+  '10376': {
+    name: 'Guthix bracers',
+    categories: ['hard_treasure_trails']
+  },
+  '10378': {
+    name: "Guthix d'hide body",
+    categories: ['hard_treasure_trails']
+  },
+  '10380': {
+    name: 'Guthix chaps',
+    categories: ['hard_treasure_trails']
+  },
+  '10382': {
+    name: 'Guthix coif',
+    categories: ['hard_treasure_trails']
+  },
+  '10384': {
+    name: 'Saradomin bracers',
+    categories: ['hard_treasure_trails']
+  },
+  '10386': {
+    name: "Saradomin d'hide body",
+    categories: ['hard_treasure_trails']
+  },
+  '10388': {
+    name: 'Saradomin chaps',
+    categories: ['hard_treasure_trails']
+  },
+  '10390': {
+    name: 'Saradomin coif',
+    categories: ['hard_treasure_trails']
+  },
+  '10392': {
+    name: 'A powdered wig',
+    categories: ['easy_treasure_trails']
+  },
+  '10394': {
+    name: 'Flared trousers',
+    categories: ['easy_treasure_trails']
+  },
+  '10396': {
+    name: 'Pantaloons',
+    categories: ['easy_treasure_trails']
+  },
+  '10398': {
+    name: 'Sleeping cap',
+    categories: ['easy_treasure_trails']
+  },
+  '10400': {
+    name: 'Black elegant shirt',
+    categories: ['medium_treasure_trails']
+  },
+  '10402': {
+    name: 'Black elegant legs',
+    categories: ['medium_treasure_trails']
+  },
+  '10404': {
+    name: 'Red elegant shirt',
+    categories: ['easy_treasure_trails']
+  },
+  '10406': {
+    name: 'Red elegant legs',
+    categories: ['easy_treasure_trails']
+  },
+  '10408': {
+    name: 'Blue elegant shirt',
+    categories: ['easy_treasure_trails']
+  },
+  '10410': {
+    name: 'Blue elegant legs',
+    categories: ['easy_treasure_trails']
+  },
+  '10412': {
+    name: 'Green elegant shirt',
+    categories: ['easy_treasure_trails']
+  },
+  '10414': {
+    name: 'Green elegant legs',
+    categories: ['easy_treasure_trails']
+  },
+  '10416': {
+    name: 'Purple elegant shirt',
+    categories: ['medium_treasure_trails']
+  },
+  '10418': {
+    name: 'Purple elegant legs',
+    categories: ['medium_treasure_trails']
+  },
+  '10420': {
+    name: 'White elegant blouse',
+    categories: ['medium_treasure_trails']
+  },
+  '10422': {
+    name: 'White elegant skirt',
+    categories: ['medium_treasure_trails']
+  },
+  '10424': {
+    name: 'Red elegant blouse',
+    categories: ['easy_treasure_trails']
+  },
+  '10426': {
+    name: 'Red elegant skirt',
+    categories: ['easy_treasure_trails']
+  },
+  '10428': {
+    name: 'Blue elegant blouse',
+    categories: ['easy_treasure_trails']
+  },
+  '10430': {
+    name: 'Blue elegant skirt',
+    categories: ['easy_treasure_trails']
+  },
+  '10432': {
+    name: 'Green elegant blouse',
+    categories: ['easy_treasure_trails']
+  },
+  '10434': {
+    name: 'Green elegant skirt',
+    categories: ['easy_treasure_trails']
+  },
+  '10436': {
+    name: 'Purple elegant blouse',
+    categories: ['medium_treasure_trails']
+  },
+  '10438': {
+    name: 'Purple elegant skirt',
+    categories: ['medium_treasure_trails']
+  },
+  '10440': {
+    name: 'Saradomin crozier',
+    categories: ['hard_treasure_trails']
+  },
+  '10442': {
+    name: 'Guthix crozier',
+    categories: ['hard_treasure_trails']
+  },
+  '10444': {
+    name: 'Zamorak crozier',
+    categories: ['hard_treasure_trails']
+  },
+  '10446': {
+    name: 'Saradomin cloak',
+    categories: ['medium_treasure_trails']
+  },
+  '10448': {
+    name: 'Guthix cloak',
+    categories: ['medium_treasure_trails']
+  },
+  '10450': {
+    name: 'Zamorak cloak',
+    categories: ['medium_treasure_trails']
+  },
+  '10452': {
+    name: 'Saradomin mitre',
+    categories: ['medium_treasure_trails']
+  },
+  '10454': {
+    name: 'Guthix mitre',
+    categories: ['medium_treasure_trails']
+  },
+  '10456': {
+    name: 'Zamorak mitre',
+    categories: ['medium_treasure_trails']
+  },
+  '10458': {
+    name: 'Saradomin robe top',
+    categories: ['easy_treasure_trails']
+  },
+  '10460': {
+    name: 'Zamorak robe top',
+    categories: ['easy_treasure_trails']
+  },
+  '10462': {
+    name: 'Guthix robe top',
+    categories: ['easy_treasure_trails']
+  },
+  '10464': {
+    name: 'Saradomin robe legs',
+    categories: ['easy_treasure_trails']
+  },
+  '10466': {
+    name: 'Guthix robe legs',
+    categories: ['easy_treasure_trails']
+  },
+  '10468': {
+    name: 'Zamorak robe legs',
+    categories: ['easy_treasure_trails']
+  },
+  '10470': {
+    name: 'Saradomin stole',
+    categories: ['hard_treasure_trails']
+  },
+  '10472': {
+    name: 'Guthix stole',
+    categories: ['hard_treasure_trails']
+  },
+  '10474': {
+    name: 'Zamorak stole',
+    categories: ['hard_treasure_trails']
+  },
+  '10476': {
+    name: 'Purple sweets',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '10547': {
+    name: 'Healer hat',
+    categories: ['barbarian_assault']
+  },
+  '10548': {
+    name: 'Fighter hat',
+    categories: ['barbarian_assault']
+  },
+  '10549': {
+    name: 'Runner hat',
+    categories: ['barbarian_assault']
+  },
+  '10550': {
+    name: 'Ranger hat',
+    categories: ['barbarian_assault']
+  },
+  '10551': {
+    name: 'Fighter torso',
+    categories: ['barbarian_assault']
+  },
+  '10552': {
+    name: 'Runner boots',
+    categories: ['barbarian_assault']
+  },
+  '10553': {
+    name: 'Penance gloves',
+    categories: ['barbarian_assault']
+  },
+  '10555': {
+    name: 'Penance skirt',
+    categories: ['barbarian_assault']
+  },
+  '10564': {
+    name: 'Granite body',
+    categories: ['barbarian_assault']
+  },
+  '10589': {
+    name: 'Granite helm',
+    categories: ['barbarian_assault', 'slayer']
+  },
+  '10933': {
+    name: 'Lumberjack boots',
+    categories: ['temple_trekking', 'forestry']
+  },
+  '10939': {
+    name: 'Lumberjack top',
+    categories: ['temple_trekking', 'forestry']
+  },
+  '10940': {
+    name: 'Lumberjack legs',
+    categories: ['temple_trekking', 'forestry']
+  },
+  '10941': {
+    name: 'Lumberjack hat',
+    categories: ['temple_trekking', 'forestry']
+  },
+  '10976': {
+    name: 'Long bone',
+    categories: ['miscellaneous']
+  },
+  '10977': {
+    name: 'Curved bone',
+    categories: ['miscellaneous']
+  },
+  '11037': {
+    name: 'Brine sabre',
+    categories: ['slayer']
+  },
+  '11235': {
+    name: 'Dark bow',
+    categories: ['slayer']
+  },
+  '11286': {
+    name: 'Draconic visage',
+    categories: ['king_black_dragon', 'vorkath', 'slayer']
+  },
+  '11335': {
+    name: 'Dragon full helm',
+    categories: ['miscellaneous']
+  },
+  '11338': {
+    name: 'Chewed bones',
+    categories: ['miscellaneous']
+  },
+  '11341': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11342': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11343': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11344': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11345': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11346': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11347': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11348': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11349': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11350': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11351': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11352': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11353': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11354': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11355': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11356': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11357': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11358': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11359': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11360': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11361': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11362': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11363': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11364': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11365': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11366': {
+    name: 'Ancient page',
+    categories: ['my_notes']
+  },
+  '11663': {
+    name: 'Void mage helm',
+    categories: ['pest_control']
+  },
+  '11664': {
+    name: 'Void ranger helm',
+    categories: ['pest_control']
+  },
+  '11665': {
+    name: 'Void melee helm',
+    categories: ['pest_control']
+  },
+  '11666': {
+    name: 'Void seal(8)',
+    categories: ['pest_control']
+  },
+  '11785': {
+    name: 'Armadyl crossbow',
+    categories: ['commander_zilyana']
+  },
+  '11787': {
+    name: 'Steam battlestaff',
+    categories: ['kril_tsutsaroth']
+  },
+  '11791': {
+    name: 'Staff of the dead',
+    categories: ['kril_tsutsaroth']
+  },
+  '11810': {
+    name: 'Armadyl hilt',
+    categories: ['kree_arra']
+  },
+  '11812': {
+    name: 'Bandos hilt',
+    categories: ['general_graardor']
+  },
+  '11814': {
+    name: 'Saradomin hilt',
+    categories: ['commander_zilyana']
+  },
+  '11816': {
+    name: 'Zamorak hilt',
+    categories: ['kril_tsutsaroth']
+  },
+  '11818': {
+    name: 'Godsword shard 1',
+    categories: ['commander_zilyana', 'general_graardor', 'kree_arra', 'kril_tsutsaroth']
+  },
+  '11820': {
+    name: 'Godsword shard 2',
+    categories: ['commander_zilyana', 'general_graardor', 'kree_arra', 'kril_tsutsaroth']
+  },
+  '11822': {
+    name: 'Godsword shard 3',
+    categories: ['commander_zilyana', 'general_graardor', 'kree_arra', 'kril_tsutsaroth']
+  },
+  '11824': {
+    name: 'Zamorakian spear',
+    categories: ['kril_tsutsaroth']
+  },
+  '11826': {
+    name: 'Armadyl helmet',
+    categories: ['kree_arra']
+  },
+  '11828': {
+    name: 'Armadyl chestplate',
+    categories: ['kree_arra']
+  },
+  '11830': {
+    name: 'Armadyl chainskirt',
+    categories: ['kree_arra']
+  },
+  '11832': {
+    name: 'Bandos chestplate',
+    categories: ['general_graardor']
+  },
+  '11834': {
+    name: 'Bandos tassets',
+    categories: ['general_graardor']
+  },
+  '11836': {
+    name: 'Bandos boots',
+    categories: ['general_graardor']
+  },
+  '11838': {
+    name: 'Saradomin sword',
+    categories: ['commander_zilyana']
+  },
+  '11840': {
+    name: 'Dragon boots',
+    categories: ['slayer']
+  },
+  '11849': {
+    name: 'Mark of grace',
+    categories: ['rooftop_agility']
+  },
+  '11850': {
+    name: 'Graceful hood',
+    categories: ['rooftop_agility']
+  },
+  '11852': {
+    name: 'Graceful cape',
+    categories: ['rooftop_agility']
+  },
+  '11854': {
+    name: 'Graceful top',
+    categories: ['rooftop_agility']
+  },
+  '11856': {
+    name: 'Graceful legs',
+    categories: ['rooftop_agility']
+  },
+  '11858': {
+    name: 'Graceful gloves',
+    categories: ['rooftop_agility']
+  },
+  '11860': {
+    name: 'Graceful boots',
+    categories: ['rooftop_agility']
+  },
+  '11891': {
+    name: 'Saradomin banner',
+    categories: ['castle_wars']
+  },
+  '11892': {
+    name: 'Zamorak banner',
+    categories: ['castle_wars']
+  },
+  '11893': {
+    name: 'Decorative armour',
+    categories: ['castle_wars']
+  },
+  '11894': {
+    name: 'Decorative armour',
+    categories: ['castle_wars']
+  },
+  '11895': {
+    name: 'Decorative armour',
+    categories: ['castle_wars']
+  },
+  '11896': {
+    name: 'Decorative armour',
+    categories: ['castle_wars']
+  },
+  '11897': {
+    name: 'Decorative armour',
+    categories: ['castle_wars']
+  },
+  '11898': {
+    name: 'Decorative armour',
+    categories: ['castle_wars']
+  },
+  '11899': {
+    name: 'Decorative armour',
+    categories: ['castle_wars']
+  },
+  '11900': {
+    name: 'Decorative armour',
+    categories: ['castle_wars']
+  },
+  '11901': {
+    name: 'Decorative armour',
+    categories: ['castle_wars']
+  },
+  '11902': {
+    name: 'Leaf-bladed sword',
+    categories: ['slayer']
+  },
+  '11905': {
+    name: 'Trident of the seas (full)',
+    categories: ['kraken']
+  },
+  '11908': {
+    name: 'Uncharged trident',
+    categories: ['slayer']
+  },
+  '11920': {
+    name: 'Dragon pickaxe',
+    categories: [
+      'callisto_and_artio',
+      'chaos_elemental',
+      'kalphite_queen',
+      'king_black_dragon',
+      'venenatis_and_spindel',
+      'vetion_and_calvarion'
+    ]
+  },
+  '11928': {
+    name: 'Odium shard 1',
+    categories: ['chaos_fanatic']
+  },
+  '11929': {
+    name: 'Odium shard 2',
+    categories: ['crazy_archaeologist']
+  },
+  '11930': {
+    name: 'Odium shard 3',
+    categories: ['scorpia']
+  },
+  '11931': {
+    name: 'Malediction shard 1',
+    categories: ['chaos_fanatic']
+  },
+  '11932': {
+    name: 'Malediction shard 2',
+    categories: ['crazy_archaeologist']
+  },
+  '11933': {
+    name: 'Malediction shard 3',
+    categories: ['scorpia']
+  },
+  '11942': {
+    name: 'Ecumenical key',
+    categories: ['miscellaneous']
+  },
+  '11990': {
+    name: 'Fedora',
+    categories: ['crazy_archaeologist']
+  },
+  '11995': {
+    name: 'Pet chaos elemental',
+    categories: ['chaos_elemental', 'chaos_fanatic', 'all_pets']
+  },
+  '11998': {
+    name: 'Smoke battlestaff',
+    categories: ['thermonuclear_smoke_devil']
+  },
+  '12002': {
+    name: 'Occult necklace',
+    categories: ['thermonuclear_smoke_devil', 'slayer']
+  },
+  '12004': {
+    name: 'Kraken tentacle',
+    categories: ['kraken', 'slayer']
+  },
+  '12007': {
+    name: 'Jar of dirt',
+    categories: ['kraken']
+  },
+  '12013': {
+    name: 'Prospector helmet',
+    categories: ['volcanic_mine', 'motherlode_mine']
+  },
+  '12014': {
+    name: 'Prospector jacket',
+    categories: ['volcanic_mine', 'motherlode_mine']
+  },
+  '12015': {
+    name: 'Prospector legs',
+    categories: ['volcanic_mine', 'motherlode_mine']
+  },
+  '12016': {
+    name: 'Prospector boots',
+    categories: ['volcanic_mine', 'motherlode_mine']
+  },
+  '12193': {
+    name: 'Ancient robe top',
+    categories: ['easy_treasure_trails']
+  },
+  '12195': {
+    name: 'Ancient robe legs',
+    categories: ['easy_treasure_trails']
+  },
+  '12197': {
+    name: 'Ancient cloak',
+    categories: ['medium_treasure_trails']
+  },
+  '12199': {
+    name: 'Ancient crozier',
+    categories: ['medium_treasure_trails']
+  },
+  '12201': {
+    name: 'Ancient stole',
+    categories: ['medium_treasure_trails']
+  },
+  '12203': {
+    name: 'Ancient mitre',
+    categories: ['medium_treasure_trails']
+  },
+  '12205': {
+    name: 'Bronze platebody (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '12207': {
+    name: 'Bronze platelegs (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '12209': {
+    name: 'Bronze plateskirt (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '12211': {
+    name: 'Bronze full helm (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '12213': {
+    name: 'Bronze kiteshield (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '12215': {
+    name: 'Bronze platebody (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '12217': {
+    name: 'Bronze platelegs (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '12219': {
+    name: 'Bronze plateskirt (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '12221': {
+    name: 'Bronze full helm (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '12223': {
+    name: 'Bronze kiteshield (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '12225': {
+    name: 'Iron platebody (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '12227': {
+    name: 'Iron platelegs (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '12229': {
+    name: 'Iron plateskirt (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '12231': {
+    name: 'Iron full helm (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '12233': {
+    name: 'Iron kiteshield (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '12235': {
+    name: 'Iron platebody (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '12237': {
+    name: 'Iron platelegs (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '12239': {
+    name: 'Iron plateskirt (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '12241': {
+    name: 'Iron full helm (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '12243': {
+    name: 'Iron kiteshield (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '12245': {
+    name: 'Beanie',
+    categories: ['easy_treasure_trails']
+  },
+  '12247': {
+    name: 'Red beret',
+    categories: ['easy_treasure_trails']
+  },
+  '12249': {
+    name: 'Imp mask',
+    categories: ['easy_treasure_trails']
+  },
+  '12251': {
+    name: 'Goblin mask',
+    categories: ['easy_treasure_trails']
+  },
+  '12253': {
+    name: 'Armadyl robe top',
+    categories: ['easy_treasure_trails']
+  },
+  '12255': {
+    name: 'Armadyl robe legs',
+    categories: ['easy_treasure_trails']
+  },
+  '12257': {
+    name: 'Armadyl stole',
+    categories: ['medium_treasure_trails']
+  },
+  '12259': {
+    name: 'Armadyl mitre',
+    categories: ['medium_treasure_trails']
+  },
+  '12261': {
+    name: 'Armadyl cloak',
+    categories: ['medium_treasure_trails']
+  },
+  '12263': {
+    name: 'Armadyl crozier',
+    categories: ['medium_treasure_trails']
+  },
+  '12265': {
+    name: 'Bandos robe top',
+    categories: ['easy_treasure_trails']
+  },
+  '12267': {
+    name: 'Bandos robe legs',
+    categories: ['easy_treasure_trails']
+  },
+  '12269': {
+    name: 'Bandos stole',
+    categories: ['medium_treasure_trails']
+  },
+  '12271': {
+    name: 'Bandos mitre',
+    categories: ['medium_treasure_trails']
+  },
+  '12273': {
+    name: 'Bandos cloak',
+    categories: ['medium_treasure_trails']
+  },
+  '12275': {
+    name: 'Bandos crozier',
+    categories: ['medium_treasure_trails']
+  },
+  '12277': {
+    name: 'Mithril platebody (g)',
+    categories: ['medium_treasure_trails']
+  },
+  '12279': {
+    name: 'Mithril platelegs (g)',
+    categories: ['medium_treasure_trails']
+  },
+  '12281': {
+    name: 'Mithril kiteshield (g)',
+    categories: ['medium_treasure_trails']
+  },
+  '12283': {
+    name: 'Mithril full helm (g)',
+    categories: ['medium_treasure_trails']
+  },
+  '12285': {
+    name: 'Mithril plateskirt (g)',
+    categories: ['medium_treasure_trails']
+  },
+  '12287': {
+    name: 'Mithril platebody (t)',
+    categories: ['medium_treasure_trails']
+  },
+  '12289': {
+    name: 'Mithril platelegs (t)',
+    categories: ['medium_treasure_trails']
+  },
+  '12291': {
+    name: 'Mithril kiteshield (t)',
+    categories: ['medium_treasure_trails']
+  },
+  '12293': {
+    name: 'Mithril full helm (t)',
+    categories: ['medium_treasure_trails']
+  },
+  '12295': {
+    name: 'Mithril plateskirt (t)',
+    categories: ['medium_treasure_trails']
+  },
+  '12297': {
+    name: 'Black pickaxe',
+    categories: ['beginner_treasure_trails', 'easy_treasure_trails']
+  },
+  '12299': {
+    name: 'White headband',
+    categories: ['medium_treasure_trails']
+  },
+  '12301': {
+    name: 'Blue headband',
+    categories: ['medium_treasure_trails']
+  },
+  '12303': {
+    name: 'Gold headband',
+    categories: ['medium_treasure_trails']
+  },
+  '12305': {
+    name: 'Pink headband',
+    categories: ['medium_treasure_trails']
+  },
+  '12307': {
+    name: 'Green headband',
+    categories: ['medium_treasure_trails']
+  },
+  '12309': {
+    name: 'Pink boater',
+    categories: ['medium_treasure_trails']
+  },
+  '12311': {
+    name: 'Purple boater',
+    categories: ['medium_treasure_trails']
+  },
+  '12313': {
+    name: 'White boater',
+    categories: ['medium_treasure_trails']
+  },
+  '12315': {
+    name: 'Pink elegant shirt',
+    categories: ['medium_treasure_trails']
+  },
+  '12317': {
+    name: 'Pink elegant legs',
+    categories: ['medium_treasure_trails']
+  },
+  '12319': {
+    name: 'Crier hat',
+    categories: ['medium_treasure_trails']
+  },
+  '12321': {
+    name: 'White cavalier',
+    categories: ['hard_treasure_trails']
+  },
+  '12323': {
+    name: 'Red cavalier',
+    categories: ['hard_treasure_trails']
+  },
+  '12325': {
+    name: 'Navy cavalier',
+    categories: ['hard_treasure_trails']
+  },
+  '12327': {
+    name: "Red d'hide body (g)",
+    categories: ['hard_treasure_trails']
+  },
+  '12329': {
+    name: "Red d'hide chaps (g)",
+    categories: ['hard_treasure_trails']
+  },
+  '12331': {
+    name: "Red d'hide body (t)",
+    categories: ['hard_treasure_trails']
+  },
+  '12333': {
+    name: "Red d'hide chaps (t)",
+    categories: ['hard_treasure_trails']
+  },
+  '12335': {
+    name: 'Briefcase',
+    categories: ['elite_treasure_trails']
+  },
+  '12337': {
+    name: 'Sagacious spectacles',
+    categories: ['elite_treasure_trails']
+  },
+  '12339': {
+    name: 'Pink elegant blouse',
+    categories: ['medium_treasure_trails']
+  },
+  '12341': {
+    name: 'Pink elegant skirt',
+    categories: ['medium_treasure_trails']
+  },
+  '12343': {
+    name: 'Gold elegant blouse',
+    categories: ['medium_treasure_trails']
+  },
+  '12345': {
+    name: 'Gold elegant skirt',
+    categories: ['medium_treasure_trails']
+  },
+  '12347': {
+    name: 'Gold elegant shirt',
+    categories: ['medium_treasure_trails']
+  },
+  '12349': {
+    name: 'Gold elegant legs',
+    categories: ['medium_treasure_trails']
+  },
+  '12351': {
+    name: 'Musketeer hat',
+    categories: ['elite_treasure_trails']
+  },
+  '12353': {
+    name: 'Monocle',
+    categories: ['elite_treasure_trails']
+  },
+  '12355': {
+    name: 'Big pirate hat',
+    categories: ['elite_treasure_trails']
+  },
+  '12357': {
+    name: 'Katana',
+    categories: ['elite_treasure_trails']
+  },
+  '12359': {
+    name: 'Leprechaun hat',
+    categories: ['medium_treasure_trails']
+  },
+  '12361': {
+    name: 'Cat mask',
+    categories: ['medium_treasure_trails']
+  },
+  '12363': {
+    name: 'Bronze dragon mask',
+    categories: ['elite_treasure_trails']
+  },
+  '12365': {
+    name: 'Iron dragon mask',
+    categories: ['elite_treasure_trails']
+  },
+  '12367': {
+    name: 'Steel dragon mask',
+    categories: ['elite_treasure_trails']
+  },
+  '12369': {
+    name: 'Mithril dragon mask',
+    categories: ['elite_treasure_trails']
+  },
+  '12371': {
+    name: 'Lava dragon mask',
+    categories: ['elite_treasure_trails']
+  },
+  '12373': {
+    name: 'Dragon cane',
+    categories: ['elite_treasure_trails']
+  },
+  '12375': {
+    name: 'Black cane',
+    categories: ['easy_treasure_trails']
+  },
+  '12377': {
+    name: 'Adamant cane',
+    categories: ['medium_treasure_trails']
+  },
+  '12379': {
+    name: 'Rune cane',
+    categories: ['hard_treasure_trails']
+  },
+  '12381': {
+    name: "Black d'hide body (g)",
+    categories: ['elite_treasure_trails']
+  },
+  '12383': {
+    name: "Black d'hide chaps (g)",
+    categories: ['elite_treasure_trails']
+  },
+  '12385': {
+    name: "Black d'hide body (t)",
+    categories: ['elite_treasure_trails']
+  },
+  '12387': {
+    name: "Black d'hide chaps (t)",
+    categories: ['elite_treasure_trails']
+  },
+  '12389': {
+    name: 'Gilded scimitar',
+    categories: ['gilded']
+  },
+  '12391': {
+    name: 'Gilded boots',
+    categories: ['gilded']
+  },
+  '12393': {
+    name: 'Royal gown top',
+    categories: ['elite_treasure_trails']
+  },
+  '12395': {
+    name: 'Royal gown bottom',
+    categories: ['elite_treasure_trails']
+  },
+  '12397': {
+    name: 'Royal crown',
+    categories: ['elite_treasure_trails']
+  },
+  '12402': {
+    name: 'Nardah teleport',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12403': {
+    name: 'Digsite teleport',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12404': {
+    name: 'Feldip hills teleport',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12405': {
+    name: 'Lunar isle teleport',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12406': {
+    name: "Mort'ton teleport",
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12407': {
+    name: 'Pest control teleport',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12408': {
+    name: 'Piscatoris teleport',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12409': {
+    name: 'Tai bwo wannai teleport',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12410': {
+    name: 'Iorwerth camp teleport',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12411': {
+    name: "Mos le'harmless teleport",
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12422': {
+    name: '3rd age wand',
+    categories: ['third_age']
+  },
+  '12424': {
+    name: '3rd age bow',
+    categories: ['third_age']
+  },
+  '12426': {
+    name: '3rd age longsword',
+    categories: ['third_age']
+  },
+  '12428': {
+    name: 'Penguin mask',
+    categories: ['medium_treasure_trails']
+  },
+  '12430': {
+    name: 'Afro',
+    categories: ['elite_treasure_trails']
+  },
+  '12432': {
+    name: 'Top hat',
+    categories: ['elite_treasure_trails']
+  },
+  '12437': {
+    name: '3rd age cloak',
+    categories: ['third_age']
+  },
+  '12439': {
+    name: 'Royal sceptre',
+    categories: ['elite_treasure_trails']
+  },
+  '12441': {
+    name: 'Musketeer tabard',
+    categories: ['elite_treasure_trails']
+  },
+  '12443': {
+    name: 'Musketeer pants',
+    categories: ['elite_treasure_trails']
+  },
+  '12445': {
+    name: 'Black skirt (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '12447': {
+    name: 'Black skirt (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '12449': {
+    name: 'Black wizard robe (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '12451': {
+    name: 'Black wizard robe (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '12453': {
+    name: 'Black wizard hat (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '12455': {
+    name: 'Black wizard hat (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '12460': {
+    name: 'Ancient platebody',
+    categories: ['hard_treasure_trails']
+  },
+  '12462': {
+    name: 'Ancient platelegs',
+    categories: ['hard_treasure_trails']
+  },
+  '12464': {
+    name: 'Ancient plateskirt',
+    categories: ['hard_treasure_trails']
+  },
+  '12466': {
+    name: 'Ancient full helm',
+    categories: ['hard_treasure_trails']
+  },
+  '12468': {
+    name: 'Ancient kiteshield',
+    categories: ['hard_treasure_trails']
+  },
+  '12470': {
+    name: 'Armadyl platebody',
+    categories: ['hard_treasure_trails']
+  },
+  '12472': {
+    name: 'Armadyl platelegs',
+    categories: ['hard_treasure_trails']
+  },
+  '12474': {
+    name: 'Armadyl plateskirt',
+    categories: ['hard_treasure_trails']
+  },
+  '12476': {
+    name: 'Armadyl full helm',
+    categories: ['hard_treasure_trails']
+  },
+  '12478': {
+    name: 'Armadyl kiteshield',
+    categories: ['hard_treasure_trails']
+  },
+  '12480': {
+    name: 'Bandos platebody',
+    categories: ['hard_treasure_trails']
+  },
+  '12482': {
+    name: 'Bandos platelegs',
+    categories: ['hard_treasure_trails']
+  },
+  '12484': {
+    name: 'Bandos plateskirt',
+    categories: ['hard_treasure_trails']
+  },
+  '12486': {
+    name: 'Bandos full helm',
+    categories: ['hard_treasure_trails']
+  },
+  '12488': {
+    name: 'Bandos kiteshield',
+    categories: ['hard_treasure_trails']
+  },
+  '12490': {
+    name: 'Ancient bracers',
+    categories: ['hard_treasure_trails']
+  },
+  '12492': {
+    name: "Ancient d'hide body",
+    categories: ['hard_treasure_trails']
+  },
+  '12494': {
+    name: 'Ancient chaps',
+    categories: ['hard_treasure_trails']
+  },
+  '12496': {
+    name: 'Ancient coif',
+    categories: ['hard_treasure_trails']
+  },
+  '12498': {
+    name: 'Bandos bracers',
+    categories: ['hard_treasure_trails']
+  },
+  '12500': {
+    name: "Bandos d'hide body",
+    categories: ['hard_treasure_trails']
+  },
+  '12502': {
+    name: 'Bandos chaps',
+    categories: ['hard_treasure_trails']
+  },
+  '12504': {
+    name: 'Bandos coif',
+    categories: ['hard_treasure_trails']
+  },
+  '12506': {
+    name: 'Armadyl bracers',
+    categories: ['hard_treasure_trails']
+  },
+  '12508': {
+    name: "Armadyl d'hide body",
+    categories: ['hard_treasure_trails']
+  },
+  '12510': {
+    name: 'Armadyl chaps',
+    categories: ['hard_treasure_trails']
+  },
+  '12512': {
+    name: 'Armadyl coif',
+    categories: ['hard_treasure_trails']
+  },
+  '12514': {
+    name: 'Explorer backpack',
+    categories: ['hard_treasure_trails']
+  },
+  '12516': {
+    name: 'Pith helmet',
+    categories: ['hard_treasure_trails']
+  },
+  '12518': {
+    name: 'Green dragon mask',
+    categories: ['hard_treasure_trails']
+  },
+  '12520': {
+    name: 'Blue dragon mask',
+    categories: ['hard_treasure_trails']
+  },
+  '12522': {
+    name: 'Red dragon mask',
+    categories: ['hard_treasure_trails']
+  },
+  '12524': {
+    name: 'Black dragon mask',
+    categories: ['hard_treasure_trails']
+  },
+  '12526': {
+    name: 'Fury ornament kit',
+    categories: ['elite_treasure_trails']
+  },
+  '12528': {
+    name: 'Dark infinity colour kit',
+    categories: ['elite_treasure_trails']
+  },
+  '12530': {
+    name: 'Light infinity colour kit',
+    categories: ['elite_treasure_trails']
+  },
+  '12532': {
+    name: 'Dragon sq shield ornament kit',
+    categories: ['elite_treasure_trails']
+  },
+  '12534': {
+    name: 'Dragon chainbody ornament kit',
+    categories: ['elite_treasure_trails']
+  },
+  '12536': {
+    name: 'Dragon legs/skirt ornament kit',
+    categories: ['elite_treasure_trails']
+  },
+  '12538': {
+    name: 'Dragon full helm ornament kit',
+    categories: ['elite_treasure_trails']
+  },
+  '12540': {
+    name: 'Deerstalker',
+    categories: ['elite_treasure_trails']
+  },
+  '12596': {
+    name: "Rangers' tunic",
+    categories: ['elite_treasure_trails']
+  },
+  '12598': {
+    name: 'Holy sandals',
+    categories: ['medium_treasure_trails']
+  },
+  '12601': {
+    name: 'Ring of the gods',
+    categories: ['vetion_and_calvarion']
+  },
+  '12603': {
+    name: 'Tyrannical ring',
+    categories: ['callisto_and_artio']
+  },
+  '12605': {
+    name: 'Treasonous ring',
+    categories: ['venenatis_and_spindel']
+  },
+  '12613': {
+    name: 'Bandos page 1',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12614': {
+    name: 'Bandos page 2',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12615': {
+    name: 'Bandos page 3',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12616': {
+    name: 'Bandos page 4',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12617': {
+    name: 'Armadyl page 1',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12618': {
+    name: 'Armadyl page 2',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12619': {
+    name: 'Armadyl page 3',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12620': {
+    name: 'Armadyl page 4',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12621': {
+    name: 'Ancient page 1',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12622': {
+    name: 'Ancient page 2',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12623': {
+    name: 'Ancient page 3',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12624': {
+    name: 'Ancient page 4',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12637': {
+    name: 'Saradomin halo',
+    categories: ['castle_wars']
+  },
+  '12638': {
+    name: 'Zamorak halo',
+    categories: ['castle_wars']
+  },
+  '12639': {
+    name: 'Guthix halo',
+    categories: ['castle_wars']
+  },
+  '12642': {
+    name: 'Lumberyard teleport',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '12643': {
+    name: 'Pet dagannoth supreme',
+    categories: ['dagannoth_kings', 'all_pets']
+  },
+  '12644': {
+    name: 'Pet dagannoth prime',
+    categories: ['dagannoth_kings', 'all_pets']
+  },
+  '12645': {
+    name: 'Pet dagannoth rex',
+    categories: ['dagannoth_kings', 'all_pets']
+  },
+  '12646': {
+    name: 'Baby mole',
+    categories: ['giant_mole', 'all_pets']
+  },
+  '12647': {
+    name: 'Kalphite princess',
+    categories: ['kalphite_queen', 'all_pets']
+  },
+  '12648': {
+    name: 'Pet smoke devil',
+    categories: ['thermonuclear_smoke_devil', 'all_pets']
+  },
+  '12649': {
+    name: "Pet kree'arra",
+    categories: ['kree_arra', 'all_pets']
+  },
+  '12650': {
+    name: 'Pet general graardor',
+    categories: ['general_graardor', 'all_pets']
+  },
+  '12651': {
+    name: 'Pet zilyana',
+    categories: ['commander_zilyana', 'all_pets']
+  },
+  '12652': {
+    name: "Pet k'ril tsutsaroth",
+    categories: ['kril_tsutsaroth', 'all_pets']
+  },
+  '12653': {
+    name: 'Prince black dragon',
+    categories: ['king_black_dragon', 'all_pets']
+  },
+  '12655': {
+    name: 'Pet kraken',
+    categories: ['kraken', 'all_pets']
+  },
+  '12703': {
+    name: 'Pet penance queen',
+    categories: ['barbarian_assault', 'all_pets']
+  },
+  '12757': {
+    name: 'Blue dark bow paint',
+    categories: ['last_man_standing']
+  },
+  '12759': {
+    name: 'Green dark bow paint',
+    categories: ['last_man_standing']
+  },
+  '12761': {
+    name: 'Yellow dark bow paint',
+    categories: ['last_man_standing']
+  },
+  '12763': {
+    name: 'White dark bow paint',
+    categories: ['last_man_standing']
+  },
+  '12769': {
+    name: 'Frozen whip mix',
+    categories: ['last_man_standing']
+  },
+  '12771': {
+    name: 'Volcanic whip mix',
+    categories: ['last_man_standing']
+  },
+  '12798': {
+    name: 'Steam staff upgrade kit',
+    categories: ['last_man_standing']
+  },
+  '12800': {
+    name: 'Dragon pickaxe upgrade kit',
+    categories: ['last_man_standing']
+  },
+  '12802': {
+    name: 'Ward upgrade kit',
+    categories: ['last_man_standing']
+  },
+  '12816': {
+    name: 'Pet dark core',
+    categories: ['corporeal_beast', 'all_pets']
+  },
+  '12819': {
+    name: 'Elysian sigil',
+    categories: ['corporeal_beast']
+  },
+  '12823': {
+    name: 'Spectral sigil',
+    categories: ['corporeal_beast']
+  },
+  '12827': {
+    name: 'Arcane sigil',
+    categories: ['corporeal_beast']
+  },
+  '12829': {
+    name: 'Spirit shield',
+    categories: ['corporeal_beast']
+  },
+  '12833': {
+    name: 'Holy elixir',
+    categories: ['corporeal_beast']
+  },
+  '12849': {
+    name: 'Granite clamp',
+    categories: ['last_man_standing']
+  },
+  '12851': {
+    name: 'Amulet of the damned (full)',
+    categories: ['shades_of_mortton']
+  },
+  '12885': {
+    name: 'Jar of sand',
+    categories: ['kalphite_queen']
+  },
+  '12921': {
+    name: 'Pet snakeling',
+    categories: ['zulrah', 'all_pets']
+  },
+  '12922': {
+    name: 'Tanzanite fang',
+    categories: ['zulrah']
+  },
+  '12927': {
+    name: 'Serpentine visage',
+    categories: ['zulrah']
+  },
+  '12932': {
+    name: 'Magic fang',
+    categories: ['zulrah']
+  },
+  '12934': {
+    name: "Zulrah's scales",
+    categories: ['zulrah']
+  },
+  '12936': {
+    name: 'Jar of swamp',
+    categories: ['zulrah']
+  },
+  '12938': {
+    name: 'Zul-andra teleport',
+    categories: ['zulrah']
+  },
+  '12954': {
+    name: 'Dragon defender',
+    categories: ['cyclopes']
+  },
+  '13071': {
+    name: 'Chompy chick',
+    categories: ['all_pets', 'chompy_bird_hunting', 'miscellaneous']
+  },
+  '13072': {
+    name: 'Elite void top',
+    categories: ['pest_control']
+  },
+  '13073': {
+    name: 'Elite void robe',
+    categories: ['pest_control']
+  },
+  '13177': {
+    name: 'Venenatis spiderling',
+    categories: ['venenatis_and_spindel', 'all_pets']
+  },
+  '13178': {
+    name: 'Callisto cub',
+    categories: ['callisto_and_artio', 'all_pets']
+  },
+  '13179': {
+    name: "Vet'ion jr.",
+    categories: ['vetion_and_calvarion', 'all_pets']
+  },
+  '13181': {
+    name: "Scorpia's offspring",
+    categories: ['scorpia', 'all_pets']
+  },
+  '13200': {
+    name: 'Tanzanite mutagen',
+    categories: ['zulrah']
+  },
+  '13201': {
+    name: 'Magma mutagen',
+    categories: ['zulrah']
+  },
+  '13225': {
+    name: 'Tzrek-jad',
+    categories: ['the_fight_caves', 'all_pets']
+  },
+  '13226': {
+    name: 'Herb sack',
+    categories: ['tithe_farm']
+  },
+  '13227': {
+    name: 'Eternal crystal',
+    categories: ['cerberus']
+  },
+  '13229': {
+    name: 'Pegasian crystal',
+    categories: ['cerberus']
+  },
+  '13231': {
+    name: 'Primordial crystal',
+    categories: ['cerberus']
+  },
+  '13233': {
+    name: 'Smouldering stone',
+    categories: ['cerberus']
+  },
+  '13245': {
+    name: 'Jar of souls',
+    categories: ['cerberus']
+  },
+  '13247': {
+    name: 'Hellpuppy',
+    categories: ['cerberus', 'all_pets']
+  },
+  '13249': {
+    name: 'Key master teleport',
+    categories: ['cerberus']
+  },
+  '13256': {
+    name: "Saradomin's light",
+    categories: ['commander_zilyana']
+  },
+  '13258': {
+    name: 'Angler hat',
+    categories: ['fishing_trawler', 'aerial_fishing']
+  },
+  '13259': {
+    name: 'Angler top',
+    categories: ['fishing_trawler', 'aerial_fishing']
+  },
+  '13260': {
+    name: 'Angler waders',
+    categories: ['fishing_trawler', 'aerial_fishing']
+  },
+  '13261': {
+    name: 'Angler boots',
+    categories: ['fishing_trawler', 'aerial_fishing']
+  },
+  '13262': {
+    name: 'Abyssal orphan',
+    categories: ['abyssal_sire', 'all_pets']
+  },
+  '13265': {
+    name: 'Abyssal dagger',
+    categories: ['abyssal_sire', 'slayer']
+  },
+  '13274': {
+    name: 'Bludgeon spine',
+    categories: ['abyssal_sire']
+  },
+  '13275': {
+    name: 'Bludgeon claw',
+    categories: ['abyssal_sire']
+  },
+  '13276': {
+    name: 'Bludgeon axon',
+    categories: ['abyssal_sire']
+  },
+  '13277': {
+    name: 'Jar of miasma',
+    categories: ['abyssal_sire']
+  },
+  '13320': {
+    name: 'Heron',
+    categories: ['all_pets', 'skilling_pets']
+  },
+  '13321': {
+    name: 'Rock golem',
+    categories: ['all_pets', 'skilling_pets']
+  },
+  '13322': {
+    name: 'Beaver',
+    categories: ['all_pets', 'skilling_pets']
+  },
+  '13324': {
+    name: 'Baby chinchompa',
+    categories: ['all_pets', 'skilling_pets']
+  },
+  '13353': {
+    name: "Gricoller's can",
+    categories: ['tithe_farm']
+  },
+  '13357': {
+    name: 'Shayzien gloves (1)',
+    categories: ['shayzien_armour']
+  },
+  '13358': {
+    name: 'Shayzien boots (1)',
+    categories: ['shayzien_armour']
+  },
+  '13359': {
+    name: 'Shayzien helm (1)',
+    categories: ['shayzien_armour']
+  },
+  '13360': {
+    name: 'Shayzien greaves (1)',
+    categories: ['shayzien_armour']
+  },
+  '13361': {
+    name: 'Shayzien platebody (1)',
+    categories: ['shayzien_armour']
+  },
+  '13362': {
+    name: 'Shayzien gloves (2)',
+    categories: ['shayzien_armour']
+  },
+  '13363': {
+    name: 'Shayzien boots (2)',
+    categories: ['shayzien_armour']
+  },
+  '13364': {
+    name: 'Shayzien helm (2)',
+    categories: ['shayzien_armour']
+  },
+  '13365': {
+    name: 'Shayzien greaves (2)',
+    categories: ['shayzien_armour']
+  },
+  '13366': {
+    name: 'Shayzien platebody (2)',
+    categories: ['shayzien_armour']
+  },
+  '13367': {
+    name: 'Shayzien gloves (3)',
+    categories: ['shayzien_armour']
+  },
+  '13368': {
+    name: 'Shayzien boots (3)',
+    categories: ['shayzien_armour']
+  },
+  '13369': {
+    name: 'Shayzien helm (3)',
+    categories: ['shayzien_armour']
+  },
+  '13370': {
+    name: 'Shayzien greaves (3)',
+    categories: ['shayzien_armour']
+  },
+  '13371': {
+    name: 'Shayzien platebody (3)',
+    categories: ['shayzien_armour']
+  },
+  '13372': {
+    name: 'Shayzien gloves (4)',
+    categories: ['shayzien_armour']
+  },
+  '13373': {
+    name: 'Shayzien boots (4)',
+    categories: ['shayzien_armour']
+  },
+  '13374': {
+    name: 'Shayzien helm (4)',
+    categories: ['shayzien_armour']
+  },
+  '13375': {
+    name: 'Shayzien greaves (4)',
+    categories: ['shayzien_armour']
+  },
+  '13376': {
+    name: 'Shayzien platebody (4)',
+    categories: ['shayzien_armour']
+  },
+  '13377': {
+    name: 'Shayzien gloves (5)',
+    categories: ['shayzien_armour']
+  },
+  '13378': {
+    name: 'Shayzien boots (5)',
+    categories: ['shayzien_armour']
+  },
+  '13379': {
+    name: 'Shayzien helm (5)',
+    categories: ['shayzien_armour']
+  },
+  '13380': {
+    name: 'Shayzien greaves (5)',
+    categories: ['shayzien_armour']
+  },
+  '13381': {
+    name: 'Shayzien body (5)',
+    categories: ['shayzien_armour']
+  },
+  '13392': {
+    name: "Xeric's talisman (inert)",
+    categories: ['miscellaneous']
+  },
+  '13576': {
+    name: 'Dragon warhammer',
+    categories: ['miscellaneous']
+  },
+  '13639': {
+    name: 'Seed box',
+    categories: ['tithe_farm']
+  },
+  '13640': {
+    name: "Farmer's boro trousers",
+    categories: ['tithe_farm']
+  },
+  '13642': {
+    name: "Farmer's jacket",
+    categories: ['tithe_farm']
+  },
+  '13644': {
+    name: "Farmer's boots",
+    categories: ['tithe_farm']
+  },
+  '13646': {
+    name: "Farmer's strawhat",
+    categories: ['tithe_farm']
+  },
+  '13652': {
+    name: 'Dragon claws',
+    categories: ['chambers_of_xeric']
+  },
+  '19529': {
+    name: 'Zenyte shard',
+    categories: ['gloughs_experiments']
+  },
+  '19586': {
+    name: 'Light frame',
+    categories: ['gloughs_experiments']
+  },
+  '19589': {
+    name: 'Heavy frame',
+    categories: ['gloughs_experiments']
+  },
+  '19592': {
+    name: 'Ballista limbs',
+    categories: ['gloughs_experiments']
+  },
+  '19601': {
+    name: 'Ballista spring',
+    categories: ['gloughs_experiments']
+  },
+  '19610': {
+    name: 'Monkey tail',
+    categories: ['gloughs_experiments']
+  },
+  '19677': {
+    name: 'Ancient shard',
+    categories: ['skotizo']
+  },
+  '19679': {
+    name: 'Dark totem base',
+    categories: ['miscellaneous']
+  },
+  '19681': {
+    name: 'Dark totem middle',
+    categories: ['miscellaneous']
+  },
+  '19683': {
+    name: 'Dark totem top',
+    categories: ['miscellaneous']
+  },
+  '19685': {
+    name: 'Dark totem',
+    categories: ['skotizo']
+  },
+  '19701': {
+    name: 'Jar of darkness',
+    categories: ['skotizo']
+  },
+  '19707': {
+    name: 'Amulet of eternal glory',
+    categories: ['miscellaneous']
+  },
+  '19724': {
+    name: 'Left eye patch',
+    categories: ['master_treasure_trails']
+  },
+  '19730': {
+    name: 'Bloodhound',
+    categories: ['master_treasure_trails', 'all_pets']
+  },
+  '19912': {
+    name: 'Zombie head',
+    categories: ['hard_treasure_trails']
+  },
+  '19915': {
+    name: 'Cyclops head',
+    categories: ['hard_treasure_trails']
+  },
+  '19918': {
+    name: 'Nunchaku',
+    categories: ['hard_treasure_trails']
+  },
+  '19921': {
+    name: "Ancient d'hide boots",
+    categories: ['hard_treasure_trails']
+  },
+  '19924': {
+    name: "Bandos d'hide boots",
+    categories: ['hard_treasure_trails']
+  },
+  '19927': {
+    name: "Guthix d'hide boots",
+    categories: ['hard_treasure_trails']
+  },
+  '19930': {
+    name: "Armadyl d'hide boots",
+    categories: ['hard_treasure_trails']
+  },
+  '19933': {
+    name: "Saradomin d'hide boots",
+    categories: ['hard_treasure_trails']
+  },
+  '19936': {
+    name: "Zamorak d'hide boots",
+    categories: ['hard_treasure_trails']
+  },
+  '19943': {
+    name: 'Arceuus scarf',
+    categories: ['elite_treasure_trails']
+  },
+  '19946': {
+    name: 'Hosidius scarf',
+    categories: ['elite_treasure_trails']
+  },
+  '19949': {
+    name: 'Lovakengj scarf',
+    categories: ['elite_treasure_trails']
+  },
+  '19952': {
+    name: 'Piscarilius scarf',
+    categories: ['elite_treasure_trails']
+  },
+  '19955': {
+    name: 'Shayzien scarf',
+    categories: ['elite_treasure_trails']
+  },
+  '19958': {
+    name: 'Dark tuxedo jacket',
+    categories: ['elite_treasure_trails']
+  },
+  '19961': {
+    name: 'Dark tuxedo cuffs',
+    categories: ['elite_treasure_trails']
+  },
+  '19964': {
+    name: 'Dark trousers',
+    categories: ['elite_treasure_trails']
+  },
+  '19967': {
+    name: 'Dark tuxedo shoes',
+    categories: ['elite_treasure_trails']
+  },
+  '19970': {
+    name: 'Dark bow tie',
+    categories: ['elite_treasure_trails']
+  },
+  '19973': {
+    name: 'Light tuxedo jacket',
+    categories: ['elite_treasure_trails']
+  },
+  '19976': {
+    name: 'Light tuxedo cuffs',
+    categories: ['elite_treasure_trails']
+  },
+  '19979': {
+    name: 'Light trousers',
+    categories: ['elite_treasure_trails']
+  },
+  '19982': {
+    name: 'Light tuxedo shoes',
+    categories: ['elite_treasure_trails']
+  },
+  '19985': {
+    name: 'Light bow tie',
+    categories: ['elite_treasure_trails']
+  },
+  '19988': {
+    name: "Blacksmith's helm",
+    categories: ['elite_treasure_trails']
+  },
+  '19991': {
+    name: 'Bucket helm',
+    categories: ['elite_treasure_trails']
+  },
+  '19994': {
+    name: 'Ranger gloves',
+    categories: ['elite_treasure_trails']
+  },
+  '19997': {
+    name: 'Holy wraps',
+    categories: ['elite_treasure_trails']
+  },
+  '20002': {
+    name: 'Dragon scimitar ornament kit',
+    categories: ['elite_treasure_trails']
+  },
+  '20005': {
+    name: 'Ring of nature',
+    categories: ['elite_treasure_trails']
+  },
+  '20008': {
+    name: 'Fancy tiara',
+    categories: ['master_treasure_trails']
+  },
+  '20011': {
+    name: '3rd age axe',
+    categories: ['third_age']
+  },
+  '20014': {
+    name: '3rd age pickaxe',
+    categories: ['third_age']
+  },
+  '20017': {
+    name: 'Ring of coins',
+    categories: ['master_treasure_trails']
+  },
+  '20020': {
+    name: 'Lesser demon mask',
+    categories: ['master_treasure_trails']
+  },
+  '20023': {
+    name: 'Greater demon mask',
+    categories: ['master_treasure_trails']
+  },
+  '20026': {
+    name: 'Black demon mask',
+    categories: ['master_treasure_trails']
+  },
+  '20029': {
+    name: 'Old demon mask',
+    categories: ['master_treasure_trails']
+  },
+  '20032': {
+    name: 'Jungle demon mask',
+    categories: ['master_treasure_trails']
+  },
+  '20035': {
+    name: 'Samurai kasa',
+    categories: ['master_treasure_trails']
+  },
+  '20038': {
+    name: 'Samurai shirt',
+    categories: ['master_treasure_trails']
+  },
+  '20041': {
+    name: 'Samurai gloves',
+    categories: ['master_treasure_trails']
+  },
+  '20044': {
+    name: 'Samurai greaves',
+    categories: ['master_treasure_trails']
+  },
+  '20047': {
+    name: 'Samurai boots',
+    categories: ['master_treasure_trails']
+  },
+  '20050': {
+    name: 'Obsidian cape (r)',
+    categories: ['master_treasure_trails']
+  },
+  '20053': {
+    name: 'Half moon spectacles',
+    categories: ['master_treasure_trails']
+  },
+  '20056': {
+    name: 'Ale of the gods',
+    categories: ['master_treasure_trails']
+  },
+  '20059': {
+    name: 'Bucket helm (g)',
+    categories: ['master_treasure_trails']
+  },
+  '20062': {
+    name: 'Torture ornament kit',
+    categories: ['master_treasure_trails']
+  },
+  '20065': {
+    name: 'Occult ornament kit',
+    categories: ['master_treasure_trails']
+  },
+  '20068': {
+    name: 'Armadyl godsword ornament kit',
+    categories: ['master_treasure_trails']
+  },
+  '20071': {
+    name: 'Bandos godsword ornament kit',
+    categories: ['master_treasure_trails']
+  },
+  '20074': {
+    name: 'Saradomin godsword ornament kit',
+    categories: ['master_treasure_trails']
+  },
+  '20077': {
+    name: 'Zamorak godsword ornament kit',
+    categories: ['master_treasure_trails']
+  },
+  '20080': {
+    name: "Mummy's head",
+    categories: ['master_treasure_trails']
+  },
+  '20083': {
+    name: "Mummy's body",
+    categories: ['master_treasure_trails']
+  },
+  '20086': {
+    name: "Mummy's hands",
+    categories: ['master_treasure_trails']
+  },
+  '20089': {
+    name: "Mummy's legs",
+    categories: ['master_treasure_trails']
+  },
+  '20092': {
+    name: "Mummy's feet",
+    categories: ['master_treasure_trails']
+  },
+  '20095': {
+    name: 'Ankou mask',
+    categories: ['master_treasure_trails']
+  },
+  '20098': {
+    name: 'Ankou top',
+    categories: ['master_treasure_trails']
+  },
+  '20101': {
+    name: 'Ankou gloves',
+    categories: ['master_treasure_trails']
+  },
+  '20104': {
+    name: "Ankou's leggings",
+    categories: ['master_treasure_trails']
+  },
+  '20107': {
+    name: 'Ankou socks',
+    categories: ['master_treasure_trails']
+  },
+  '20110': {
+    name: 'Bowl wig',
+    categories: ['master_treasure_trails']
+  },
+  '20113': {
+    name: 'Arceuus hood',
+    categories: ['master_treasure_trails']
+  },
+  '20116': {
+    name: 'Hosidius hood',
+    categories: ['master_treasure_trails']
+  },
+  '20119': {
+    name: 'Lovakengj hood',
+    categories: ['master_treasure_trails']
+  },
+  '20122': {
+    name: 'Piscarilius hood',
+    categories: ['master_treasure_trails']
+  },
+  '20125': {
+    name: 'Shayzien hood',
+    categories: ['master_treasure_trails']
+  },
+  '20128': {
+    name: 'Hood of darkness',
+    categories: ['master_treasure_trails']
+  },
+  '20131': {
+    name: 'Robe top of darkness',
+    categories: ['master_treasure_trails']
+  },
+  '20134': {
+    name: 'Gloves of darkness',
+    categories: ['master_treasure_trails']
+  },
+  '20137': {
+    name: 'Robe bottom of darkness',
+    categories: ['master_treasure_trails']
+  },
+  '20140': {
+    name: 'Boots of darkness',
+    categories: ['master_treasure_trails']
+  },
+  '20143': {
+    name: 'Dragon defender ornament kit',
+    categories: ['master_treasure_trails']
+  },
+  '20146': {
+    name: 'Gilded med helm',
+    categories: ['gilded']
+  },
+  '20149': {
+    name: 'Gilded chainbody',
+    categories: ['gilded']
+  },
+  '20152': {
+    name: 'Gilded sq shield',
+    categories: ['gilded']
+  },
+  '20155': {
+    name: 'Gilded 2h sword',
+    categories: ['gilded']
+  },
+  '20158': {
+    name: 'Gilded spear',
+    categories: ['gilded']
+  },
+  '20161': {
+    name: 'Gilded hasta',
+    categories: ['gilded']
+  },
+  '20166': {
+    name: 'Wooden shield (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '20169': {
+    name: 'Steel platebody (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '20172': {
+    name: 'Steel platelegs (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '20175': {
+    name: 'Steel plateskirt (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '20178': {
+    name: 'Steel full helm (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '20181': {
+    name: 'Steel kiteshield (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '20184': {
+    name: 'Steel platebody (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '20187': {
+    name: 'Steel platelegs (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '20190': {
+    name: 'Steel plateskirt (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '20193': {
+    name: 'Steel full helm (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '20196': {
+    name: 'Steel kiteshield (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '20199': {
+    name: "Monk's robe top (g)",
+    categories: ['easy_treasure_trails']
+  },
+  '20202': {
+    name: "Monk's robe (g)",
+    categories: ['easy_treasure_trails']
+  },
+  '20205': {
+    name: "Golden chef's hat",
+    categories: ['easy_treasure_trails']
+  },
+  '20208': {
+    name: 'Golden apron',
+    categories: ['easy_treasure_trails']
+  },
+  '20211': {
+    name: 'Team cape zero',
+    categories: ['easy_treasure_trails']
+  },
+  '20214': {
+    name: 'Team cape x',
+    categories: ['easy_treasure_trails']
+  },
+  '20217': {
+    name: 'Team cape i',
+    categories: ['easy_treasure_trails']
+  },
+  '20220': {
+    name: 'Holy blessing',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '20223': {
+    name: 'Unholy blessing',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '20226': {
+    name: 'Peaceful blessing',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '20229': {
+    name: 'Honourable blessing',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '20232': {
+    name: 'War blessing',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '20235': {
+    name: 'Ancient blessing',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '20238': {
+    name: 'Charge dragonstone jewellery scroll',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '20240': {
+    name: 'Crier coat',
+    categories: ['medium_treasure_trails']
+  },
+  '20243': {
+    name: 'Crier bell',
+    categories: ['medium_treasure_trails']
+  },
+  '20246': {
+    name: 'Black leprechaun hat',
+    categories: ['medium_treasure_trails']
+  },
+  '20251': {
+    name: 'Arceuus banner',
+    categories: ['medium_treasure_trails']
+  },
+  '20254': {
+    name: 'Hosidius banner',
+    categories: ['medium_treasure_trails']
+  },
+  '20257': {
+    name: 'Lovakengj banner',
+    categories: ['medium_treasure_trails']
+  },
+  '20260': {
+    name: 'Piscarilius banner',
+    categories: ['medium_treasure_trails']
+  },
+  '20263': {
+    name: 'Shayzien banner',
+    categories: ['medium_treasure_trails']
+  },
+  '20266': {
+    name: 'Black unicorn mask',
+    categories: ['medium_treasure_trails']
+  },
+  '20269': {
+    name: 'White unicorn mask',
+    categories: ['medium_treasure_trails']
+  },
+  '20272': {
+    name: 'Cabbage round shield',
+    categories: ['medium_treasure_trails']
+  },
+  '20275': {
+    name: 'Gnomish firelighter',
+    categories: ['medium_treasure_trails']
+  },
+  '20433': {
+    name: 'Evil chicken feet',
+    categories: ['miscellaneous']
+  },
+  '20436': {
+    name: 'Evil chicken wings',
+    categories: ['miscellaneous']
+  },
+  '20439': {
+    name: 'Evil chicken head',
+    categories: ['miscellaneous']
+  },
+  '20442': {
+    name: 'Evil chicken legs',
+    categories: ['miscellaneous']
+  },
+  '20517': {
+    name: 'Elder chaos top',
+    categories: ['chaos_druids']
+  },
+  '20520': {
+    name: 'Elder chaos robe',
+    categories: ['chaos_druids']
+  },
+  '20590': {
+    name: 'Stale baguette',
+    categories: ['random_events']
+  },
+  '20595': {
+    name: 'Elder chaos hood',
+    categories: ['chaos_druids']
+  },
+  '20659': {
+    name: 'Giant squirrel',
+    categories: ['all_pets', 'skilling_pets']
+  },
+  '20661': {
+    name: 'Tangleroot',
+    categories: ['all_pets', 'skilling_pets']
+  },
+  '20663': {
+    name: 'Rocky',
+    categories: ['all_pets', 'skilling_pets']
+  },
+  '20665': {
+    name: 'Rift guardian',
+    categories: ['all_pets', 'skilling_pets']
+  },
+  '20693': {
+    name: 'Phoenix',
+    categories: ['wintertodt', 'all_pets']
+  },
+  '20704': {
+    name: 'Pyromancer garb',
+    categories: ['wintertodt']
+  },
+  '20706': {
+    name: 'Pyromancer robe',
+    categories: ['wintertodt']
+  },
+  '20708': {
+    name: 'Pyromancer hood',
+    categories: ['wintertodt']
+  },
+  '20710': {
+    name: 'Pyromancer boots',
+    categories: ['wintertodt']
+  },
+  '20712': {
+    name: 'Warm gloves',
+    categories: ['wintertodt']
+  },
+  '20716': {
+    name: 'Tome of fire (empty)',
+    categories: ['wintertodt']
+  },
+  '20718': {
+    name: 'Burnt page',
+    categories: ['wintertodt']
+  },
+  '20720': {
+    name: 'Bruma torch',
+    categories: ['wintertodt']
+  },
+  '20724': {
+    name: 'Imbued heart',
+    categories: ['slayer']
+  },
+  '20727': {
+    name: 'Leaf-bladed battleaxe',
+    categories: ['slayer']
+  },
+  '20730': {
+    name: 'Mist battlestaff',
+    categories: ['slayer']
+  },
+  '20736': {
+    name: 'Dust battlestaff',
+    categories: ['slayer']
+  },
+  '20754': {
+    name: 'Giant key',
+    categories: ['miscellaneous']
+  },
+  '20756': {
+    name: 'Hill giant club',
+    categories: ['obor']
+  },
+  '20849': {
+    name: 'Dragon thrownaxe',
+    categories: ['alchemical_hydra', 'slayer']
+  },
+  '20851': {
+    name: 'Olmlet',
+    categories: ['all_pets', 'chambers_of_xeric']
+  },
+  '20997': {
+    name: 'Twisted bow',
+    categories: ['chambers_of_xeric']
+  },
+  '21000': {
+    name: 'Twisted buckler',
+    categories: ['chambers_of_xeric']
+  },
+  '21003': {
+    name: 'Elder maul',
+    categories: ['chambers_of_xeric']
+  },
+  '21009': {
+    name: 'Dragon sword',
+    categories: ['slayer']
+  },
+  '21012': {
+    name: 'Dragon hunter crossbow',
+    categories: ['chambers_of_xeric']
+  },
+  '21015': {
+    name: "Dinh's bulwark",
+    categories: ['chambers_of_xeric']
+  },
+  '21018': {
+    name: 'Ancestral hat',
+    categories: ['chambers_of_xeric']
+  },
+  '21021': {
+    name: 'Ancestral robe top',
+    categories: ['chambers_of_xeric']
+  },
+  '21024': {
+    name: 'Ancestral robe bottom',
+    categories: ['chambers_of_xeric']
+  },
+  '21027': {
+    name: 'Dark relic',
+    categories: ['chambers_of_xeric']
+  },
+  '21028': {
+    name: 'Dragon harpoon',
+    categories: ['tempoross', 'slayer']
+  },
+  '21034': {
+    name: 'Dexterous prayer scroll',
+    categories: ['chambers_of_xeric']
+  },
+  '21043': {
+    name: 'Kodai insignia',
+    categories: ['chambers_of_xeric']
+  },
+  '21047': {
+    name: 'Torn prayer scroll',
+    categories: ['chambers_of_xeric']
+  },
+  '21061': {
+    name: 'Graceful hood',
+    categories: ['brimhaven_agility_arena']
+  },
+  '21064': {
+    name: 'Graceful cape',
+    categories: ['brimhaven_agility_arena']
+  },
+  '21067': {
+    name: 'Graceful top',
+    categories: ['brimhaven_agility_arena']
+  },
+  '21070': {
+    name: 'Graceful legs',
+    categories: ['brimhaven_agility_arena']
+  },
+  '21073': {
+    name: 'Graceful gloves',
+    categories: ['brimhaven_agility_arena']
+  },
+  '21076': {
+    name: 'Graceful boots',
+    categories: ['brimhaven_agility_arena']
+  },
+  '21079': {
+    name: 'Arcane prayer scroll',
+    categories: ['chambers_of_xeric']
+  },
+  '21202': {
+    name: 'Lava staff upgrade kit',
+    categories: ['last_man_standing']
+  },
+  '21270': {
+    name: 'Eternal gem',
+    categories: ['slayer']
+  },
+  '21273': {
+    name: 'Skotos',
+    categories: ['skotizo', 'all_pets']
+  },
+  '21275': {
+    name: 'Dark claw',
+    categories: ['skotizo']
+  },
+  '21291': {
+    name: 'Jal-nib-rek',
+    categories: ['the_inferno', 'all_pets']
+  },
+  '21295': {
+    name: 'Infernal cape',
+    categories: ['the_inferno']
+  },
+  '21298': {
+    name: 'Obsidian helmet',
+    categories: ['tzhaar']
+  },
+  '21301': {
+    name: 'Obsidian platebody',
+    categories: ['tzhaar']
+  },
+  '21304': {
+    name: 'Obsidian platelegs',
+    categories: ['tzhaar']
+  },
+  '21343': {
+    name: 'Mining gloves',
+    categories: ['miscellaneous']
+  },
+  '21345': {
+    name: 'Superior mining gloves',
+    categories: ['miscellaneous']
+  },
+  '21387': {
+    name: 'Master scroll book (empty)',
+    categories: ['shared_treasure_trail_rewards']
+  },
+  '21392': {
+    name: 'Expert mining gloves',
+    categories: ['miscellaneous']
+  },
+  '21439': {
+    name: "Champion's cape",
+    categories: ['champions_challenge']
+  },
+  '21509': {
+    name: 'Herbi',
+    categories: ['all_pets', 'miscellaneous']
+  },
+  '21541': {
+    name: 'Volcanic mine teleport',
+    categories: ['volcanic_mine']
+  },
+  '21637': {
+    name: 'Wyvern visage',
+    categories: ['slayer']
+  },
+  '21643': {
+    name: 'Granite boots',
+    categories: ['slayer']
+  },
+  '21646': {
+    name: 'Granite longsword',
+    categories: ['slayer']
+  },
+  '21649': {
+    name: 'Merfolk trident',
+    categories: ['miscellaneous']
+  },
+  '21664': {
+    name: 'Scribbled note',
+    categories: ['fossil_island_notes']
+  },
+  '21666': {
+    name: 'Partial note',
+    categories: ['fossil_island_notes']
+  },
+  '21668': {
+    name: 'Ancient note',
+    categories: ['fossil_island_notes']
+  },
+  '21670': {
+    name: 'Ancient writings',
+    categories: ['fossil_island_notes']
+  },
+  '21672': {
+    name: 'Experimental note',
+    categories: ['fossil_island_notes']
+  },
+  '21674': {
+    name: 'Paragraph of text',
+    categories: ['fossil_island_notes']
+  },
+  '21676': {
+    name: 'Musty smelling note',
+    categories: ['fossil_island_notes']
+  },
+  '21678': {
+    name: 'Hastily scrawled note',
+    categories: ['fossil_island_notes']
+  },
+  '21680': {
+    name: 'Old writing',
+    categories: ['fossil_island_notes']
+  },
+  '21682': {
+    name: 'Short note',
+    categories: ['fossil_island_notes']
+  },
+  '21697': {
+    name: 'Ash covered tome',
+    categories: ['volcanic_mine']
+  },
+  '21726': {
+    name: 'Granite dust',
+    categories: ['grotesque_guardians']
+  },
+  '21730': {
+    name: 'Black tourmaline core',
+    categories: ['grotesque_guardians']
+  },
+  '21736': {
+    name: 'Granite gloves',
+    categories: ['grotesque_guardians']
+  },
+  '21739': {
+    name: 'Granite ring',
+    categories: ['grotesque_guardians']
+  },
+  '21742': {
+    name: 'Granite hammer',
+    categories: ['grotesque_guardians']
+  },
+  '21745': {
+    name: 'Jar of stone',
+    categories: ['grotesque_guardians']
+  },
+  '21748': {
+    name: 'Noon',
+    categories: ['grotesque_guardians', 'all_pets']
+  },
+  '21802': {
+    name: 'Revenant cave teleport',
+    categories: ['revenants']
+  },
+  '21804': {
+    name: 'Ancient crystal',
+    categories: ['revenants']
+  },
+  '21807': {
+    name: 'Ancient emblem',
+    categories: ['revenants']
+  },
+  '21810': {
+    name: 'Ancient totem',
+    categories: ['revenants']
+  },
+  '21813': {
+    name: 'Ancient statuette',
+    categories: ['revenants']
+  },
+  '21817': {
+    name: 'Bracelet of ethereum (uncharged)',
+    categories: ['revenants']
+  },
+  '21820': {
+    name: 'Revenant ether',
+    categories: ['revenants']
+  },
+  '21838': {
+    name: 'Shaman mask',
+    categories: ['miscellaneous']
+  },
+  '21907': {
+    name: "Vorkath's head",
+    categories: ['vorkath']
+  },
+  '21918': {
+    name: 'Dragon limbs',
+    categories: ['miscellaneous']
+  },
+  '21992': {
+    name: 'Vorki',
+    categories: ['vorkath', 'all_pets']
+  },
+  '22006': {
+    name: 'Skeletal visage',
+    categories: ['vorkath']
+  },
+  '22100': {
+    name: 'Dragon metal slice',
+    categories: ['miscellaneous']
+  },
+  '22103': {
+    name: 'Dragon metal lump',
+    categories: ['miscellaneous']
+  },
+  '22106': {
+    name: 'Jar of decay',
+    categories: ['vorkath']
+  },
+  '22111': {
+    name: 'Dragonbone necklace',
+    categories: ['vorkath']
+  },
+  '22231': {
+    name: 'Dragon boots ornament kit',
+    categories: ['hard_treasure_trails']
+  },
+  '22236': {
+    name: 'Dragon platebody ornament kit',
+    categories: ['master_treasure_trails']
+  },
+  '22239': {
+    name: 'Dragon kiteshield ornament kit',
+    categories: ['master_treasure_trails']
+  },
+  '22246': {
+    name: 'Anguish ornament kit',
+    categories: ['master_treasure_trails']
+  },
+  '22299': {
+    name: 'Ancient medallion',
+    categories: ['revenants']
+  },
+  '22302': {
+    name: 'Ancient effigy',
+    categories: ['revenants']
+  },
+  '22305': {
+    name: 'Ancient relic',
+    categories: ['revenants']
+  },
+  '22324': {
+    name: 'Ghrazi rapier',
+    categories: ['theatre_of_blood']
+  },
+  '22326': {
+    name: 'Justiciar faceguard',
+    categories: ['theatre_of_blood']
+  },
+  '22327': {
+    name: 'Justiciar chestguard',
+    categories: ['theatre_of_blood']
+  },
+  '22328': {
+    name: 'Justiciar legguards',
+    categories: ['theatre_of_blood']
+  },
+  '22372': {
+    name: "Bryophyta's essence",
+    categories: ['bryophyta']
+  },
+  '22374': {
+    name: 'Mossy key',
+    categories: ['miscellaneous']
+  },
+  '22386': {
+    name: 'Metamorphic dust',
+    categories: ['chambers_of_xeric']
+  },
+  '22388': {
+    name: "Xeric's guard",
+    categories: ['chambers_of_xeric']
+  },
+  '22390': {
+    name: "Xeric's warrior",
+    categories: ['chambers_of_xeric']
+  },
+  '22392': {
+    name: "Xeric's sentinel",
+    categories: ['chambers_of_xeric']
+  },
+  '22394': {
+    name: "Xeric's general",
+    categories: ['chambers_of_xeric']
+  },
+  '22396': {
+    name: "Xeric's champion",
+    categories: ['chambers_of_xeric']
+  },
+  '22446': {
+    name: 'Vial of blood',
+    categories: ['theatre_of_blood']
+  },
+  '22473': {
+    name: "Lil' zik",
+    categories: ['all_pets', 'theatre_of_blood']
+  },
+  '22477': {
+    name: 'Avernic defender hilt',
+    categories: ['theatre_of_blood']
+  },
+  '22481': {
+    name: 'Sanguinesti staff (uncharged)',
+    categories: ['theatre_of_blood']
+  },
+  '22486': {
+    name: 'Scythe of vitur (uncharged)',
+    categories: ['theatre_of_blood']
+  },
+  '22494': {
+    name: 'Sinhaza shroud tier 1',
+    categories: ['theatre_of_blood']
+  },
+  '22496': {
+    name: 'Sinhaza shroud tier 2',
+    categories: ['theatre_of_blood']
+  },
+  '22498': {
+    name: 'Sinhaza shroud tier 3',
+    categories: ['theatre_of_blood']
+  },
+  '22500': {
+    name: 'Sinhaza shroud tier 4',
+    categories: ['theatre_of_blood']
+  },
+  '22502': {
+    name: 'Sinhaza shroud tier 5',
+    categories: ['theatre_of_blood']
+  },
+  '22542': {
+    name: "Viggora's chainmace (u)",
+    categories: ['revenants']
+  },
+  '22547': {
+    name: "Craw's bow (u)",
+    categories: ['revenants']
+  },
+  '22552': {
+    name: "Thammaron's sceptre (u)",
+    categories: ['revenants']
+  },
+  '22557': {
+    name: 'Amulet of avarice',
+    categories: ['revenants']
+  },
+  '22746': {
+    name: 'Ikkle hydra',
+    categories: ['alchemical_hydra', 'all_pets']
+  },
+  '22804': {
+    name: 'Dragon knife',
+    categories: ['alchemical_hydra', 'slayer']
+  },
+  '22838': {
+    name: 'Fish sack',
+    categories: ['aerial_fishing']
+  },
+  '22840': {
+    name: 'Golden tench',
+    categories: ['aerial_fishing']
+  },
+  '22842': {
+    name: 'Pearl barbarian rod',
+    categories: ['aerial_fishing']
+  },
+  '22844': {
+    name: 'Pearl fly fishing rod',
+    categories: ['aerial_fishing']
+  },
+  '22846': {
+    name: 'Pearl fishing rod',
+    categories: ['aerial_fishing']
+  },
+  '22875': {
+    name: 'Hespori seed',
+    categories: ['miscellaneous']
+  },
+  '22881': {
+    name: 'Attas seed',
+    categories: ['hespori']
+  },
+  '22883': {
+    name: 'Iasor seed',
+    categories: ['hespori']
+  },
+  '22885': {
+    name: 'Kronos seed',
+    categories: ['hespori']
+  },
+  '22957': {
+    name: "Drake's claw",
+    categories: ['slayer']
+  },
+  '22960': {
+    name: "Drake's tooth",
+    categories: ['slayer']
+  },
+  '22963': {
+    name: 'Broken dragon hasta',
+    categories: ['slayer']
+  },
+  '22966': {
+    name: "Hydra's claw",
+    categories: ['alchemical_hydra']
+  },
+  '22969': {
+    name: "Hydra's heart",
+    categories: ['alchemical_hydra', 'slayer']
+  },
+  '22971': {
+    name: "Hydra's fang",
+    categories: ['alchemical_hydra', 'slayer']
+  },
+  '22973': {
+    name: "Hydra's eye",
+    categories: ['alchemical_hydra', 'slayer']
+  },
+  '22983': {
+    name: 'Hydra leather',
+    categories: ['alchemical_hydra']
+  },
+  '22988': {
+    name: 'Hydra tail',
+    categories: ['alchemical_hydra', 'slayer']
+  },
+  '22994': {
+    name: 'Bottomless compost bucket',
+    categories: ['hespori']
+  },
+  '23047': {
+    name: 'Mystic hat (dusk)',
+    categories: ['slayer']
+  },
+  '23050': {
+    name: 'Mystic robe top (dusk)',
+    categories: ['slayer']
+  },
+  '23053': {
+    name: 'Mystic robe bottom (dusk)',
+    categories: ['slayer']
+  },
+  '23056': {
+    name: 'Mystic gloves (dusk)',
+    categories: ['slayer']
+  },
+  '23059': {
+    name: 'Mystic boots (dusk)',
+    categories: ['slayer']
+  },
+  '23064': {
+    name: 'Jar of chemicals',
+    categories: ['alchemical_hydra']
+  },
+  '23077': {
+    name: 'Alchemical hydra heads',
+    categories: ['alchemical_hydra']
+  },
+  '23185': {
+    name: 'Ring of 3rd age',
+    categories: ['mimic']
+  },
+  '23188': {
+    name: "Guthix d'hide shield",
+    categories: ['hard_treasure_trails']
+  },
+  '23191': {
+    name: "Saradomin d'hide shield",
+    categories: ['hard_treasure_trails']
+  },
+  '23194': {
+    name: "Zamorak d'hide shield",
+    categories: ['hard_treasure_trails']
+  },
+  '23197': {
+    name: "Ancient d'hide shield",
+    categories: ['hard_treasure_trails']
+  },
+  '23200': {
+    name: "Armadyl d'hide shield",
+    categories: ['hard_treasure_trails']
+  },
+  '23203': {
+    name: "Bandos d'hide shield",
+    categories: ['hard_treasure_trails']
+  },
+  '23206': {
+    name: 'Dual sai',
+    categories: ['hard_treasure_trails']
+  },
+  '23209': {
+    name: 'Rune platebody (h1)',
+    categories: ['hard_treasure_trails']
+  },
+  '23212': {
+    name: 'Rune platebody (h2)',
+    categories: ['hard_treasure_trails']
+  },
+  '23215': {
+    name: 'Rune platebody (h3)',
+    categories: ['hard_treasure_trails']
+  },
+  '23218': {
+    name: 'Rune platebody (h4)',
+    categories: ['hard_treasure_trails']
+  },
+  '23221': {
+    name: 'Rune platebody (h5)',
+    categories: ['hard_treasure_trails']
+  },
+  '23224': {
+    name: 'Thieving bag',
+    categories: ['hard_treasure_trails']
+  },
+  '23227': {
+    name: 'Rune defender ornament kit',
+    categories: ['hard_treasure_trails']
+  },
+  '23232': {
+    name: 'Tzhaar-ket-om ornament kit',
+    categories: ['hard_treasure_trails']
+  },
+  '23237': {
+    name: 'Berserker necklace ornament kit',
+    categories: ['hard_treasure_trails']
+  },
+  '23242': {
+    name: '3rd age plateskirt',
+    categories: ['third_age']
+  },
+  '23246': {
+    name: 'Fremennik kilt',
+    categories: ['elite_treasure_trails']
+  },
+  '23249': {
+    name: "Rangers' tights",
+    categories: ['elite_treasure_trails']
+  },
+  '23252': {
+    name: 'Giant boot',
+    categories: ['elite_treasure_trails']
+  },
+  '23255': {
+    name: "Uri's hat",
+    categories: ['elite_treasure_trails']
+  },
+  '23258': {
+    name: 'Gilded coif',
+    categories: ['gilded']
+  },
+  '23261': {
+    name: "Gilded d'hide vambraces",
+    categories: ['gilded']
+  },
+  '23264': {
+    name: "Gilded d'hide body",
+    categories: ['gilded']
+  },
+  '23267': {
+    name: "Gilded d'hide chaps",
+    categories: ['gilded']
+  },
+  '23270': {
+    name: 'Adamant dragon mask',
+    categories: ['elite_treasure_trails']
+  },
+  '23273': {
+    name: 'Rune dragon mask',
+    categories: ['elite_treasure_trails']
+  },
+  '23276': {
+    name: 'Gilded pickaxe',
+    categories: ['gilded']
+  },
+  '23279': {
+    name: 'Gilded axe',
+    categories: ['gilded']
+  },
+  '23282': {
+    name: 'Gilded spade',
+    categories: ['gilded']
+  },
+  '23285': {
+    name: 'Mole slippers',
+    categories: ['beginner_treasure_trails']
+  },
+  '23288': {
+    name: 'Frog slippers',
+    categories: ['beginner_treasure_trails']
+  },
+  '23291': {
+    name: 'Bear feet',
+    categories: ['beginner_treasure_trails']
+  },
+  '23294': {
+    name: 'Demon feet',
+    categories: ['beginner_treasure_trails']
+  },
+  '23297': {
+    name: 'Jester cape',
+    categories: ['beginner_treasure_trails']
+  },
+  '23300': {
+    name: 'Shoulder parrot',
+    categories: ['beginner_treasure_trails']
+  },
+  '23303': {
+    name: "Monk's robe top (t)",
+    categories: ['beginner_treasure_trails']
+  },
+  '23306': {
+    name: "Monk's robe (t)",
+    categories: ['beginner_treasure_trails']
+  },
+  '23309': {
+    name: 'Amulet of defence (t)',
+    categories: ['beginner_treasure_trails']
+  },
+  '23312': {
+    name: 'Sandwich lady hat',
+    categories: ['beginner_treasure_trails']
+  },
+  '23315': {
+    name: 'Sandwich lady top',
+    categories: ['beginner_treasure_trails']
+  },
+  '23318': {
+    name: 'Sandwich lady bottom',
+    categories: ['beginner_treasure_trails']
+  },
+  '23321': {
+    name: 'Rune scimitar ornament kit (guthix)',
+    categories: ['beginner_treasure_trails']
+  },
+  '23324': {
+    name: 'Rune scimitar ornament kit (saradomin)',
+    categories: ['beginner_treasure_trails']
+  },
+  '23327': {
+    name: 'Rune scimitar ornament kit (zamorak)',
+    categories: ['beginner_treasure_trails']
+  },
+  '23336': {
+    name: '3rd age druidic robe top',
+    categories: ['third_age']
+  },
+  '23339': {
+    name: '3rd age druidic robe bottoms',
+    categories: ['third_age']
+  },
+  '23342': {
+    name: '3rd age druidic staff',
+    categories: ['third_age']
+  },
+  '23345': {
+    name: '3rd age druidic cloak',
+    categories: ['third_age']
+  },
+  '23348': {
+    name: 'Tormented ornament kit',
+    categories: ['master_treasure_trails']
+  },
+  '23351': {
+    name: 'Cape of skulls',
+    categories: ['easy_treasure_trails']
+  },
+  '23354': {
+    name: 'Amulet of power (t)',
+    categories: ['easy_treasure_trails']
+  },
+  '23357': {
+    name: 'Rain bow',
+    categories: ['easy_treasure_trails']
+  },
+  '23360': {
+    name: 'Ham joint',
+    categories: ['easy_treasure_trails']
+  },
+  '23363': {
+    name: 'Staff of bob the cat',
+    categories: ['easy_treasure_trails']
+  },
+  '23366': {
+    name: 'Black platebody (h1)',
+    categories: ['easy_treasure_trails']
+  },
+  '23369': {
+    name: 'Black platebody (h2)',
+    categories: ['easy_treasure_trails']
+  },
+  '23372': {
+    name: 'Black platebody (h3)',
+    categories: ['easy_treasure_trails']
+  },
+  '23375': {
+    name: 'Black platebody (h4)',
+    categories: ['easy_treasure_trails']
+  },
+  '23378': {
+    name: 'Black platebody (h5)',
+    categories: ['easy_treasure_trails']
+  },
+  '23381': {
+    name: 'Leather body (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '23384': {
+    name: 'Leather chaps (g)',
+    categories: ['easy_treasure_trails']
+  },
+  '23389': {
+    name: 'Spiked manacles',
+    categories: ['medium_treasure_trails']
+  },
+  '23392': {
+    name: 'Adamant platebody (h1)',
+    categories: ['medium_treasure_trails']
+  },
+  '23395': {
+    name: 'Adamant platebody (h2)',
+    categories: ['medium_treasure_trails']
+  },
+  '23398': {
+    name: 'Adamant platebody (h3)',
+    categories: ['medium_treasure_trails']
+  },
+  '23401': {
+    name: 'Adamant platebody (h4)',
+    categories: ['medium_treasure_trails']
+  },
+  '23404': {
+    name: 'Adamant platebody (h5)',
+    categories: ['medium_treasure_trails']
+  },
+  '23407': {
+    name: 'Wolf mask',
+    categories: ['medium_treasure_trails']
+  },
+  '23410': {
+    name: 'Wolf cloak',
+    categories: ['medium_treasure_trails']
+  },
+  '23413': {
+    name: 'Climbing boots (g)',
+    categories: ['medium_treasure_trails']
+  },
+  '23495': {
+    name: 'Sraracha',
+    categories: ['sarachnis', 'all_pets']
+  },
+  '23517': {
+    name: 'Giant egg sac(full)',
+    categories: ['sarachnis']
+  },
+  '23522': {
+    name: 'Mask of ranul',
+    categories: ['miscellaneous']
+  },
+  '23525': {
+    name: 'Jar of eyes',
+    categories: ['sarachnis']
+  },
+  '23528': {
+    name: 'Sarachnis cudgel',
+    categories: ['sarachnis']
+  },
+  '23757': {
+    name: 'Youngllef',
+    categories: ['the_gauntlet', 'all_pets']
+  },
+  '23760': {
+    name: 'Smolcano',
+    categories: ['zalcano', 'all_pets']
+  },
+  '23859': {
+    name: 'Gauntlet cape',
+    categories: ['the_gauntlet']
+  },
+  '23908': {
+    name: 'Zalcano shard',
+    categories: ['zalcano']
+  },
+  '23943': {
+    name: 'Elven signet',
+    categories: ['miscellaneous']
+  },
+  '23953': {
+    name: 'Crystal tool seed',
+    categories: ['zalcano']
+  },
+  '23956': {
+    name: 'Crystal armour seed',
+    categories: ['the_gauntlet']
+  },
+  '23959': {
+    name: 'Enhanced crystal teleport seed',
+    categories: ['miscellaneous']
+  },
+  '24000': {
+    name: 'Crystal grail',
+    categories: ['miscellaneous']
+  },
+  '24034': {
+    name: 'Dragonstone full helm',
+    categories: ['miscellaneous']
+  },
+  '24037': {
+    name: 'Dragonstone platebody',
+    categories: ['miscellaneous']
+  },
+  '24040': {
+    name: 'Dragonstone platelegs',
+    categories: ['miscellaneous']
+  },
+  '24043': {
+    name: 'Dragonstone boots',
+    categories: ['miscellaneous']
+  },
+  '24046': {
+    name: 'Dragonstone gauntlets',
+    categories: ['miscellaneous']
+  },
+  '24189': {
+    name: "Deadman's chest",
+    categories: ['last_man_standing']
+  },
+  '24190': {
+    name: "Deadman's legs",
+    categories: ['last_man_standing']
+  },
+  '24191': {
+    name: "Deadman's cape",
+    categories: ['last_man_standing']
+  },
+  '24192': {
+    name: 'Armadyl halo',
+    categories: ['last_man_standing']
+  },
+  '24195': {
+    name: 'Bandos halo',
+    categories: ['last_man_standing']
+  },
+  '24198': {
+    name: 'Seren halo',
+    categories: ['last_man_standing']
+  },
+  '24201': {
+    name: 'Ancient halo',
+    categories: ['last_man_standing']
+  },
+  '24204': {
+    name: 'Brassica halo',
+    categories: ['last_man_standing']
+  },
+  '24207': {
+    name: "Victor's cape (1)",
+    categories: ['last_man_standing']
+  },
+  '24209': {
+    name: "Victor's cape (10)",
+    categories: ['last_man_standing']
+  },
+  '24211': {
+    name: "Victor's cape (50)",
+    categories: ['last_man_standing']
+  },
+  '24213': {
+    name: "Victor's cape (100)",
+    categories: ['last_man_standing']
+  },
+  '24215': {
+    name: "Victor's cape (500)",
+    categories: ['last_man_standing']
+  },
+  '24217': {
+    name: 'Guthixian icon',
+    categories: ['last_man_standing']
+  },
+  '24219': {
+    name: 'Swift blade',
+    categories: ['last_man_standing']
+  },
+  '24229': {
+    name: 'Ornate maul handle',
+    categories: ['last_man_standing']
+  },
+  '24268': {
+    name: 'Basilisk jaw',
+    categories: ['slayer']
+  },
+  '24288': {
+    name: "Dagon'hai hat",
+    categories: ['slayer']
+  },
+  '24291': {
+    name: "Dagon'hai robe top",
+    categories: ['slayer']
+  },
+  '24294': {
+    name: "Dagon'hai robe bottom",
+    categories: ['slayer']
+  },
+  '24417': {
+    name: "Inquisitor's mace",
+    categories: ['the_nightmare']
+  },
+  '24419': {
+    name: "Inquisitor's great helm",
+    categories: ['the_nightmare']
+  },
+  '24420': {
+    name: "Inquisitor's hauberk",
+    categories: ['the_nightmare']
+  },
+  '24421': {
+    name: "Inquisitor's plateskirt",
+    categories: ['the_nightmare']
+  },
+  '24422': {
+    name: 'Nightmare staff',
+    categories: ['the_nightmare']
+  },
+  '24491': {
+    name: 'Little nightmare',
+    categories: ['the_nightmare', 'all_pets']
+  },
+  '24495': {
+    name: 'Jar of dreams',
+    categories: ['the_nightmare']
+  },
+  '24511': {
+    name: 'Harmonised orb',
+    categories: ['the_nightmare']
+  },
+  '24514': {
+    name: 'Volatile orb',
+    categories: ['the_nightmare']
+  },
+  '24517': {
+    name: 'Eldritch orb',
+    categories: ['the_nightmare']
+  },
+  '24520': {
+    name: "Victor's cape (1000)",
+    categories: ['last_man_standing']
+  },
+  '24670': {
+    name: 'Twisted ancestral colour kit',
+    categories: ['chambers_of_xeric']
+  },
+  '24711': {
+    name: 'Hallowed mark',
+    categories: ['hallowed_sepulchre']
+  },
+  '24719': {
+    name: 'Hallowed token',
+    categories: ['hallowed_sepulchre']
+  },
+  '24721': {
+    name: 'Hallowed grapple',
+    categories: ['hallowed_sepulchre']
+  },
+  '24723': {
+    name: 'Hallowed focus',
+    categories: ['hallowed_sepulchre']
+  },
+  '24725': {
+    name: 'Hallowed symbol',
+    categories: ['hallowed_sepulchre']
+  },
+  '24727': {
+    name: 'Hallowed hammer',
+    categories: ['hallowed_sepulchre']
+  },
+  '24729': {
+    name: 'Dark dye',
+    categories: ['hallowed_sepulchre']
+  },
+  '24731': {
+    name: 'Hallowed ring',
+    categories: ['hallowed_sepulchre']
+  },
+  '24733': {
+    name: 'Dark acorn',
+    categories: ['hallowed_sepulchre']
+  },
+  '24740': {
+    name: 'Strange old lockpick (full)',
+    categories: ['hallowed_sepulchre']
+  },
+  '24763': {
+    name: 'Mysterious page',
+    categories: ['hallowed_sepulchre']
+  },
+  '24765': {
+    name: 'Mysterious page',
+    categories: ['hallowed_sepulchre']
+  },
+  '24767': {
+    name: 'Mysterious page',
+    categories: ['hallowed_sepulchre']
+  },
+  '24769': {
+    name: 'Mysterious page',
+    categories: ['hallowed_sepulchre']
+  },
+  '24771': {
+    name: 'Mysterious page',
+    categories: ['hallowed_sepulchre']
+  },
+  '24777': {
+    name: 'Blood shard',
+    categories: ['slayer']
+  },
+  '24844': {
+    name: 'Ring of endurance (uncharged)',
+    categories: ['hallowed_sepulchre']
+  },
+  '24862': {
+    name: 'Karamjan monkey',
+    categories: ['monkey_backpacks']
+  },
+  '24863': {
+    name: 'Zombie monkey',
+    categories: ['monkey_backpacks']
+  },
+  '24864': {
+    name: 'Maniacal monkey',
+    categories: ['monkey_backpacks']
+  },
+  '24865': {
+    name: 'Skeleton monkey',
+    categories: ['monkey_backpacks']
+  },
+  '24866': {
+    name: 'Kruk jr',
+    categories: ['monkey_backpacks']
+  },
+  '24867': {
+    name: 'Princely monkey',
+    categories: ['monkey_backpacks']
+  },
+  '24868': {
+    name: 'Golden armadyl special attack',
+    categories: ['last_man_standing']
+  },
+  '24869': {
+    name: 'Golden bandos special attack',
+    categories: ['last_man_standing']
+  },
+  '24870': {
+    name: 'Golden saradomin special attack',
+    categories: ['last_man_standing']
+  },
+  '24871': {
+    name: 'Golden zamorak special attack',
+    categories: ['last_man_standing']
+  },
+  '24872': {
+    name: "Carpenter's helmet",
+    categories: ['mahogany_homes']
+  },
+  '24874': {
+    name: "Carpenter's shirt",
+    categories: ['mahogany_homes']
+  },
+  '24876': {
+    name: "Carpenter's trousers",
+    categories: ['mahogany_homes']
+  },
+  '24878': {
+    name: "Carpenter's boots",
+    categories: ['mahogany_homes']
+  },
+  '24880': {
+    name: "Amy's saw",
+    categories: ['mahogany_homes']
+  },
+  '24884': {
+    name: 'Supply crate',
+    categories: ['mahogany_homes']
+  },
+  '24885': {
+    name: 'Hosidius blueprints',
+    categories: ['mahogany_homes']
+  },
+  '25129': {
+    name: "Beekeeper's hat",
+    categories: ['random_events']
+  },
+  '25131': {
+    name: "Beekeeper's top",
+    categories: ['random_events']
+  },
+  '25133': {
+    name: "Beekeeper's legs",
+    categories: ['random_events']
+  },
+  '25135': {
+    name: "Beekeeper's gloves",
+    categories: ['random_events']
+  },
+  '25137': {
+    name: "Beekeeper's boots",
+    categories: ['random_events']
+  },
+  '25163': {
+    name: 'Decorative boots',
+    categories: ['castle_wars']
+  },
+  '25165': {
+    name: 'Decorative full helm',
+    categories: ['castle_wars']
+  },
+  '25167': {
+    name: 'Decorative boots',
+    categories: ['castle_wars']
+  },
+  '25169': {
+    name: 'Decorative full helm',
+    categories: ['castle_wars']
+  },
+  '25171': {
+    name: 'Decorative boots',
+    categories: ['castle_wars']
+  },
+  '25174': {
+    name: 'Decorative full helm',
+    categories: ['castle_wars']
+  },
+  '25340': {
+    name: 'Ectoplasmator',
+    categories: ['soul_wars']
+  },
+  '25346': {
+    name: 'Soul cape',
+    categories: ['soul_wars']
+  },
+  '25348': {
+    name: "Lil' creator",
+    categories: ['soul_wars', 'all_pets']
+  },
+  '25434': {
+    name: "Zealot's robe top",
+    categories: ['shades_of_mortton']
+  },
+  '25436': {
+    name: "Zealot's robe bottom",
+    categories: ['shades_of_mortton']
+  },
+  '25438': {
+    name: "Zealot's helm",
+    categories: ['shades_of_mortton']
+  },
+  '25440': {
+    name: "Zealot's boots",
+    categories: ['shades_of_mortton']
+  },
+  '25442': {
+    name: 'Bronze locks',
+    categories: ['shades_of_mortton']
+  },
+  '25445': {
+    name: 'Steel locks',
+    categories: ['shades_of_mortton']
+  },
+  '25448': {
+    name: 'Black locks',
+    categories: ['shades_of_mortton']
+  },
+  '25451': {
+    name: 'Silver locks',
+    categories: ['shades_of_mortton']
+  },
+  '25454': {
+    name: 'Gold locks',
+    categories: ['shades_of_mortton']
+  },
+  '25474': {
+    name: "Tree wizards' journal",
+    categories: ['shades_of_mortton']
+  },
+  '25476': {
+    name: 'Bloody notes',
+    categories: ['shades_of_mortton']
+  },
+  '25521': {
+    name: 'Jar of spirits',
+    categories: ['corporeal_beast']
+  },
+  '25524': {
+    name: 'Jar of smoke',
+    categories: ['thermonuclear_smoke_devil']
+  },
+  '25539': {
+    name: 'Celestial ring (uncharged)',
+    categories: ['shooting_stars']
+  },
+  '25547': {
+    name: 'Star fragment',
+    categories: ['shooting_stars']
+  },
+  '25559': {
+    name: 'Big harpoonfish',
+    categories: ['tempoross']
+  },
+  '25576': {
+    name: 'Tome of water (empty)',
+    categories: ['tempoross']
+  },
+  '25578': {
+    name: 'Soaked page',
+    categories: ['tempoross']
+  },
+  '25580': {
+    name: 'Tackle box',
+    categories: ['tempoross']
+  },
+  '25582': {
+    name: 'Fish barrel',
+    categories: ['tempoross']
+  },
+  '25588': {
+    name: 'Spirit flakes',
+    categories: ['tempoross']
+  },
+  '25592': {
+    name: 'Spirit angler headband',
+    categories: ['tempoross']
+  },
+  '25594': {
+    name: 'Spirit angler top',
+    categories: ['tempoross']
+  },
+  '25596': {
+    name: 'Spirit angler waders',
+    categories: ['tempoross']
+  },
+  '25598': {
+    name: 'Spirit angler boots',
+    categories: ['tempoross']
+  },
+  '25602': {
+    name: 'Tiny tempor',
+    categories: ['tempoross', 'all_pets']
+  },
+  '25615': {
+    name: 'Large water container',
+    categories: ['volcanic_mine']
+  },
+  '25617': {
+    name: 'Tea flask',
+    categories: ['creature_creation']
+  },
+  '25618': {
+    name: 'Plain satchel',
+    categories: ['creature_creation']
+  },
+  '25619': {
+    name: 'Green satchel',
+    categories: ['creature_creation']
+  },
+  '25620': {
+    name: 'Red satchel',
+    categories: ['creature_creation']
+  },
+  '25621': {
+    name: 'Black satchel',
+    categories: ['creature_creation']
+  },
+  '25622': {
+    name: 'Gold satchel',
+    categories: ['creature_creation']
+  },
+  '25623': {
+    name: 'Rune satchel',
+    categories: ['creature_creation']
+  },
+  '25624': {
+    name: 'Unsired',
+    categories: ['abyssal_sire']
+  },
+  '25627': {
+    name: 'Coal bag',
+    categories: ['motherlode_mine']
+  },
+  '25628': {
+    name: 'Gem bag',
+    categories: ['motherlode_mine']
+  },
+  '25629': {
+    name: 'Plank sack',
+    categories: ['mahogany_homes']
+  },
+  '25630': {
+    name: 'Flamtaer bag',
+    categories: ['shades_of_mortton']
+  },
+  '25635': {
+    name: 'Barronite head',
+    categories: ['camdozaal']
+  },
+  '25637': {
+    name: 'Barronite handle',
+    categories: ['camdozaal']
+  },
+  '25639': {
+    name: 'Barronite guard',
+    categories: ['camdozaal']
+  },
+  '25641': {
+    name: 'Barronite mace',
+    categories: ['camdozaal']
+  },
+  '25644': {
+    name: 'Imcando hammer',
+    categories: ['camdozaal']
+  },
+  '25686': {
+    name: 'Ancient globe',
+    categories: ['camdozaal']
+  },
+  '25688': {
+    name: 'Ancient ledger',
+    categories: ['camdozaal']
+  },
+  '25690': {
+    name: 'Ancient astroscope',
+    categories: ['camdozaal']
+  },
+  '25692': {
+    name: 'Ancient treatise',
+    categories: ['camdozaal']
+  },
+  '25694': {
+    name: 'Ancient carcanet',
+    categories: ['camdozaal']
+  },
+  '25742': {
+    name: 'Holy ornament kit',
+    categories: ['theatre_of_blood']
+  },
+  '25744': {
+    name: 'Sanguine ornament kit',
+    categories: ['theatre_of_blood']
+  },
+  '25746': {
+    name: 'Sanguine dust',
+    categories: ['theatre_of_blood']
+  },
+  '25837': {
+    name: 'Slepey tablet',
+    categories: ['the_nightmare']
+  },
+  '25838': {
+    name: 'Parasitic egg',
+    categories: ['the_nightmare']
+  },
+  '25844': {
+    name: 'Orange egg sac',
+    categories: ['miscellaneous']
+  },
+  '25846': {
+    name: 'Blue egg sac',
+    categories: ['miscellaneous']
+  },
+  '25859': {
+    name: 'Enhanced crystal weapon seed',
+    categories: ['the_gauntlet']
+  },
+  '25975': {
+    name: 'Lightbearer',
+    categories: ['tombs_of_amascut']
+  },
+  '25985': {
+    name: "Elidinis' ward",
+    categories: ['tombs_of_amascut']
+  },
+  '26219': {
+    name: "Osmumten's fang",
+    categories: ['tombs_of_amascut']
+  },
+  '26221': {
+    name: 'Ancient ceremonial top',
+    categories: ['slayer']
+  },
+  '26223': {
+    name: 'Ancient ceremonial legs',
+    categories: ['slayer']
+  },
+  '26225': {
+    name: 'Ancient ceremonial mask',
+    categories: ['slayer']
+  },
+  '26227': {
+    name: 'Ancient ceremonial gloves',
+    categories: ['slayer']
+  },
+  '26229': {
+    name: 'Ancient ceremonial boots',
+    categories: ['slayer']
+  },
+  '26231': {
+    name: 'Nihil shard',
+    categories: ['nex']
+  },
+  '26235': {
+    name: 'Zaryte vambraces',
+    categories: ['nex']
+  },
+  '26241': {
+    name: 'Virtus mask',
+    categories: ['duke_sucellus', 'the_leviathan', 'vardorvis', 'the_whisperer']
+  },
+  '26243': {
+    name: 'Virtus robe top',
+    categories: ['duke_sucellus', 'the_leviathan', 'vardorvis', 'the_whisperer']
+  },
+  '26245': {
+    name: 'Virtus robe bottom',
+    categories: ['duke_sucellus', 'the_leviathan', 'vardorvis', 'the_whisperer']
+  },
+  '26348': {
+    name: 'Nexling',
+    categories: ['nex', 'all_pets']
+  },
+  '26370': {
+    name: 'Ancient hilt',
+    categories: ['nex']
+  },
+  '26372': {
+    name: 'Nihil horn',
+    categories: ['nex']
+  },
+  '26376': {
+    name: 'Torva full helm (damaged)',
+    categories: ['nex']
+  },
+  '26378': {
+    name: 'Torva platebody (damaged)',
+    categories: ['nex']
+  },
+  '26380': {
+    name: 'Torva platelegs (damaged)',
+    categories: ['nex']
+  },
+  '26792': {
+    name: 'Abyssal pearls',
+    categories: ['guardians_of_the_rift']
+  },
+  '26798': {
+    name: 'Catalytic talisman',
+    categories: ['guardians_of_the_rift']
+  },
+  '26807': {
+    name: 'Abyssal green dye',
+    categories: ['guardians_of_the_rift']
+  },
+  '26809': {
+    name: 'Abyssal blue dye',
+    categories: ['guardians_of_the_rift']
+  },
+  '26811': {
+    name: 'Abyssal red dye',
+    categories: ['guardians_of_the_rift']
+  },
+  '26813': {
+    name: 'Abyssal needle',
+    categories: ['guardians_of_the_rift']
+  },
+  '26815': {
+    name: 'Ring of the elements',
+    categories: ['guardians_of_the_rift']
+  },
+  '26820': {
+    name: "Guardian's eye",
+    categories: ['guardians_of_the_rift']
+  },
+  '26822': {
+    name: 'Abyssal lantern',
+    categories: ['guardians_of_the_rift']
+  },
+  '26850': {
+    name: 'Hat of the eye',
+    categories: ['guardians_of_the_rift']
+  },
+  '26852': {
+    name: 'Robe top of the eye',
+    categories: ['guardians_of_the_rift']
+  },
+  '26854': {
+    name: 'Robe bottoms of the eye',
+    categories: ['guardians_of_the_rift']
+  },
+  '26856': {
+    name: 'Boots of the eye',
+    categories: ['guardians_of_the_rift']
+  },
+  '26901': {
+    name: 'Abyssal protector',
+    categories: ['guardians_of_the_rift', 'all_pets']
+  },
+  '26908': {
+    name: 'Intricate pouch',
+    categories: ['guardians_of_the_rift']
+  },
+  '26910': {
+    name: 'Tarnished locket',
+    categories: ['guardians_of_the_rift']
+  },
+  '26912': {
+    name: 'Lost bag',
+    categories: ['guardians_of_the_rift']
+  },
+  '26945': {
+    name: "Pharaoh's sceptre (uncharged)",
+    categories: ['miscellaneous']
+  },
+  '27012': {
+    name: 'Double ammo mould',
+    categories: ['giants_foundry']
+  },
+  '27014': {
+    name: "Kovac's grog",
+    categories: ['giants_foundry']
+  },
+  '27017': {
+    name: 'Smithing catalyst',
+    categories: ['giants_foundry']
+  },
+  '27019': {
+    name: 'Ore pack',
+    categories: ['giants_foundry']
+  },
+  '27021': {
+    name: 'Colossal blade',
+    categories: ['giants_foundry']
+  },
+  '27023': {
+    name: 'Smiths tunic',
+    categories: ['giants_foundry']
+  },
+  '27025': {
+    name: 'Smiths trousers',
+    categories: ['giants_foundry']
+  },
+  '27027': {
+    name: 'Smiths boots',
+    categories: ['giants_foundry']
+  },
+  '27029': {
+    name: 'Smiths gloves',
+    categories: ['giants_foundry']
+  },
+  '27226': {
+    name: 'Masori mask',
+    categories: ['tombs_of_amascut']
+  },
+  '27229': {
+    name: 'Masori body',
+    categories: ['tombs_of_amascut']
+  },
+  '27232': {
+    name: 'Masori chaps',
+    categories: ['tombs_of_amascut']
+  },
+  '27248': {
+    name: 'Cursed phalanx',
+    categories: ['tombs_of_amascut']
+  },
+  '27255': {
+    name: 'Menaphite ornament kit',
+    categories: ['tombs_of_amascut']
+  },
+  '27257': {
+    name: "Icthlarin's shroud (tier 1)",
+    categories: ['tombs_of_amascut']
+  },
+  '27259': {
+    name: "Icthlarin's shroud (tier 2)",
+    categories: ['tombs_of_amascut']
+  },
+  '27261': {
+    name: "Icthlarin's shroud (tier 3)",
+    categories: ['tombs_of_amascut']
+  },
+  '27263': {
+    name: "Icthlarin's shroud (tier 4)",
+    categories: ['tombs_of_amascut']
+  },
+  '27265': {
+    name: "Icthlarin's shroud (tier 5)",
+    categories: ['tombs_of_amascut']
+  },
+  '27277': {
+    name: "Tumeken's shadow (uncharged)",
+    categories: ['tombs_of_amascut']
+  },
+  '27279': {
+    name: 'Thread of elidinis',
+    categories: ['tombs_of_amascut']
+  },
+  '27283': {
+    name: 'Breach of the scarab',
+    categories: ['tombs_of_amascut']
+  },
+  '27285': {
+    name: 'Eye of the corruptor',
+    categories: ['tombs_of_amascut']
+  },
+  '27289': {
+    name: 'Jewel of the sun',
+    categories: ['tombs_of_amascut']
+  },
+  '27293': {
+    name: 'Cache of runes',
+    categories: ['tombs_of_amascut']
+  },
+  '27352': {
+    name: "Tumeken's guardian",
+    categories: ['all_pets', 'tombs_of_amascut']
+  },
+  '27372': {
+    name: 'Masori crafting kit',
+    categories: ['tombs_of_amascut']
+  },
+  '27377': {
+    name: 'Remnant of akkha',
+    categories: ['tombs_of_amascut']
+  },
+  '27378': {
+    name: 'Remnant of ba-ba',
+    categories: ['tombs_of_amascut']
+  },
+  '27379': {
+    name: 'Remnant of kephri',
+    categories: ['tombs_of_amascut']
+  },
+  '27380': {
+    name: 'Remnant of zebak',
+    categories: ['tombs_of_amascut']
+  },
+  '27381': {
+    name: 'Ancient remnant',
+    categories: ['tombs_of_amascut']
+  },
+  '27590': {
+    name: 'Muphin',
+    categories: ['phantom_muspah', 'all_pets']
+  },
+  '27614': {
+    name: 'Venator shard',
+    categories: ['phantom_muspah']
+  },
+  '27616': {
+    name: 'Ancient essence',
+    categories: ['phantom_muspah']
+  },
+  '27622': {
+    name: 'Frozen cache',
+    categories: ['phantom_muspah']
+  },
+  '27627': {
+    name: 'Ancient icon',
+    categories: ['phantom_muspah']
+  },
+  '27643': {
+    name: 'Charged ice',
+    categories: ['phantom_muspah']
+  },
+  '27667': {
+    name: 'Claws of callisto',
+    categories: ['callisto_and_artio']
+  },
+  '27670': {
+    name: 'Fangs of venenatis',
+    categories: ['venenatis_and_spindel']
+  },
+  '27673': {
+    name: "Skull of vet'ion",
+    categories: ['vetion_and_calvarion']
+  },
+  '27681': {
+    name: 'Voidwaker hilt',
+    categories: ['callisto_and_artio']
+  },
+  '27684': {
+    name: 'Voidwaker blade',
+    categories: ['vetion_and_calvarion']
+  },
+  '27687': {
+    name: 'Voidwaker gem',
+    categories: ['venenatis_and_spindel']
+  },
+  '27695': {
+    name: 'Dragon pickaxe (broken)',
+    categories: ['volcanic_mine']
+  },
+  '28138': {
+    name: 'Funky shaped log',
+    categories: ['forestry']
+  },
+  '28140': {
+    name: 'Log basket',
+    categories: ['forestry']
+  },
+  '28146': {
+    name: 'Log brace',
+    categories: ['forestry']
+  },
+  '28166': {
+    name: 'Clothes pouch blueprint',
+    categories: ['forestry']
+  },
+  '28169': {
+    name: 'Forestry top',
+    categories: ['forestry']
+  },
+  '28171': {
+    name: 'Forestry legs',
+    categories: ['forestry']
+  },
+  '28173': {
+    name: 'Forestry hat',
+    categories: ['forestry']
+  },
+  '28175': {
+    name: 'Forestry boots',
+    categories: ['forestry']
+  },
+  '28177': {
+    name: 'Felling axe handle',
+    categories: ['forestry']
+  },
+  '28246': {
+    name: 'Wisp',
+    categories: ['the_whisperer', 'all_pets']
+  },
+  '28248': {
+    name: 'Butch',
+    categories: ['vardorvis', 'all_pets']
+  },
+  '28250': {
+    name: 'Baron',
+    categories: ['duke_sucellus', 'all_pets']
+  },
+  '28252': {
+    name: "Lil'viathan",
+    categories: ['the_leviathan', 'all_pets']
+  },
+  '28268': {
+    name: 'Blood quartz',
+    categories: ['vardorvis']
+  },
+  '28270': {
+    name: 'Ice quartz',
+    categories: ['duke_sucellus']
+  },
+  '28272': {
+    name: 'Shadow quartz',
+    categories: ['the_whisperer']
+  },
+  '28274': {
+    name: 'Smoke quartz',
+    categories: ['the_leviathan']
+  },
+  '28276': {
+    name: 'Chromium ingot',
+    categories: ['duke_sucellus', 'the_leviathan', 'vardorvis', 'the_whisperer']
+  },
+  '28279': {
+    name: 'Bellator vestige',
+    categories: ['the_whisperer']
+  },
+  '28281': {
+    name: 'Magus vestige',
+    categories: ['duke_sucellus']
+  },
+  '28283': {
+    name: 'Venator vestige',
+    categories: ['the_leviathan']
+  },
+  '28285': {
+    name: 'Ultor vestige',
+    categories: ['vardorvis']
+  },
+  '28319': {
+    name: "Executioner's axe head",
+    categories: ['vardorvis']
+  },
+  '28321': {
+    name: 'Eye of the duke',
+    categories: ['duke_sucellus']
+  },
+  '28323': {
+    name: "Siren's staff",
+    categories: ['the_whisperer']
+  },
+  '28325': {
+    name: "Leviathan's lure",
+    categories: ['the_leviathan']
+  },
+  '28330': {
+    name: 'Strangled tablet',
+    categories: ['vardorvis']
+  },
+  '28331': {
+    name: 'Sirenic tablet',
+    categories: ['the_whisperer']
+  },
+  '28332': {
+    name: 'Scarred tablet',
+    categories: ['the_leviathan']
+  },
+  '28333': {
+    name: 'Frozen tablet',
+    categories: ['duke_sucellus']
+  },
+  '28334': {
+    name: "Awakener's orb",
+    categories: ['duke_sucellus', 'the_leviathan', 'vardorvis', 'the_whisperer']
+  },
+  '28583': {
+    name: 'Warped sceptre (uncharged)',
+    categories: ['slayer']
+  },
+  '28613': {
+    name: 'Cape pouch',
+    categories: ['forestry']
+  },
+  '28616': {
+    name: 'Pheasant cape',
+    categories: ['forestry']
+  },
+  '28618': {
+    name: 'Pheasant boots',
+    categories: ['forestry']
+  },
+  '28620': {
+    name: 'Pheasant hat',
+    categories: ['forestry']
+  },
+  '28622': {
+    name: 'Pheasant legs',
+    categories: ['forestry']
+  },
+  '28626': {
+    name: 'Fox whistle',
+    categories: ['forestry']
+  },
+  '28630': {
+    name: "Twitcher's gloves",
+    categories: ['forestry']
+  },
+  '28655': {
+    name: 'Petal garland',
+    categories: ['forestry']
+  },
+  '28663': {
+    name: 'Golden pheasant egg',
+    categories: ['forestry']
+  },
+  '28674': {
+    name: 'Sturdy beehive parts',
+    categories: ['forestry']
+  },
+  '28798': {
+    name: "Scurrius' spine",
+    categories: ['scurrius']
+  },
+  '28801': {
+    name: 'Scurry',
+    categories: ['scurrius', 'all_pets']
+  },
+  '28813': {
+    name: 'Broken zombie axe',
+    categories: ['miscellaneous']
+  },
+  '28919': {
+    name: 'Tonalztics of ralos (uncharged)',
+    categories: ['fortis_colosseum']
+  },
+  '28924': {
+    name: 'Sunfire splinters',
+    categories: ['fortis_colosseum']
+  },
+  '28933': {
+    name: 'Sunfire fanatic helm',
+    categories: ['fortis_colosseum']
+  },
+  '28936': {
+    name: 'Sunfire fanatic cuirass',
+    categories: ['fortis_colosseum']
+  },
+  '28939': {
+    name: 'Sunfire fanatic chausses',
+    categories: ['fortis_colosseum']
+  },
+  '28942': {
+    name: 'Echo crystal',
+    categories: ['fortis_colosseum']
+  },
+  '28947': {
+    name: "Dizana's quiver (uncharged)",
+    categories: ['fortis_colosseum']
+  },
+  '28960': {
+    name: 'Smol heredit',
+    categories: ['fortis_colosseum', 'all_pets']
+  },
+  '28962': {
+    name: 'Quetzin',
+    categories: ['all_pets', 'hunter_guild']
+  },
+  '28988': {
+    name: 'Blue moon spear',
+    categories: ['moons_of_peril']
+  },
+  '28991': {
+    name: 'Atlatl dart',
+    categories: ['moons_of_peril']
+  },
+  '28997': {
+    name: 'Dual macuahuitl',
+    categories: ['moons_of_peril']
+  },
+  '29000': {
+    name: 'Eclipse atlatl',
+    categories: ['moons_of_peril']
+  },
+  '29004': {
+    name: 'Eclipse moon chestplate',
+    categories: ['moons_of_peril']
+  },
+  '29007': {
+    name: 'Eclipse moon tassets',
+    categories: ['moons_of_peril']
+  },
+  '29010': {
+    name: 'Eclipse moon helm',
+    categories: ['moons_of_peril']
+  },
+  '29013': {
+    name: 'Blue moon chestplate',
+    categories: ['moons_of_peril']
+  },
+  '29016': {
+    name: 'Blue moon tassets',
+    categories: ['moons_of_peril']
+  },
+  '29019': {
+    name: 'Blue moon helm',
+    categories: ['moons_of_peril']
+  },
+  '29022': {
+    name: 'Blood moon chestplate',
+    categories: ['moons_of_peril']
+  },
+  '29025': {
+    name: 'Blood moon tassets',
+    categories: ['moons_of_peril']
+  },
+  '29028': {
+    name: 'Blood moon helm',
+    categories: ['moons_of_peril']
+  },
+  '29084': {
+    name: 'Sulphur blades',
+    categories: ['slayer']
+  },
+  '29263': {
+    name: 'Guild hunter headwear',
+    categories: ['hunter_guild']
+  },
+  '29265': {
+    name: 'Guild hunter top',
+    categories: ['hunter_guild']
+  },
+  '29267': {
+    name: 'Guild hunter legs',
+    categories: ['hunter_guild']
+  },
+  '29269': {
+    name: 'Guild hunter boots',
+    categories: ['hunter_guild']
+  },
+  '29309': {
+    name: "Huntsman's kit",
+    categories: ['hunter_guild']
+  },
+  '29455': {
+    name: 'Teleport anchoring scroll',
+    categories: ['slayer']
+  },
+  '29482': {
+    name: 'Brimhaven voucher',
+    categories: ['brimhaven_agility_arena']
+  },
+  '29574': {
+    name: 'Burning claw',
+    categories: ['tormented_demons']
+  },
+  '29580': {
+    name: 'Tormented synapse',
+    categories: ['tormented_demons']
+  },
+  '29684': {
+    name: 'Guthixian temple teleport',
+    categories: ['tormented_demons']
+  },
+  '29781': {
+    name: 'Coagulated venom',
+    categories: ['araxxor']
+  },
+  '29782': {
+    name: 'Spider cave teleport',
+    categories: ['araxxor']
+  },
+  '29784': {
+    name: 'Araxyte venom sack',
+    categories: ['araxxor']
+  },
+  '29786': {
+    name: 'Jar of venom',
+    categories: ['araxxor']
+  },
+  '29788': {
+    name: 'Araxyte head',
+    categories: ['araxxor']
+  },
+  '29790': {
+    name: 'Noxious point',
+    categories: ['araxxor']
+  },
+  '29792': {
+    name: 'Noxious blade',
+    categories: ['araxxor']
+  },
+  '29794': {
+    name: 'Noxious pommel',
+    categories: ['araxxor']
+  },
+  '29799': {
+    name: 'Araxyte fang',
+    categories: ['araxxor']
+  },
+  '29806': {
+    name: 'Aranea boots',
+    categories: ['slayer']
+  },
+  '29836': {
+    name: 'Nid',
+    categories: ['araxxor', 'all_pets']
+  },
+  '29889': {
+    name: 'Glacial temotli',
+    categories: ['amoxliatl', 'slayer']
+  },
+  '29892': {
+    name: 'Pendant of ates (inert)',
+    categories: ['amoxliatl', 'slayer']
+  },
+  '29895': {
+    name: 'Frozen tear',
+    categories: ['amoxliatl', 'slayer']
+  },
+  '29974': {
+    name: 'Prescription goggles',
+    categories: ['mastering_mixology']
+  },
+  '29978': {
+    name: 'Alchemist labcoat',
+    categories: ['mastering_mixology']
+  },
+  '29982': {
+    name: 'Alchemist pants',
+    categories: ['mastering_mixology']
+  },
+  '29986': {
+    name: 'Alchemist gloves',
+    categories: ['mastering_mixology']
+  },
+  '29992': {
+    name: "Alchemist's amulet",
+    categories: ['mastering_mixology']
+  },
+  '29996': {
+    name: 'Reagent pouch',
+    categories: ['mastering_mixology']
+  },
+  '30002': {
+    name: 'Chugging barrel (disassembled)',
+    categories: ['mastering_mixology']
+  },
+  '30040': {
+    name: 'Colossal wyrm teleport scroll',
+    categories: ['colossal_wyrm_agility']
+  },
+  '30042': {
+    name: 'Calcified acorn',
+    categories: ['colossal_wyrm_agility']
+  },
+  '30045': {
+    name: 'Graceful hood',
+    categories: ['colossal_wyrm_agility']
+  },
+  '30048': {
+    name: 'Graceful cape',
+    categories: ['colossal_wyrm_agility']
+  },
+  '30051': {
+    name: 'Graceful top',
+    categories: ['colossal_wyrm_agility']
+  },
+  '30054': {
+    name: 'Graceful legs',
+    categories: ['colossal_wyrm_agility']
+  },
+  '30057': {
+    name: 'Graceful gloves',
+    categories: ['colossal_wyrm_agility']
+  },
+  '30060': {
+    name: 'Graceful boots',
+    categories: ['colossal_wyrm_agility']
+  },
+  '30066': {
+    name: 'Tome of earth (empty)',
+    categories: ['hueycoatl']
+  },
+  '30068': {
+    name: 'Soiled page',
+    categories: ['hueycoatl']
+  },
+  '30070': {
+    name: 'Dragon hunter wand',
+    categories: ['hueycoatl']
+  },
+  '30085': {
+    name: 'Hueycoatl hide',
+    categories: ['hueycoatl']
+  },
+  '30088': {
+    name: 'Huasca seed',
+    categories: ['hueycoatl']
+  },
+  '30152': {
+    name: 'Huberte',
+    categories: ['hueycoatl', 'all_pets']
+  },
+  '30154': {
+    name: 'Moxi',
+    categories: ['amoxliatl', 'all_pets']
+  },
+  '30324': {
+    name: 'Broken zombie helmet',
+    categories: ['miscellaneous']
+  },
+  '30622': {
+    name: 'Bran',
+    categories: ['royal_titans', 'all_pets']
+  },
+  '30626': {
+    name: 'Deadeye prayer scroll',
+    categories: ['royal_titans']
+  },
+  '30627': {
+    name: 'Mystic vigour prayer scroll',
+    categories: ['royal_titans']
+  },
+  '30628': {
+    name: 'Ice element staff crown',
+    categories: ['royal_titans']
+  },
+  '30631': {
+    name: 'Fire element staff crown',
+    categories: ['royal_titans']
+  },
+  '30637': {
+    name: 'Giantsoul amulet',
+    categories: ['royal_titans']
+  },
+  '30640': {
+    name: 'Desiccated page',
+    categories: ['royal_titans']
+  },
+  '30750': {
+    name: 'Oathplate helm',
+    categories: ['yama']
+  },
+  '30753': {
+    name: 'Oathplate chest',
+    categories: ['yama']
+  },
+  '30756': {
+    name: 'Oathplate legs',
+    categories: ['yama']
+  },
+  '30759': {
+    name: 'Soulflame horn',
+    categories: ['yama']
+  },
+  '30763': {
+    name: 'Forgotten lockbox',
+    categories: ['yama']
+  },
+  '30765': {
+    name: 'Oathplate shards',
+    categories: ['yama']
+  },
+  '30775': {
+    name: 'Chasm teleport scroll',
+    categories: ['yama']
+  },
+  '30795': {
+    name: 'Barrel of demonic tallow (full)',
+    categories: ['yama']
+  },
+  '30805': {
+    name: 'Dossier',
+    categories: ['yama']
+  },
+  '30806': {
+    name: 'Rite of vile transference',
+    categories: ['yama']
+  },
+  '30888': {
+    name: 'Yami',
+    categories: ['yama', 'all_pets']
+  },
+  '30893': {
+    name: 'Jewel of amascut',
+    categories: ['tombs_of_amascut']
+  },
+  '30895': {
+    name: 'Steel ring',
+    categories: ['deranged_archaeologist']
+  },
+  '30902': {
+    name: 'Minor beginner scroll case',
+    categories: ['scroll_cases']
+  },
+  '30904': {
+    name: 'Major beginner scroll case',
+    categories: ['scroll_cases']
+  },
+  '30906': {
+    name: 'Minor easy scroll case',
+    categories: ['scroll_cases']
+  },
+  '30908': {
+    name: 'Major easy scroll case',
+    categories: ['scroll_cases']
+  },
+  '30910': {
+    name: 'Minor medium scroll case',
+    categories: ['scroll_cases']
+  },
+  '30912': {
+    name: 'Major medium scroll case',
+    categories: ['scroll_cases']
+  },
+  '30914': {
+    name: 'Minor hard scroll case',
+    categories: ['scroll_cases']
+  },
+  '30916': {
+    name: 'Major hard scroll case',
+    categories: ['scroll_cases']
+  },
+  '30918': {
+    name: 'Minor elite scroll case',
+    categories: ['scroll_cases']
+  },
+  '30920': {
+    name: 'Major elite scroll case',
+    categories: ['scroll_cases']
+  },
+  '30922': {
+    name: 'Minor master scroll case',
+    categories: ['scroll_cases']
+  },
+  '30924': {
+    name: 'Major master scroll case',
+    categories: ['scroll_cases']
+  },
+  '30926': {
+    name: 'Mimic scroll case',
+    categories: ['scroll_cases']
+  },
+  '30957': {
+    name: 'Earthbound tecpatl',
+    categories: ['slayer']
+  },
+  '31032': {
+    name: 'Ent branch',
+    categories: ['vale_totems']
+  },
+  '31034': {
+    name: 'Greenman mask',
+    categories: ['vale_totems']
+  },
+  '31043': {
+    name: 'Fletching knife',
+    categories: ['vale_totems']
+  },
+  '31052': {
+    name: 'Bow string spool',
+    categories: ['vale_totems']
+  },
+  '31081': {
+    name: 'Antler guard',
+    categories: ['slayer']
+  },
+  '31084': {
+    name: "Alchemist's signet",
+    categories: ['slayer']
+  },
+  '31086': {
+    name: 'Broken antler',
+    categories: ['slayer']
+  },
+  '31088': {
+    name: 'Avernic treads',
+    categories: ['doom_of_mokhaiotl']
+  },
+  '31099': {
+    name: 'Mokhaiotl waystone',
+    categories: ['doom_of_mokhaiotl']
+  },
+  '31109': {
+    name: 'Mokhaiotl cloth',
+    categories: ['doom_of_mokhaiotl']
+  },
+  '31111': {
+    name: 'Demon tear',
+    categories: ['doom_of_mokhaiotl']
+  },
+  '31115': {
+    name: 'Eye of ayak (uncharged)',
+    categories: ['doom_of_mokhaiotl']
+  },
+  '31130': {
+    name: 'Dom',
+    categories: ['doom_of_mokhaiotl', 'all_pets']
+  }
 };

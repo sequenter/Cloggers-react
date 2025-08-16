@@ -1,6 +1,6 @@
 import type { FetchResponse } from '@types';
 
-import { dev } from '@utils/common';
+import { DEV } from '@utils/common';
 
 interface JsonResponse<T> {
   error?: {
@@ -11,7 +11,7 @@ interface JsonResponse<T> {
 }
 
 const API_URL = 'https://templeosrs.com/api/';
-const API_CORS_PROXY = dev ? 'https://cors-anywhere.herokuapp.com/' : 'https://cors-anywhere.sequenter-osrs.workers.dev/?';
+const API_CORS_PROXY = DEV ? 'https://cors-anywhere.herokuapp.com/' : 'https://cors-anywhere.sequenter-osrs.workers.dev/?';
 
 /**
  * Query the given endpoint on the API asynchrounously and return the JSON result as a promise.  Throws an exception in the event that the

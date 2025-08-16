@@ -10,19 +10,16 @@ import { closeIcon, ironmanIcon } from '@utils/icon';
 
 const Ranking = () => {
   const { selectedPlayers, resetSelectedPlayers, setSelectedPlayers, toggleSelectedPlayer } = useSearch();
-  const { playerRecords } = useGroup();
+  const { players } = useGroup();
 
   const rankings = useMemo(
     /**
      * Filter players by their synced status and sort them by their amount of collections.
      */
     () => {
-      return Object.entries(playerRecords)
-        .map(([player, { gameMode, items, isSynced }]) => ({ gameMode, player, isSynced, itemsCollected: items.length }))
-        .filter(({ isSynced }) => isSynced)
-        .sort((a, b) => b.itemsCollected - a.itemsCollected);
+      return players.filter(({ isSynced }) => isSynced).sort((a, b) => b.totalItemsCollected - a.totalItemsCollected);
     },
-    [playerRecords]
+    [players]
   );
 
   const onFilterIronman = useCallback(
@@ -30,7 +27,7 @@ const Ranking = () => {
      * On filter ironman button press, filter players by their game mode.
      */
     () => {
-      setSelectedPlayers(rankings.filter(({ gameMode }) => gameMode > 0).map(({ player }) => player));
+      setSelectedPlayers(rankings.filter(({ gameMode }) => gameMode > 0).map(({ name }) => name));
     },
     [rankings, setSelectedPlayers]
   );
@@ -68,14 +65,14 @@ const Ranking = () => {
 
       <div className="flex p-2 border-2 gap-2 overflow-x-scroll overflow-y-hidden whitespace-nowrap border-grey-50 bg-primary-100">
         {rankings.length > 0 ? (
-          rankings.map(({ gameMode, player, itemsCollected }, i) => (
+          rankings.map(({ gameMode, name, totalItemsCollected }, i) => (
             <button
-              key={player}
+              key={name}
               className={clsx(
                 'flex items-center border-2 border-grey-50',
-                selectedPlayers.includes(player) ? 'bg-selected' : 'bg-primary-300'
+                selectedPlayers.includes(name) ? 'bg-selected' : 'bg-primary-300'
               )}
-              onClick={() => toggleSelectedPlayer(player)}
+              onClick={() => toggleSelectedPlayer(name)}
             >
               {i < 3 && (
                 <span
@@ -91,12 +88,12 @@ const Ranking = () => {
               )}
 
               <div className="flex items-center justify-between gap-2 px-2 w-full">
-                <span className="text-xl">{`${i > 2 ? `${i + 1}.` : ''} ${player}`}</span>
+                <span className="text-xl">{`${i > 2 ? `${i + 1}.` : ''} ${name}`}</span>
 
                 <div className="flex items-center gap-2">
                   <ModeIcon gameMode={gameMode} />
 
-                  <span className="text-xl text-white">{itemsCollected}</span>
+                  <span className="text-xl text-white">{totalItemsCollected}</span>
                 </div>
               </div>
             </button>

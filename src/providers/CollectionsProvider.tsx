@@ -4,7 +4,9 @@ import { CollectionsContext } from '@hooks/useCollections';
 import { useFetch } from '@hooks/useFetch';
 import { useSearch } from '@hooks/useSearch';
 
-import type { FetchGroupCollections, ItemDetail } from '@types';
+import type { FetchGroupCollections, ItemDetail, SubCategories } from '@types';
+
+import { ITEMS } from '@utils/constants';
 
 interface Props {
   children: ReactNode;
@@ -16,24 +18,28 @@ export const CollectionsProvider = ({ children }: Props) => {
 
   const playersWithCollections = useMemo(
     /**
-     * Provides an array containing players within the group collections.
-     * @returns {Record<string, Array<string>>} Player array
+     * Creates a record containing item collections indexed by player name.
      */
-    (): Record<string, Array<string>> => {
-      return data
-        ? data.members.reduce(
-            (acc, { items, player_name_with_capitalization }) => ({ ...acc, [player_name_with_capitalization]: items }),
-            {}
-          )
-        : {};
+    () => {
+      if (data) {
+        const record: Record<string, Array<string>> = {};
+
+        for (const { items, player_name_with_capitalization } of data.members) {
+          record[player_name_with_capitalization] = items.map(String);
+        }
+
+        return record;
+      }
+
+      return {};
     },
     [data]
   );
 
   const collectedItems = useMemo(
     /**
-     * Creates an array of items containing arrays of players that have and haven't collected the item.
-     * @returns {Array<ItemDetail>} Collected item map
+     * Creates an array of collected items. Initially maps to an object to obtain all players who have collected an item, allowing to obtain
+     * the inverse of players who haven't collected the item.
      */
     (): Array<ItemDetail> => {
       if (data) {
@@ -53,17 +59,47 @@ export const CollectionsProvider = ({ children }: Props) => {
           }
         }
 
-        // Get players who haven't collected the item
         return Object.entries(itemRecord).map(([item, playersCollected]) => ({
           item,
+          name: ITEMS[item].name,
+          categories: ITEMS[item].categories,
           playersCollected,
-          playersNotCollected: Object.keys(playersWithCollections).filter((player) => !playersCollected.includes(player))
+          playersNotCollected: Object.keys(playersWithCollections).filter(
+            (player) => (!selectedPlayers.length || selectedPlayers.includes(player)) && !playersCollected.includes(player)
+          )
         }));
       }
 
       return [];
     },
     [data, playersWithCollections, selectedPlayers]
+  );
+
+  const collectedItemsByCategory = useMemo(
+    /**
+     * Creates a record containing collected items indexed by their corresponding sub category.  Maps to an object to allow the collection
+     * log to easily access items within categories without array lookups.
+     */
+    () => {
+      if (collectedItems.length) {
+        const itemCategories: Partial<Record<SubCategories, Record<string, ItemDetail>>> = {};
+
+        for (const collectedItem of collectedItems) {
+          for (const category of collectedItem.categories) {
+            if (itemCategories[category]) {
+              itemCategories[category][collectedItem.item] = collectedItem;
+            } else {
+              itemCategories[category] = { [collectedItem.item]: collectedItem };
+            }
+          }
+        }
+
+        return itemCategories;
+      }
+
+      return {};
+    },
+    [collectedItems]
   );
 
   // Effect to fetch data based on the group id
@@ -74,7 +110,7 @@ export const CollectionsProvider = ({ children }: Props) => {
   }, [groupId, fetchData]);
 
   return (
-    <CollectionsContext.Provider value={{ collectedItems, playersWithCollections, data, error, isLoading }}>
+    <CollectionsContext.Provider value={{ collectedItems, collectedItemsByCategory, playersWithCollections, data, error, isLoading }}>
       {children}
     </CollectionsContext.Provider>
   );

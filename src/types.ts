@@ -1,4 +1,5 @@
 /* Fetch */
+import type { MAIN_CATEGORIES_ARRAY, SUB_CATEGORIES_ARRAY } from '@utils/constants';
 
 export interface FetchResponse<T> {
   data: T;
@@ -6,17 +7,23 @@ export interface FetchResponse<T> {
 
 /* Common */
 
+export type SubCategories = (typeof SUB_CATEGORIES_ARRAY)[number];
+export type MainCategories = (typeof MAIN_CATEGORIES_ARRAY)[number];
+
 export interface ItemDetail {
+  categories: Array<SubCategories>;
   item: string;
+  name: string;
   playersCollected: Array<string>;
   playersNotCollected: Array<string>;
 }
 
 export interface PlayerDetail {
+  name: string;
   gameMode: number;
   isSynced: boolean;
-  items: Array<string>;
-  uniques: Array<string>;
+  totalItemsCollected: number;
+  uniques: Array<ItemDetail>;
 }
 
 /* Group Collections */

@@ -1,65 +1,42 @@
-import { forwardRef, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { Icon, IconButton, ModeIcon } from '@components';
-import { Dialog, type DialogHandle } from '@components/dialog/Dialog';
+import { Dialog } from '@components/dialog/Dialog';
 
 import { useGroup } from '@hooks/useGroup';
 
-import { ITEMS } from '@utils/constants';
+import type { ItemDetail } from '@types';
+
 import { arrowLeftIcon, gnomeIcon, searchIcon } from '@utils/icon';
 
-export interface PlayerDialogHandle {
-  open: Runnable;
-}
-
-// There doesn't seem to be an inherant way to have a forwardRef without props in TS without ESLint throwing errors, use 'unknown' as the
-// props type to resolve this
-export const PlayerDialog = forwardRef<PlayerDialogHandle, unknown>((_, ref) => {
-  const [uniqueItems, setUniqueItems] = useState<Array<string>>([]);
+export const PlayerDialog = () => {
+  const [uniqueItems, setUniqueItems] = useState<Array<ItemDetail>>([]);
   const [title, setTitle] = useState('Group Members');
 
-  const { playerRecords } = useGroup();
-
-  const dialog = useRef<DialogHandle>(null);
+  const { players } = useGroup();
 
   const syncedPlayers = useMemo(
     /**
      * Filter and sort synced players.
      */
-    () =>
-      Object.entries(playerRecords)
-        .filter(([_, { isSynced }]) => isSynced)
-        .sort((a, b) => a[0].localeCompare(b[0])),
-    [playerRecords]
+    () => players.filter(({ isSynced }) => isSynced).sort((a, b) => a.name.localeCompare(b.name)),
+    [players]
   );
 
   const unsyncedPlayers = useMemo(
     /**
      * Filter and sort unsynced players.
      */
-    () =>
-      Object.entries(playerRecords)
-        .filter(([_, { isSynced }]) => !isSynced)
-        .sort((a, b) => a[0].localeCompare(b[0])),
-    [playerRecords]
+    () => players.filter(({ isSynced }) => !isSynced).sort((a, b) => a.name.localeCompare(b.name)),
+    [players]
   );
-
-  /**
-   * Open dialog.
-   */
-  const onOpenDialog = () => {
-    if (dialog.current) {
-      dialog.current.open();
-    }
-  };
 
   /**
    * On player uniques button press, update states to show items.
    * @param {string} player Player name
-   * @param {Array<string>} uniques Player's unique items
    */
-  const onShowUniques = (player: string, uniques: Array<string>) => {
-    setTitle(`${player}'s Unique Collections`);
+  const onShowUniques = (playerName: string, uniques: Array<ItemDetail>) => {
+    setTitle(`${playerName}'s Unique Collections`);
     setUniqueItems(uniques);
   };
 
@@ -71,13 +48,8 @@ export const PlayerDialog = forwardRef<PlayerDialogHandle, unknown>((_, ref) => 
     setUniqueItems([]);
   };
 
-  useImperativeHandle(ref, () => ({
-    open: onOpenDialog
-  }));
-
   return (
     <Dialog
-      ref={dialog}
       title={title}
       onClose={onCloseUniques}
       controls={
@@ -99,13 +71,15 @@ export const PlayerDialog = forwardRef<PlayerDialogHandle, unknown>((_, ref) => 
       {uniqueItems.length > 0 ? (
         <ul className="text-xl w-full">
           {uniqueItems
-            .map((item) => [item, ITEMS[item]])
-            .sort((a, b) => a[1].localeCompare(b[1]))
-            .map(([item, itemName]) => (
-              <li className="flex items-center gap-2 px-2 even:bg-primary-50">
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map(({ item, name }) => (
+              <li
+                key={item}
+                className="flex items-center gap-2 px-2 even:bg-primary-50"
+              >
                 <div className={`sprite-icon id_${item}`}></div>
 
-                <span>{itemName}</span>
+                <span>{name}</span>
               </li>
             ))}
         </ul>
@@ -119,25 +93,21 @@ export const PlayerDialog = forwardRef<PlayerDialogHandle, unknown>((_, ref) => 
           </div>
 
           <ul className="text-xl w-full">
-            {syncedPlayers.map(([player, { items, gameMode, uniques }]) => (
+            {syncedPlayers.map(({ name, gameMode, totalItemsCollected, uniques }) => (
               <li
-                key={player}
+                key={name}
                 className="px-2 even:bg-primary-50"
               >
                 <div className="grid grid-cols-4 text-xl">
-                  <span>{player}</span>
+                  <span>{name}</span>
 
-                  <span className="flex justify-end">{items.length}</span>
+                  <span className="flex justify-end">{totalItemsCollected}</span>
 
                   <div className="flex gap-2 justify-end">
                     <span>{uniques.length}</span>
 
                     {uniques.length > 0 && (
-                      <button
-                        onClick={() => {
-                          onShowUniques(player, uniques);
-                        }}
-                      >
+                      <button onClick={() => onShowUniques(name, uniques)}>
                         <Icon
                           className="w-4 h-4"
                           title="Show uniques"
@@ -162,12 +132,12 @@ export const PlayerDialog = forwardRef<PlayerDialogHandle, unknown>((_, ref) => 
               </summary>
 
               <ul className="text-xl w-full">
-                {unsyncedPlayers.map(([player, { gameMode }]) => (
+                {unsyncedPlayers.map(({ name, gameMode }) => (
                   <li
-                    key={player}
+                    key={name}
                     className="flex items-center justify-between gap-2 px-2 even:bg-primary-50"
                   >
-                    <span>{player}</span>
+                    <span>{name}</span>
 
                     <ModeIcon gameMode={gameMode} />
                   </li>
@@ -179,4 +149,4 @@ export const PlayerDialog = forwardRef<PlayerDialogHandle, unknown>((_, ref) => 
       )}
     </Dialog>
   );
-});
+};
