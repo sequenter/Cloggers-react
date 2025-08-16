@@ -1,6 +1,6 @@
 import './App.css';
 
-import { CollectionLog, Footer, Header, Ranking } from '@components';
+import { CollectionLog, Featured, Footer, Header, Ranking } from '@components';
 
 function App() {
   return (
@@ -8,10 +8,12 @@ function App() {
       <div className="flex flex-col gap-4 min-h-screen">
         <Header />
 
-        <main className="flex flex-col container mx-auto gap-4 px-2 grow">
+        <main className="flex flex-col container mx-auto gap-4 mb-4 px-2 grow">
           <Ranking />
 
           <CollectionLog />
+
+          <Featured />
         </main>
       </div>
 

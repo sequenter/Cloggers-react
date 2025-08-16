@@ -16,7 +16,7 @@ const Header = () => {
   const { data, error, isLoading } = useCollections();
   const { open } = useDialog();
   const { players } = useGroup();
-  const { setGroupId } = useSearch();
+  const { resetSelectedPlayers, setGroupId } = useSearch();
 
   /**
    * On group search.
@@ -25,6 +25,7 @@ const Header = () => {
   const onSearch = (e: FormEvent | MouseEvent) => {
     e.preventDefault();
 
+    resetSelectedPlayers();
     setGroupId(searchGroupId);
   };
 
