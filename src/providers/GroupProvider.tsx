@@ -1,11 +1,11 @@
-import { type ReactNode, useEffect, useMemo } from 'react';
-
 import { useCollections } from '@hooks/useCollections';
 import { useFetch } from '@hooks/useFetch';
 import { GroupContext } from '@hooks/useGroup';
 import { useSearch } from '@hooks/useSearch';
 
 import type { FetchGroupMemberStats, PlayerDetail } from '@types';
+
+import { type ReactNode, useEffect, useMemo } from 'react';
 
 interface Props {
   children: ReactNode;

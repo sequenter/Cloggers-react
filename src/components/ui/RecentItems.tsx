@@ -1,9 +1,9 @@
-import { clsx } from 'clsx';
-
-import CollectionItem from './CollectionItem';
+import { CollectionItem } from '@components';
 
 import { useRecent } from '@hooks/useRecent';
 import { useSearch } from '@hooks/useSearch';
+
+import { clsx } from 'clsx';
 
 const RecentItems = () => {
   const { selectedPlayers } = useSearch();

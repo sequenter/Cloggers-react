@@ -1,7 +1,7 @@
+import { DialogContext } from '@hooks/useDialog';
+
 import { type ReactNode, useState } from 'react';
 import { createPortal } from 'react-dom';
-
-import { DialogContext } from '@hooks/useDialog';
 
 interface Props {
   children: ReactNode;

@@ -1,6 +1,6 @@
-import { clsx } from 'clsx';
-
 import { Icon } from '@components';
+
+import { clsx } from 'clsx';
 
 interface Props {
   disabled?: boolean;

@@ -1,12 +1,12 @@
-import { clsx } from 'clsx';
-import { useCallback, useMemo } from 'react';
-
 import { IconButton, ModeIcon } from '@components';
 
 import { useGroup } from '@hooks/useGroup';
 import { useSearch } from '@hooks/useSearch';
 
 import { closeIcon, ironmanIcon } from '@utils/icon';
+
+import { clsx } from 'clsx';
+import { useCallback, useMemo } from 'react';
 
 const Ranking = () => {
   const { selectedPlayers, resetSelectedPlayers, setSelectedPlayers, toggleSelectedPlayer } = useSearch();

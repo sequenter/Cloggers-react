@@ -1,8 +1,8 @@
-import { useMemo } from 'react';
-
 import { FeaturedItems } from '@components';
 
 import { useCollections } from '@hooks/useCollections';
+
+import { useMemo } from 'react';
 
 const MAX_FEATURED_ITEMS = 50;
 

@@ -1,6 +1,6 @@
-import { type ReactNode, useState } from 'react';
-
 import { SearchContext } from '@hooks/useSearch';
+
+import { type ReactNode, useState } from 'react';
 
 interface Props {
   children: ReactNode;

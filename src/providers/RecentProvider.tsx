@@ -1,5 +1,3 @@
-import { type ReactNode, useEffect, useMemo } from 'react';
-
 import { useCollections } from '@hooks/useCollections';
 import { useFetch } from '@hooks/useFetch';
 import { RecentContext } from '@hooks/useRecent';
@@ -8,6 +6,8 @@ import { useSearch } from '@hooks/useSearch';
 import type { FetchRecentItem } from '@types';
 
 import { getUnixDateSubtract } from '@utils/common';
+
+import { type ReactNode, useEffect, useMemo } from 'react';
 
 interface Props {
   children: ReactNode;

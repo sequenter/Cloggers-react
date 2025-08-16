@@ -1,6 +1,6 @@
-import { useCallback, useState } from 'react';
-
 import { fetchEndpoint } from '@utils/fetch';
+
+import { useCallback, useState } from 'react';
 
 interface FetchState<T> {
   data: T | undefined;

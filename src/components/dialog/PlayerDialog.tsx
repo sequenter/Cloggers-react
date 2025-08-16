@@ -1,5 +1,3 @@
-import { useMemo, useState } from 'react';
-
 import { Icon, IconButton, ModeIcon } from '@components';
 import { Dialog } from '@components/dialog/Dialog';
 
@@ -8,6 +6,8 @@ import { useGroup } from '@hooks/useGroup';
 import type { ItemDetail } from '@types';
 
 import { arrowLeftIcon, gnomeIcon, searchIcon } from '@utils/icon';
+
+import { useMemo, useState } from 'react';
 
 export const PlayerDialog = () => {
   const [uniqueItems, setUniqueItems] = useState<Array<ItemDetail>>([]);

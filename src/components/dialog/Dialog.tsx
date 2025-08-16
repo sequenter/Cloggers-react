@@ -1,10 +1,10 @@
-import { type MouseEvent, type ReactNode } from 'react';
-
 import { IconButton } from '@components';
 
 import { useDialog } from '@hooks/useDialog';
 
 import { closeIcon } from '@utils/icon';
+
+import { type MouseEvent, type ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;

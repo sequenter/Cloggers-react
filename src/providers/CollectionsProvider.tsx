@@ -1,5 +1,3 @@
-import { type ReactNode, useEffect, useMemo } from 'react';
-
 import { CollectionsContext } from '@hooks/useCollections';
 import { useFetch } from '@hooks/useFetch';
 import { useSearch } from '@hooks/useSearch';
@@ -7,6 +5,8 @@ import { useSearch } from '@hooks/useSearch';
 import type { FetchGroupCollections, ItemDetail, SubCategories } from '@types';
 
 import { ITEMS } from '@utils/constants';
+
+import { type ReactNode, useEffect, useMemo } from 'react';
 
 interface Props {
   children: ReactNode;

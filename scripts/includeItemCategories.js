@@ -1,6 +1,6 @@
-import * as fs from 'fs';
-
 import { ITEMS, MAIN_CATEGORIES, SUB_CATEGORIES } from '../src/utils/constants.ts';
+
+import * as fs from 'fs';
 
 const ITEM_MAP = Object.entries(ITEMS).reduce((acc, [item, name]) => ({ ...acc, [item]: { name, categories: [] } }), {});
 

@@ -1,6 +1,3 @@
-import { clsx } from 'clsx';
-import { useCallback, useMemo, useState } from 'react';
-
 import { CollectionItem } from '@components';
 
 import { useCollections } from '@hooks/useCollections';
@@ -8,6 +5,9 @@ import { useCollections } from '@hooks/useCollections';
 import { type MainCategories, type SubCategories } from '@types';
 
 import { ITEMS, MAIN_CATEGORIES, SUB_CATEGORIES } from '@utils/constants';
+
+import { clsx } from 'clsx';
+import { useCallback, useMemo, useState } from 'react';
 
 const COLLECTION_LOG_TABS = Object.keys(MAIN_CATEGORIES) as Array<MainCategories>;
 

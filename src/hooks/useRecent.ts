@@ -1,6 +1,6 @@
-import { createContext, useContext } from 'react';
-
 import type { RecentItemDetail } from '@types';
+
+import { createContext, useContext } from 'react';
 
 interface Recent {
   recentItems: Array<RecentItemDetail>;

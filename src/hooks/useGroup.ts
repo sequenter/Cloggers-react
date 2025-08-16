@@ -1,6 +1,6 @@
-import { createContext, useContext } from 'react';
-
 import type { PlayerDetail } from '@types';
+
+import { createContext, useContext } from 'react';
 
 interface Group {
   playerRecord: Record<string, PlayerDetail>;
