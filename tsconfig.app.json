@@ -28,6 +28,7 @@
     "paths": {
       "@assets/*": ["./assets/*"],
       "@components": ["./components"],
+      "@components/*": ["./components/*"],
       "@hooks/*": ["./hooks/*"],
       "@providers/*": ["./providers/*"],
       "@types": ["./types.ts"],

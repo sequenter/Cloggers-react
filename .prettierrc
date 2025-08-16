@@ -4,7 +4,7 @@
   "singleQuote": true,
   "trailingComma": "none",
   "printWidth": 140,
-  "importOrder": ["^[./]", "^@assets/(.*)$", "^@hooks/(.*)$", "^@types$", "^@utils/(.*)$", "^[@]"],
+  "importOrder": ["^[./]", "^@assets(.*)$", "^@components(.*)$", "^@hooks(.*)$", "^@types$", "^@utils(.*)$", "^[@]"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
   "singleAttributePerLine": true,

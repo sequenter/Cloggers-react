@@ -1,12 +1,12 @@
 import { clsx } from 'clsx';
 import { useCallback, useMemo } from 'react';
 
+import { IconButton, ModeIcon } from '@components';
+
 import { useGroup } from '@hooks/useGroup';
 import { useSearch } from '@hooks/useSearch';
 
 import { closeIcon, ironmanIcon } from '@utils/icon';
-
-import { IconButton, ModeIcon } from '@components';
 
 const Ranking = () => {
   const { selectedPlayers, resetSelectedPlayers, setSelectedPlayers, toggleSelectedPlayer } = useSearch();
@@ -18,7 +18,7 @@ const Ranking = () => {
      */
     () => {
       return Object.entries(playerRecords)
-        .map(([player, { items, isSynced }]) => ({ player, isSynced, itemsCollected: items.length }))
+        .map(([player, { gameMode, items, isSynced }]) => ({ gameMode, player, isSynced, itemsCollected: items.length }))
         .filter(({ isSynced }) => isSynced)
         .sort((a, b) => b.itemsCollected - a.itemsCollected);
     },
@@ -30,14 +30,9 @@ const Ranking = () => {
      * On filter ironman button press, filter players by their game mode.
      */
     () => {
-      setSelectedPlayers(
-        Object.entries(playerRecords).reduce(
-          (acc, [player, { gameMode, isSynced }]) => (isSynced && gameMode > 0 ? [...acc, player] : acc),
-          [] as Array<string>
-        )
-      );
+      setSelectedPlayers(rankings.filter(({ gameMode }) => gameMode > 0).map(({ player }) => player));
     },
-    [playerRecords, setSelectedPlayers]
+    [rankings, setSelectedPlayers]
   );
 
   return (
@@ -72,41 +67,40 @@ const Ranking = () => {
       </div>
 
       <div className="flex p-2 border-2 gap-2 overflow-x-scroll overflow-y-hidden whitespace-nowrap border-grey-50 bg-primary-100">
-        {rankings.length ? (
-          <>
-            {rankings.map(({ player, itemsCollected }, i) => (
-              <button
-                key={player}
-                className={clsx(
-                  'flex items-center border-2 border-grey-50',
-                  selectedPlayers.includes(player) ? 'bg-selected' : 'bg-primary-300'
-                )}
-                onClick={() => toggleSelectedPlayer(player)}
-              >
-                {i < 3 && (
-                  <span
-                    className={clsx(
-                      'text-2xl px-2 border-r-2 font-bold text-shadow-none bg-linear-to-r text-black border-grey-50',
-                      i === 0 && 'from-yellow-200 to-yellow-500',
-                      i === 1 && 'from-gray-200 to-gray-500',
-                      i === 2 && 'from-amber-800 to-amber-950'
-                    )}
-                  >
-                    {i + 1}
-                  </span>
-                )}{' '}
-                <div className="flex items-center justify-between gap-2 px-2 w-full">
-                  <span className="text-xl">{`${i > 2 ? `${i + 1}.` : ''} ${player}`}</span>
+        {rankings.length > 0 ? (
+          rankings.map(({ gameMode, player, itemsCollected }, i) => (
+            <button
+              key={player}
+              className={clsx(
+                'flex items-center border-2 border-grey-50',
+                selectedPlayers.includes(player) ? 'bg-selected' : 'bg-primary-300'
+              )}
+              onClick={() => toggleSelectedPlayer(player)}
+            >
+              {i < 3 && (
+                <span
+                  className={clsx(
+                    'text-2xl px-2 border-r-2 font-bold text-shadow-none bg-linear-to-r text-black border-grey-50',
+                    i === 0 && 'from-yellow-200 to-yellow-500',
+                    i === 1 && 'from-gray-200 to-gray-500',
+                    i === 2 && 'from-amber-800 to-amber-950'
+                  )}
+                >
+                  {i + 1}
+                </span>
+              )}
 
-                  <div className="flex items-center gap-2">
-                    <ModeIcon player={player} />
+              <div className="flex items-center justify-between gap-2 px-2 w-full">
+                <span className="text-xl">{`${i > 2 ? `${i + 1}.` : ''} ${player}`}</span>
 
-                    <span className="text-xl text-white">{itemsCollected}</span>
-                  </div>
+                <div className="flex items-center gap-2">
+                  <ModeIcon gameMode={gameMode} />
+
+                  <span className="text-xl text-white">{itemsCollected}</span>
                 </div>
-              </button>
-            ))}
-          </>
+              </div>
+            </button>
+          ))
         ) : (
           <div className="flex items-center justify-center w-full">
             <span className="text-lg">Search for a group to view rankings</span>
