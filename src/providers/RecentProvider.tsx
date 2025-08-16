@@ -37,7 +37,7 @@ export const RecentProvider = ({ children }: Props) => {
 
       return [];
     },
-    [data, collectedItemsRecord]
+    [data, collectedItemsRecord, selectedPlayers]
   );
 
   // Effect to fetch data based on the group id
