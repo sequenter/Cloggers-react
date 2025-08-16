@@ -1,69 +1,28 @@
-# React + TypeScript + Vite
+# Cloggers
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Cloggers is deployed on [GitHub Pages](https://sequenter.github.io/Cloggers/).
 
-Currently, two official plugins are available:
+Cloggers utilises [TempleOSRS APIs](https://templeosrs.com/api_doc.php) to collate and display group collection log completion. This includes:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Collectively displaying how many members have achieved a collection log, across all collection items
+- The most collected - and therefore common - items within the group
+- The least collected - and therefore scarce - items within the group
+- Which members have collected which items (and which haven't!)
+- The ability to filter collections by members
+- Group rankings by the amount of collected items
+- Unique collection items achieved by group members
+- Recently collected items within the last month (max 200)
 
-## Expanding the ESLint configuration
+To be able to utilise this tool, OSRS players will need to install the [TempleOSRS plugin](https://runelite.net/plugin-hub/show/temple-osrs) and sync their collection logs in-game. Oonce synced, members will need to be a part of a [TempleOSRS group](https://templeosrs.com/groups/view_groups.php). Then, simply search for the group ID to view group collection log stats.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+A **huge** thank you to the TempleOSRS team for making fun little projects like this possible!
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Development
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked
+Cloggers is a [React](https://react.dev/) project built with [Vite](https://vite.dev/), utilising [TypeScript](https://www.typescriptlang.org/). To develop this project locally:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname
-      }
-      // other options...
-    }
-  }
-]);
-```
+- Clone the repository
+- `npm i` to install dependencies
+- `npm run dev` to launch the server locally
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactDom from 'eslint-plugin-react-dom';
-import reactX from 'eslint-plugin-react-x';
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname
-      }
-      // other options...
-    }
-  }
-]);
-```
+This project uses [CORS Anywhere](https://github.com/Rob--W/cors-anywhere) as a CORS proxy to avoid issues when communicating with the API. This will require visiting the proxy [here](https://cors-anywhere.herokuapp.com/corsdemo) and launching the temporary demo access, otherwise API calls will result in an error.
