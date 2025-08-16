@@ -1,5 +1,3 @@
-import { type FormEvent, useState } from 'react';
-
 import { Icon, IconButton } from '@components';
 import { PlayerDialog } from '@components/dialog/PlayerDialog';
 
@@ -10,13 +8,15 @@ import { useSearch } from '@hooks/useSearch';
 
 import { collectionsIcon, gnomeIcon, searchIcon, spinnerIcon } from '@utils/icon';
 
+import { type FormEvent, useEffect, useState } from 'react';
+
 const Header = () => {
   const [searchGroupId, setSearchGroupId] = useState('');
 
   const { data, error, isLoading } = useCollections();
   const { open } = useDialog();
   const { players } = useGroup();
-  const { resetSelectedPlayers, setGroupId } = useSearch();
+  const { groupId, resetSelectedPlayers, setGroupId } = useSearch();
 
   /**
    * On group search.
@@ -28,6 +28,10 @@ const Header = () => {
     resetSelectedPlayers();
     setGroupId(searchGroupId);
   };
+
+  useEffect(() => {
+    setSearchGroupId(groupId);
+  }, [groupId]);
 
   return (
     <div className="pb-2 border-b-2 border-black bg-grey-100">

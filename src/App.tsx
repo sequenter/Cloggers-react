@@ -2,7 +2,23 @@ import './App.css';
 
 import { CollectionLog, Featured, Footer, Header, Ranking, RecentItems } from '@components';
 
+import { useSearch } from '@hooks/useSearch';
+
+import { useEffect } from 'react';
+
 function App() {
+  const { setGroupId } = useSearch();
+
+  useEffect(() => {
+    const queryString = window.location.search;
+    const params = new URLSearchParams(queryString);
+    const group = params.get('group');
+
+    if (group) {
+      setGroupId(group);
+    }
+  }, [setGroupId]);
+
   return (
     <>
       <div className="flex flex-col gap-4 min-h-screen">
