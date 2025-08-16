@@ -4,7 +4,7 @@ import type { FetchGroupCollections, ItemDetail } from '@types';
 
 interface Collections {
   collectedItems: Array<ItemDetail>;
-  playersWithCollections: Array<string>;
+  playersWithCollections: Record<string, Array<string>>;
   data: FetchGroupCollections | undefined;
   error: Error | undefined;
   isLoading: boolean;
@@ -12,7 +12,7 @@ interface Collections {
 
 export const CollectionsContext = createContext<Collections>({
   collectedItems: [],
-  playersWithCollections: [],
+  playersWithCollections: {},
   data: undefined,
   error: undefined,
   isLoading: false

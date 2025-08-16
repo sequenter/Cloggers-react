@@ -13,9 +13,9 @@ export interface ItemDetail {
 }
 
 export interface PlayerDetail {
-  player: string;
   gameMode: number;
   isSynced: boolean;
+  items: Array<string>;
   uniques: Array<string>;
 }
 

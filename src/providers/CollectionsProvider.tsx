@@ -17,10 +17,15 @@ export const CollectionsProvider = ({ children }: Props) => {
   const playersWithCollections = useMemo(
     /**
      * Provides an array containing players within the group collections.
-     * @returns {Array<string>} Player array
+     * @returns {Record<string, Array<string>>} Player array
      */
-    (): Array<string> => {
-      return data ? data.members.map(({ player_name_with_capitalization }) => player_name_with_capitalization) : [];
+    (): Record<string, Array<string>> => {
+      return data
+        ? data.members.reduce(
+            (acc, { items, player_name_with_capitalization }) => ({ ...acc, [player_name_with_capitalization]: items }),
+            {}
+          )
+        : {};
     },
     [data]
   );
@@ -52,7 +57,7 @@ export const CollectionsProvider = ({ children }: Props) => {
         return Object.entries(itemRecord).map(([item, playersCollected]) => ({
           item,
           playersCollected,
-          playersNotCollected: playersWithCollections.filter((player) => !playersCollected.includes(player))
+          playersNotCollected: Object.keys(playersWithCollections).filter((player) => !playersCollected.includes(player))
         }));
       }
 

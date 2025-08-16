@@ -6,12 +6,12 @@ import { useSearch } from '@hooks/useSearch';
 
 import { collectionsIcon, gnomeIcon, searchIcon, spinnerIcon } from '@utils/icon';
 
-import { Icon } from '@components';
+import { Icon, IconButton } from '@components';
 
 const Header = () => {
   const { setGroupId } = useSearch();
   const { data, error, isLoading } = useCollections();
-  const { players } = useGroup();
+  const { playerRecords } = useGroup();
 
   const [searchGroupId, setSearchGroupId] = useState('');
 
@@ -77,7 +77,7 @@ const Header = () => {
             </div>
           </div>
 
-          {data && players.length && (
+          {data && Object.keys(playerRecords) && (
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2">
                 <span className="hidden md:flex whitespace-nowrap">{data.group_name}</span>
@@ -85,17 +85,12 @@ const Header = () => {
                 <span className="hidden lg:flex">{`(${data.member_count} members, ${data.members_with_items_synced} synced)`}</span>
               </div>
 
-              <button
-                className="flex items-center justify-center w-6 h-6 border-2 border-black bg-linear-to-r from-button-start-stop to-button-end-stop"
-                aria-label="close"
+              <IconButton
+                title="Filter by ironman"
+                path={gnomeIcon}
                 onClick={() => {}}
-              >
-                <img
-                  className="w-4 h-4"
-                  alt="Members"
-                  src={gnomeIcon}
-                />
-              </button>
+                image
+              />
             </div>
           )}
         </div>

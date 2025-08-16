@@ -16,32 +16,36 @@ export const GroupProvider = ({ children }: Props) => {
   const { collectedItems, playersWithCollections } = useCollections();
   const { data, error, isLoading, fetchData } = useFetch<FetchGroupMemberStats>('group_member_info');
 
-  const players = useMemo(
+  const playerRecords = useMemo(
     /**
-     * Creates an array of player details from the group member list.
-     * @returns {Array<PlayerDetail>} Player details
+     * Creates a map of player details indexed by the player name.
+     * @returns {Record<string, PlayerDetail>} Player details
      */
-    (): Array<PlayerDetail> => {
+    (): Record<string, PlayerDetail> => {
       if (data && collectedItems.length) {
         // Get collections that have only been collected by a single player
         const collectedUniqueItems = collectedItems.filter(({ playersCollected }) => playersCollected.length === 1);
 
-        return Object.values(data.memberlist).map(({ player, player_name_with_capitalization, game_mode }) => {
+        return Object.values(data.memberlist).reduce((acc, { player, player_name_with_capitalization, game_mode }) => {
           const playerName = player_name_with_capitalization ?? player;
-          const isSynced = playersWithCollections.includes(playerName);
+          const playerCollection = playersWithCollections[playerName];
+          const isSynced = !!playerCollection;
 
           return {
-            player: playerName,
-            gameMode: game_mode,
-            uniques: isSynced
-              ? collectedUniqueItems.filter(({ playersCollected }) => playersCollected.includes(playerName)).map(({ item }) => item)
-              : [],
-            isSynced
+            ...acc,
+            [playerName]: {
+              gameMode: game_mode,
+              items: playerCollection ?? [],
+              uniques: isSynced
+                ? collectedUniqueItems.filter(({ playersCollected }) => playersCollected.includes(playerName)).map(({ item }) => item)
+                : [],
+              isSynced
+            }
           };
-        });
+        }, {});
       }
 
-      return [];
+      return {};
     },
     [collectedItems, data, playersWithCollections]
   );
@@ -53,5 +57,5 @@ export const GroupProvider = ({ children }: Props) => {
     }
   }, [groupId, fetchData]);
 
-  return <GroupContext.Provider value={{ players, error, isLoading }}>{children}</GroupContext.Provider>;
+  return <GroupContext.Provider value={{ playerRecords, error, isLoading }}>{children}</GroupContext.Provider>;
 };
