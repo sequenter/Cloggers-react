@@ -4,7 +4,6 @@ import { useCallback, useMemo, useState } from 'react';
 import { CollectionItem } from '@components';
 
 import { useCollections } from '@hooks/useCollections';
-import { useGroup } from '@hooks/useGroup';
 
 import { type MainCategories, type SubCategories } from '@types';
 
@@ -17,7 +16,6 @@ const CollectionLog = () => {
   const [selectedCategory, setSelectedCategory] = useState<SubCategories>(MAIN_CATEGORIES[selectedTab][0] as SubCategories);
 
   const { collectedItems, collectedItemsByCategory } = useCollections();
-  const { players } = useGroup();
 
   const subCategories = useMemo(
     /**
@@ -42,7 +40,7 @@ const CollectionLog = () => {
             playersNotCollected: []
           }
       ),
-    [collectedItemsByCategory, players, selectedCategory]
+    [collectedItemsByCategory, selectedCategory]
   );
 
   const totalCollectedCategoryItems = useMemo(
