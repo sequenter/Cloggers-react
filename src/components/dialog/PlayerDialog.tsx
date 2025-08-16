@@ -96,33 +96,40 @@ export const PlayerDialog = () => {
             {syncedPlayers.map(({ name, gameMode, totalItemsCollected, uniques }) => (
               <li
                 key={name}
-                className="px-2 even:bg-primary-50"
+                className="px-2 grid grid-cols-4 text-xl even:bg-primary-50"
               >
-                <div className="grid grid-cols-4 text-xl">
-                  <span>{name}</span>
+                <span>{name}</span>
 
-                  <span className="flex justify-end">{totalItemsCollected}</span>
+                <span className="flex justify-end">{totalItemsCollected}</span>
 
-                  <div className="flex gap-2 justify-end">
-                    <span>{uniques.length}</span>
+                <div className="flex gap-2 justify-end">
+                  <span>{uniques.length}</span>
 
-                    {uniques.length > 0 && (
-                      <button onClick={() => onShowUniques(name, uniques)}>
-                        <Icon
-                          className="w-4 h-4"
-                          title="Show uniques"
-                          path={searchIcon}
-                        />
-                      </button>
-                    )}
-                  </div>
+                  {uniques.length > 0 && (
+                    <button onClick={() => onShowUniques(name, uniques)}>
+                      <Icon
+                        className="w-4 h-4"
+                        title="Show uniques"
+                        path={searchIcon}
+                      />
+                    </button>
+                  )}
+                </div>
 
-                  <div className="flex items-center justify-end">
-                    <ModeIcon gameMode={gameMode} />
-                  </div>
+                <div className="flex items-center justify-end">
+                  <ModeIcon gameMode={gameMode} />
                 </div>
               </li>
             ))}
+
+            <li className="px-2 grid grid-cols-4 text-xl text-white even:bg-primary-50">
+              <span>-</span>
+              <span className="flex justify-end">
+                {syncedPlayers.reduce((acc, { totalItemsCollected }) => acc + totalItemsCollected, 0)}
+              </span>
+              <span className="flex justify-end">{syncedPlayers.reduce((acc, { uniques }) => acc + uniques.length, 0)}</span>
+              <span className="flex justify-end">-</span>
+            </li>
           </ul>
 
           {unsyncedPlayers.length > 0 && (
