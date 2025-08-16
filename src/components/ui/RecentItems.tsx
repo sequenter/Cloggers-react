@@ -3,8 +3,10 @@ import { clsx } from 'clsx';
 import CollectionItem from './CollectionItem';
 
 import { useRecent } from '@hooks/useRecent';
+import { useSearch } from '@hooks/useSearch';
 
 const RecentItems = () => {
+  const { selectedPlayers } = useSearch();
   const { recentItems } = useRecent();
 
   return (
@@ -27,11 +29,15 @@ const RecentItems = () => {
               <span>{recentItem.player}</span>
               <span
                 className={clsx(
-                  recentItem.playersCollected.length === 1 ? 'text-green' : recentItem.notable_item ? 'text-yellow' : 'text-white'
+                  (!selectedPlayers.length || selectedPlayers.length > 1) && recentItem.playersCollected.length === 1
+                    ? 'text-green'
+                    : recentItem.notable_item
+                      ? 'text-yellow'
+                      : 'text-white'
                 )}
               >
                 {new Date(recentItem.date_unix * 1000).toLocaleDateString('en-GB')}
-              </span>{' '}
+              </span>
             </div>
           ))
         ) : (
