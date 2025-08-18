@@ -13,17 +13,9 @@ const COLLECTION_LOG_TABS = Object.keys(MAIN_CATEGORIES) as Array<MainCategories
 
 const CollectionLog = () => {
   const [selectedTab, setSelectedTab] = useState<MainCategories>(COLLECTION_LOG_TABS[0]);
-  const [selectedCategory, setSelectedCategory] = useState<SubCategories>(MAIN_CATEGORIES[selectedTab][0] as SubCategories);
+  const [selectedCategory, setSelectedCategory] = useState<SubCategories>(MAIN_CATEGORIES[selectedTab][0]);
 
-  const { collectedItems, collectedItemsByCategory } = useCollections();
-
-  const subCategories = useMemo(
-    /**
-     * Sub categories related to the selected main category.
-     */
-    () => MAIN_CATEGORIES[selectedTab] as Array<SubCategories>,
-    [selectedTab]
-  );
+  const { collectedItems } = useCollections();
 
   const categoryItems = useMemo(
     /**
@@ -32,7 +24,7 @@ const CollectionLog = () => {
     () =>
       SUB_CATEGORIES[selectedCategory].items.map(
         (item) =>
-          collectedItemsByCategory[selectedCategory]?.[item] ?? {
+          collectedItems?.[item] ?? {
             item,
             categories: ITEMS[item].categories,
             name: ITEMS[item].name,
@@ -40,26 +32,32 @@ const CollectionLog = () => {
             playersNotCollected: []
           }
       ),
-    [collectedItemsByCategory, selectedCategory]
+    [collectedItems, selectedCategory]
   );
 
   const totalCollectedCategoryItems = useMemo(
     /**
      * Amount of collected items for the currently selected sub category.
      */
-    () => Object.keys(collectedItemsByCategory[selectedCategory] ?? []).length,
-    [collectedItemsByCategory, selectedCategory]
+    () => categoryItems.filter(({ playersCollected }) => playersCollected.length > 0).length,
+    [categoryItems]
   );
 
   const isCategoryGreenLogged = useCallback(
     /**
-     * Determines whether or not a given sub category has been completed in full.
+     * Determines whether or not all items in a given sub category have been collected.
      * @param {SubCategories} subCategory Sub category to determine
      */
     (subCategory: SubCategories) => {
-      return Object.keys(collectedItemsByCategory[subCategory] || []).length === SUB_CATEGORIES[subCategory].items.length;
+      for (const item of SUB_CATEGORIES[subCategory].items) {
+        if (!collectedItems[item]) {
+          return false;
+        }
+      }
+
+      return true;
     },
-    [collectedItemsByCategory]
+    [collectedItems]
   );
 
   /**
@@ -68,14 +66,14 @@ const CollectionLog = () => {
    */
   const onCategorySelected = (category: MainCategories) => {
     setSelectedTab(category);
-    setSelectedCategory(MAIN_CATEGORIES[category][0] as SubCategories);
+    setSelectedCategory(MAIN_CATEGORIES[category][0]);
   };
 
   return (
     <div className="flex flex-col gap-2 p-2 border-2 border-black bg-grey-100">
       <div className="flex justify-center py-2 border-2 border-grey-50 bg-primary-100">
         <span className="font-bold text-2xl">
-          Collection Log - {collectedItems.length}/{Object.keys(ITEMS).length}
+          Collection Log - {Object.keys(collectedItems).length}/{Object.keys(ITEMS).length}
         </span>
       </div>
 
@@ -97,7 +95,7 @@ const CollectionLog = () => {
 
         <div className="grid grid-cols-7 h-120 overflow-hidden">
           <ul className="col-span-2 overflow-x-hidden overflow-y-scroll">
-            {subCategories.map((subCategory) => (
+            {MAIN_CATEGORIES[selectedTab].map((subCategory) => (
               <li
                 key={subCategory}
                 className={clsx(subCategory === selectedCategory ? 'bg-selected' : 'even:bg-primary-50 hover:bg-selected')}

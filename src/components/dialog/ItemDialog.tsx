@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const ItemDialog = ({ item, name, playersCollected, playersNotCollected }: Props) => {
-  const { playerRecord } = useGroup();
+  const { players } = useGroup();
 
   return (
     <Dialog
@@ -34,7 +34,7 @@ export const ItemDialog = ({ item, name, playersCollected, playersNotCollected }
                 >
                   <span>{player}</span>
 
-                  <ModeIcon gameMode={playerRecord[player].gameMode} />
+                  <ModeIcon gameMode={players[player].gameMode} />
                 </li>
               ))}
           </ul>
@@ -55,7 +55,7 @@ export const ItemDialog = ({ item, name, playersCollected, playersNotCollected }
                     >
                       <span>{player}</span>
 
-                      <ModeIcon gameMode={playerRecord[player].gameMode} />
+                      <ModeIcon gameMode={players[player].gameMode} />
                     </li>
                   ))}
               </ul>

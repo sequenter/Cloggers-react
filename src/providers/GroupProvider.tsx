@@ -5,6 +5,8 @@ import { useSearch } from '@hooks/useSearch';
 
 import type { FetchGroupMemberStats, PlayerDetail } from '@types';
 
+import { isObjectEmpty } from '@utils/common';
+
 import { type ReactNode, useEffect, useMemo } from 'react';
 
 interface Props {
@@ -19,47 +21,35 @@ export const GroupProvider = ({ children }: Props) => {
   const players = useMemo(
     /**
      * Creates an array of player details.
-     * @returns {Array<PlayerDetail>} Player details
      */
-    (): Array<PlayerDetail> => {
-      if (data && collectedItems.length > 0) {
+    () => {
+      if (data && !isObjectEmpty(collectedItems)) {
         // Get collections that have only been collected by a single player
-        const collectedUniqueItems = collectedItems.filter(({ playersCollected }) => playersCollected.length === 1);
+        const collectedUniqueItems = Object.values(collectedItems).filter(({ playersCollected }) => playersCollected.length === 1);
+        const playerRecord: Record<string, PlayerDetail> = {};
 
-        return Object.values(data.memberlist).map(({ player, player_name_with_capitalization, game_mode }) => {
+        for (const key in data.memberlist) {
+          const { player, player_name_with_capitalization, game_mode } = data.memberlist[key];
+
           const playerName = player_name_with_capitalization ?? player;
-          const playerCollection = playersWithCollections[playerName];
-          const isSynced = !!playerCollection;
+          const playerCollections = playersWithCollections[playerName];
+          const isSynced = !!playerCollections;
 
-          return {
+          playerRecord[playerName] = {
             name: playerName,
             gameMode: game_mode,
-            totalItemsCollected: isSynced ? playerCollection.length : 0,
+            totalItemsCollected: isSynced ? playerCollections.length : 0,
             uniques: isSynced ? collectedUniqueItems.filter(({ playersCollected }) => playersCollected.includes(playerName)) : [],
             isSynced
           };
-        });
+        }
+
+        return playerRecord;
       }
 
-      return [];
+      return {};
     },
     [collectedItems, data, playersWithCollections]
-  );
-
-  const playerRecord = useMemo(
-    /**
-     * Creates a record of player details indexed by player name.
-     */
-    () => {
-      const record: Record<string, PlayerDetail> = {};
-
-      for (const player of players) {
-        record[player.name] = player;
-      }
-
-      return record;
-    },
-    [players]
   );
 
   // Effect to fetch data based on the group id
@@ -69,5 +59,5 @@ export const GroupProvider = ({ children }: Props) => {
     }
   }, [groupId, fetchData]);
 
-  return <GroupContext.Provider value={{ playerRecord, players, error, isLoading }}>{children}</GroupContext.Provider>;
+  return <GroupContext.Provider value={{ players, error, isLoading }}>{children}</GroupContext.Provider>;
 };

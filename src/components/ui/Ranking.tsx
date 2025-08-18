@@ -17,7 +17,9 @@ const Ranking = () => {
      * Filter players by their synced status and sort them by their amount of collections.
      */
     () => {
-      return players.filter(({ isSynced }) => isSynced).sort((a, b) => b.totalItemsCollected - a.totalItemsCollected);
+      return Object.values(players)
+        .filter(({ isSynced }) => isSynced)
+        .sort((a, b) => b.totalItemsCollected - a.totalItemsCollected);
     },
     [players]
   );

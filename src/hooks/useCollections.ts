@@ -3,9 +3,8 @@ import type { FetchGroupCollections, ItemDetail, SubCategories } from '@types';
 import { createContext, useContext } from 'react';
 
 interface Collections {
-  collectedItems: Array<ItemDetail>;
+  collectedItems: Record<string, ItemDetail>;
   collectedItemsByCategory: Partial<Record<SubCategories, Record<string, ItemDetail>>>;
-  collectedItemsRecord: Record<string, ItemDetail>;
   playersWithCollections: Record<string, Array<string>>;
   data: FetchGroupCollections | undefined;
   error: Error | undefined;
@@ -13,9 +12,8 @@ interface Collections {
 }
 
 export const CollectionsContext = createContext<Collections>({
-  collectedItems: [],
+  collectedItems: {},
   collectedItemsByCategory: {},
-  collectedItemsRecord: {},
   playersWithCollections: {},
   data: undefined,
   error: undefined,

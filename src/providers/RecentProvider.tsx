@@ -5,7 +5,7 @@ import { useSearch } from '@hooks/useSearch';
 
 import type { FetchRecentItem } from '@types';
 
-import { getUnixDateSubtract } from '@utils/common';
+import { getUnixDateSubtract, isObjectEmpty } from '@utils/common';
 
 import { type ReactNode, useEffect, useMemo } from 'react';
 
@@ -13,11 +13,9 @@ interface Props {
   children: ReactNode;
 }
 
-const MIN_UNIX_TIMESTAMP = getUnixDateSubtract(1);
-
 export const RecentProvider = ({ children }: Props) => {
-  const { groupId, selectedPlayers } = useSearch();
-  const { collectedItemsRecord } = useCollections();
+  const { groupId, isSelectedPlayer } = useSearch();
+  const { collectedItems } = useCollections();
   const { data, error, isLoading, fetchData } = useFetch<Array<FetchRecentItem>>('collection-log/group_recent_items');
 
   const recentItems = useMemo(
@@ -25,19 +23,18 @@ export const RecentProvider = ({ children }: Props) => {
      * Filter recent items not exceeding the last month.
      */
     () => {
-      if (data && Object.keys(collectedItemsRecord).length > 0) {
+      if (data && !isObjectEmpty(collectedItems)) {
         return data
           .filter(
             ({ date_unix, player, player_name_with_capitalization }) =>
-              date_unix >= MIN_UNIX_TIMESTAMP &&
-              (!selectedPlayers.length || selectedPlayers.includes(player_name_with_capitalization ?? player))
+              date_unix >= getUnixDateSubtract(1) && isSelectedPlayer(player_name_with_capitalization ?? player)
           )
-          .map(({ id, ...rest }) => ({ ...collectedItemsRecord[id], ...rest }));
+          .map(({ id, ...rest }) => ({ ...collectedItems[id], ...rest }));
       }
 
       return [];
     },
-    [data, collectedItemsRecord, selectedPlayers]
+    [data, collectedItems, isSelectedPlayer]
   );
 
   // Effect to fetch data based on the group id

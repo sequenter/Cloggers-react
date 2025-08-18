@@ -13,7 +13,8 @@ const Featured = () => {
     /**
      * Sort collected items first by the amount of players collected, and then by item name.
      */
-    () => collectedItems.sort((a, b) => b.playersCollected.length - a.playersCollected.length || a.name.localeCompare(b.name)),
+    () =>
+      Object.values(collectedItems).sort((a, b) => b.playersCollected.length - a.playersCollected.length || a.name.localeCompare(b.name)),
     [collectedItems]
   );
 

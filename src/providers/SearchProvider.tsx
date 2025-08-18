@@ -1,6 +1,6 @@
 import { SearchContext } from '@hooks/useSearch';
 
-import { type ReactNode, useState } from 'react';
+import { type ReactNode, useCallback, useState } from 'react';
 
 interface Props {
   children: ReactNode;
@@ -9,6 +9,15 @@ interface Props {
 export const SearchProvider = ({ children }: Props) => {
   const [groupId, setGroupId] = useState('');
   const [selectedPlayers, setSelectedPlayers] = useState<Array<string>>([]);
+
+  const isSelectedPlayer = useCallback(
+    /**
+     * Determines whether or not a given player is currently being filtered.
+     * @param {string} player
+     */
+    (player: string) => !selectedPlayers.length || selectedPlayers.includes(player),
+    [selectedPlayers]
+  );
 
   /**
    * Appends or removes a player depending if the player is already selected.
@@ -24,7 +33,7 @@ export const SearchProvider = ({ children }: Props) => {
 
   return (
     <SearchContext.Provider
-      value={{ groupId, selectedPlayers, setGroupId, resetSelectedPlayers, setSelectedPlayers, toggleSelectedPlayer }}
+      value={{ groupId, selectedPlayers, isSelectedPlayer, setGroupId, resetSelectedPlayers, setSelectedPlayers, toggleSelectedPlayer }}
     >
       {children}
     </SearchContext.Provider>

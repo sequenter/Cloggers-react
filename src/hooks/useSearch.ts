@@ -3,6 +3,7 @@ import { createContext, useContext } from 'react';
 interface Search {
   groupId: string;
   selectedPlayers: Array<string>;
+  isSelectedPlayer: Predicate<string>;
   setGroupId: Consumer<string>;
   resetSelectedPlayers: Runnable;
   setSelectedPlayers: Consumer<Array<string>>;
@@ -12,6 +13,7 @@ interface Search {
 export const SearchContext = createContext<Search>({
   groupId: '',
   selectedPlayers: [],
+  isSelectedPlayer: () => false,
   setGroupId: () => {},
   resetSelectedPlayers: () => {},
   setSelectedPlayers: () => {},

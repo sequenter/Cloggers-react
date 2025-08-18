@@ -5,6 +5,7 @@ import { useGroup } from '@hooks/useGroup';
 
 import type { ItemDetail } from '@types';
 
+import { bifilter } from '@utils/common';
 import { arrowLeftIcon, gnomeIcon, searchIcon } from '@utils/icon';
 
 import { useMemo, useState } from 'react';
@@ -15,19 +16,15 @@ export const PlayerDialog = () => {
 
   const { players } = useGroup();
 
-  const syncedPlayers = useMemo(
+  const [unsyncedPlayers, syncedPlayers] = useMemo(
     /**
      * Filter and sort synced players.
      */
-    () => players.filter(({ isSynced }) => isSynced).sort((a, b) => a.name.localeCompare(b.name)),
-    [players]
-  );
-
-  const unsyncedPlayers = useMemo(
-    /**
-     * Filter and sort unsynced players.
-     */
-    () => players.filter(({ isSynced }) => !isSynced).sort((a, b) => a.name.localeCompare(b.name)),
+    () =>
+      bifilter(
+        Object.values(players).sort((a, b) => +a.isSynced - +b.isSynced || a.name.localeCompare(b.name)),
+        ({ isSynced }) => isSynced
+      ),
     [players]
   );
 

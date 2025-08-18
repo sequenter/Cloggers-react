@@ -6,6 +6,7 @@ import { useDialog } from '@hooks/useDialog';
 import { useGroup } from '@hooks/useGroup';
 import { useSearch } from '@hooks/useSearch';
 
+import { isObjectEmpty } from '@utils/common';
 import { collectionsIcon, gnomeIcon, searchIcon, spinnerIcon } from '@utils/icon';
 
 import { type FormEvent, useEffect, useState } from 'react';
@@ -97,7 +98,7 @@ const Header = () => {
 
             <IconButton
               title="View group members"
-              disabled={!players.length}
+              disabled={isObjectEmpty(players)}
               path={gnomeIcon}
               onClick={() => open(<PlayerDialog />)}
               image
