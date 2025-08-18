@@ -2,9 +2,8 @@ import { CollectionsContext } from '@hooks/useCollections';
 import { useFetch } from '@hooks/useFetch';
 import { useSearch } from '@hooks/useSearch';
 
-import type { FetchGroupCollections, ItemDetail, SubCategories } from '@types';
+import type { FetchGroupCollections, ItemDetail } from '@types';
 
-import { isObjectEmpty } from '@utils/common';
 import { ITEMS } from '@utils/constants';
 
 import { type ReactNode, useEffect, useMemo } from 'react';
@@ -80,34 +79,6 @@ export const CollectionsProvider = ({ children }: Props) => {
     [data, playersWithCollections, isSelectedPlayer]
   );
 
-  const collectedItemsByCategory = useMemo(
-    /**
-     * Creates a record containing collected items indexed by their corresponding sub category.
-     */
-    () => {
-      if (!isObjectEmpty(collectedItems)) {
-        const itemCategories: Partial<Record<SubCategories, Record<string, ItemDetail>>> = {};
-
-        for (const key in collectedItems) {
-          const { categories, item } = collectedItems[key];
-
-          for (const category of categories) {
-            if (itemCategories[category]) {
-              itemCategories[category][item] = collectedItems[key];
-            } else {
-              itemCategories[category] = { [item]: collectedItems[key] };
-            }
-          }
-        }
-
-        return itemCategories;
-      }
-
-      return {};
-    },
-    [collectedItems]
-  );
-
   // Effect to fetch data based on the group id
   useEffect(() => {
     if (groupId) {
@@ -116,7 +87,7 @@ export const CollectionsProvider = ({ children }: Props) => {
   }, [groupId, fetchData]);
 
   return (
-    <CollectionsContext.Provider value={{ collectedItems, collectedItemsByCategory, playersWithCollections, data, error, isLoading }}>
+    <CollectionsContext.Provider value={{ collectedItems, playersWithCollections, data, error, isLoading }}>
       {children}
     </CollectionsContext.Provider>
   );
